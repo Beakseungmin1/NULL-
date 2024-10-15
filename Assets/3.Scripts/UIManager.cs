@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     private UIManager           instance;
     private SCENESTATE          sceneState; 
     private UIConnectHandler    connectHandler;
+
+    [SerializeField] Text Score;
     //-------------------------------------------- //씬 인터페이스
     [SerializeField] GameObject[] Interfaces;
     //-------------------------------------------- //유니티 이벤트
@@ -50,7 +52,11 @@ public class UIManager : MonoBehaviour
         if (instance == null) Debug.Log("UIManager가 초기화 되지 못했습니다.[이민석]");
         return instance;
     }
-    //-------------------------------------------- //버튼에 매핑되는 공개되는 함수 사용X
+    public void SetScoreText(int val)
+    {
+        Score.text = "SCORE:" + val.ToString();
+    }
+    //-------------------------------------------- //버튼에 매핑되는 공개 함수 //사용X
     /// <summary>
     /// 사용X
     /// </summary>
@@ -76,11 +82,8 @@ public class UIManager : MonoBehaviour
     //-------------------------------------------- //내부 적으로 사용되는 함수. // 접근XXX
     void SetScene(SCENESTATE state)
     {
-        if (sceneState == state) return;
-
         GameObject temp = Interfaces[(int)state];
-        bool signal = temp.activeSelf;
-        temp.SetActive(!signal);
+        if(temp.activeSelf == false) temp.SetActive(true);
     }
     //-------------------------------------------- //내부 적으로 사용되는 코어 함수. //접근XXXX
     void UpdateScene()
