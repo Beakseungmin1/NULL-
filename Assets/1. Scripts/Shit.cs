@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Shit : MonoBehaviour
 {
-
     void Update()
     {
         if (gameObject.transform.position.y < -7)
@@ -12,7 +11,6 @@ public class Shit : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")

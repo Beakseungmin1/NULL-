@@ -6,17 +6,20 @@ public class TopDownMovement : MonoBehaviour
 {
     private TopDownController movementController;
     private Rigidbody2D movementRigidbody;
+    private Animator animator;
 
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private LayerMask groundLayer;
-    private bool isGrounded;
+    [SerializeField] private GameObject groundObject;
 
+    private bool isGrounded;
     private Vector2 movementDirection = Vector2.zero;
 
     private void Awake()
     {
         movementController = GetComponent<TopDownController>();
         movementRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -44,14 +47,27 @@ public class TopDownMovement : MonoBehaviour
 
     private void Jump()
     {
-        movementRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        isGrounded = false; 
-        Debug.Log("Jump executed");
+        if (!animator.GetBool("isJumping"))
+        {
+            movementRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            animator.SetBool("isJumping", true);
+        }
     }
 
     private void CheckIfGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(transform.position, 0.1f, LayerMask.GetMask("Ground")); 
+        if (movementRigidbody.velocity.y < 0)
+        {
+            Debug.DrawRay(movementRigidbody.position, Vector3.down, new Color(0, 1, 0));
+            RaycastHit2D rayHit = Physics2D.Raycast(movementRigidbody.position, Vector3.down, 1, LayerMask.GetMask("Ground"));
+            if (rayHit.collider != null)
+            {
+                if (rayHit.distance < 0.5f)
+                {
+                    animator.SetBool("isJumping", false);
+                }
+            }
+        }
     }
 }
 

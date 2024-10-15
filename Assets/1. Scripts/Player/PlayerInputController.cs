@@ -30,7 +30,6 @@ public partial class PlayerInputController : TopDownController
     }
     public void OnJump(InputValue value)
     {
-        Debug.Log("Jump executed");
         CallJumpEvent();
     }
 }
