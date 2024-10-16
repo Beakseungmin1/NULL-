@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     float MoveSpeed = 0.01f;
     float ThinkTime = 1f;
     float DropDelayTime = 0.3f;
-    float ShotDelayTime = 0.5f;
+    float ShotDelayTime = 1f;
 
     EnemyPhase enemyPhase = EnemyPhase.Phase2;
     Enemypattern enemypattern;
