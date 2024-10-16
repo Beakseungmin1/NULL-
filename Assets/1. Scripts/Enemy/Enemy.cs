@@ -11,14 +11,25 @@ public enum EnemyPhase
     Phase3
 }
 
+public enum Enemypattern
+{
+    pattern1,
+    pattern2,
+    pattern3
+}
+
 
 public class Enemy : MonoBehaviour
 {
+    protected GameObject Player;
+
     float MoveSpeed = 0.01f;
     float ThinkTime = 1f;
-    float shitdelayTime = 1f;
-    EnemyPhase enemyPhase = EnemyPhase.Phase1;
+    float DropDelayTime = 0.3f;
+    float ShotDelayTime = 0.5f;
 
+    EnemyPhase enemyPhase = EnemyPhase.Phase2;
+    Enemypattern enemypattern;
 
     float toTime;  //시간 계산용 변수
     float totoTime;  // 시간 계산용 변수2
@@ -26,7 +37,10 @@ public class Enemy : MonoBehaviour
 
     //[SerializeField] private GameObject shit;
 
-
+    private void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
 
 
     void Update()
@@ -35,19 +49,39 @@ public class Enemy : MonoBehaviour
         if (enemyPhase == EnemyPhase.Phase1)
         {
             whereigo();
-            CreateShit();
+            DropProjectile();
         }
+        else if (enemyPhase == EnemyPhase.Phase2)
+        {
+            whereigo();
+            FireProjectile();
+        }
+
+
 
 
     }
 
-    void CreateShit()
+    void FireProjectile()
     {
-        if (totoTime > shitdelayTime)
+        if (totoTime > ShotDelayTime)
+        {
+            //Vector2 direction = (Player.transform.position - transform.position).normalized;
+
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+            GameObject Arrow = ObjectPool._instance.SpawnFromPool("Arrow");
+            Arrow.transform.position = transform.position;
+            totoTime = 0;
+        }
+    }
+
+
+    void DropProjectile()
+    {
+        if (totoTime > DropDelayTime)
         {
             GameObject shit = ObjectPool._instance.SpawnFromPool("Shit");
             shit.transform.position = transform.position;
-            //Instantiate(shit, gameObject.transform.position, Quaternion.identity);
             totoTime = 0;
         }
     }
@@ -68,11 +102,11 @@ public class Enemy : MonoBehaviour
         {
             MoveRight();
         }
-        if (gameObject.transform.position.x > 8)
+        if (gameObject.transform.position.x > 4)
         {
             random = 1;
         }
-        if (gameObject.transform.position.x < -8)
+        if (gameObject.transform.position.x < -4)
         {
             random = 2;
         }
