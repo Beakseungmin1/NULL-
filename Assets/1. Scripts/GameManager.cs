@@ -1,16 +1,22 @@
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] Text timerText;
-    [SerializeField] int Score;
-    float timer;
-    float timeLimit = 10.0f;
-    bool GamePlayState = true;
+    [SerializeField] private Text timerText;
+    [SerializeField] private int score;
+    
+    private float timer;
+    private float timeLimit = 5.0f;
+    private bool gamePlayState = true;
+    public int playerHP = 5;
+
+    private StageManager stageManager;
 
     private void Awake()
     {
@@ -25,64 +31,99 @@ public class GameManager : MonoBehaviour
         }
     }
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Score = 0;
-        timer = 0.0f;
+        stageManager = new StageManager();        
+        InitializeGame();
+        StartStage(1);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) Score++;
+        if (Input.GetKeyDown(KeyCode.C)) score++;
+        if (Input.GetKeyDown(KeyCode.X)) playerHP--;
 
-        if (GamePlayState)
+        if (gamePlayState)
         {
             TimerText();
-            if (timer > timeLimit || Score >= 10)
+            if (timer > timeLimit)
             {
                 GameClear();
             }
-            else
+
+            if (playerHP <= 0)
             {
                 GameOver();
             }
-        }
+        }        
+    }
+    private void StartStage(int stageNumber)
+    {
+        stageManager.StartStage(stageNumber);
+        ResetStageTimer();
+    }
+    private void ResetStageTimer()
+    {
+        timer = 0.0f;
     }
 
-    void ReStartGame()
+    private void InitializeGame()
+    {
+        score = 0;
+        timer = 0.0f;
+        gamePlayState = true;
+    }
+
+    public void ReStartGame()
     {
         SceneManager.LoadScene("TitleScene");
     }
 
-    void SceneChanger()
+    public void SceneChanger()
     {
         SceneManager.LoadScene("MainScene");
     }
 
-    void GameClear()
+    private void GameClear()
     {
-        Debug.Log("클리어");
-        GamePlayState = false;
+        Debug.Log($"{stageManager.currentStage} 스테이지 클리어");
+        gamePlayState = false;
+        if (stageManager.currentStage == 3)
+        {
+            CompleteGame();
+        }
+        else
+        {
+            gamePlayState = true;            
+            stageManager.CompleteStage();
+            StartStage(stageManager.currentStage);
+        }
+    }
+
+    private void CompleteGame()
+    {
+        Debug.Log("모든 스테이지 클리어");
         GameClearUI();
     }
-    void GameClearUI()
+
+    private void GameClearUI()
     {
         //gameObject.SetActive(true)
     }
-    void GameOver()
+    private void GameOver()
     {
         Debug.Log("게임오버");
-        GamePlayState = false;
+        gamePlayState = false;
         GameOverUI();
     }
 
-    void GameOverUI()
+    private void GameOverUI()
     {
         //gameObject.SetActive(true)
     }
 
-    void TimerText()
+    private void TimerText()
     {
         timer += Time.deltaTime;
         int minutes = Mathf.FloorToInt(timer / 60f);
