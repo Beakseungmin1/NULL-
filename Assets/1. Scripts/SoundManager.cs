@@ -53,11 +53,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    //public void StopBGM()
-    //{
-    //    bgm.Stop();
-    //}
-
     public void PlaySFX(AudioClip clip)
     {
         if (sfx.clip != clip || !sfx.isPlaying)
