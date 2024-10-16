@@ -7,19 +7,22 @@ public class TopDownMovement : MonoBehaviour
     private TopDownController movementController;
     private Rigidbody2D movementRigidbody;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private GameObject groundObject;
 
-    private bool isGrounded;
+    private int jumpCount;
+    private bool isGround;
     private Vector2 movementDirection = Vector2.zero;
 
+    // ------ 초기화 -------
     private void Awake()
     {
         movementController = GetComponent<TopDownController>();
         movementRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -31,9 +34,9 @@ public class TopDownMovement : MonoBehaviour
     private void FixedUpdate()
     {
         ApplyMovement(movementDirection);
-        CheckIfGrounded();
     }
 
+    // ------ 좌우 이동 ------
     private void Move(Vector2 direction)
     {
         movementDirection = direction;
@@ -41,34 +44,64 @@ public class TopDownMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 direction)
     {
+        // 멈추면 idel 
+        if (direction.x == 0)
+        {
+            animator.SetBool("isRunning", false);
+        }
+        else
+        {
+            animator.SetBool("isRunning", true);
+        }
+
+        if (direction.x > 0)
+        {
+            spriteRenderer.flipX = false; // 오른쪽
+        }
+        else if (direction.x < 0)
+        {
+            spriteRenderer.flipX = true; // 왼쪽
+        }
+
+        //spriteRenderer.flipX = direction.x == -1;
+
         direction = direction * 5;
         movementRigidbody.velocity = new Vector2(direction.x, movementRigidbody.velocity.y);
     }
 
-    private void Jump()
+    // ------ 점프 ------
+    private void Jump() 
     {
-        if (!animator.GetBool("isJumping"))
+        if (jumpCount < 2) 
         {
             movementRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            animator.SetBool("isJumping", true);
-        }
-    }
+            jumpCount++;
 
-    private void CheckIfGrounded()
-    {
-        if (movementRigidbody.velocity.y < 0)
-        {
-            Debug.DrawRay(movementRigidbody.position, Vector3.down, new Color(0, 1, 0));
-            RaycastHit2D rayHit = Physics2D.Raycast(movementRigidbody.position, Vector3.down, 1, LayerMask.GetMask("Ground"));
-            if (rayHit.collider != null)
+            if (jumpCount == 1) // 기본 점프
             {
-                if (rayHit.distance < 0.5f)
-                {
-                    animator.SetBool("isJumping", false);
-                }
+                isGround = false; 
+                animator.SetBool("isJumping", true);
+            }
+
+            else if (jumpCount == 2) // 더블 점프 
+            {
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isDouble", true); 
             }
         }
     }
+
+    // 충돌 확인 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isDouble", false);
+            isGround = true; // 바닥에 닿았음을 설정
+            jumpCount = 0;
+        }
+    } 
 }
 
 

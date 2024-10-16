@@ -7,6 +7,12 @@ public partial class Player : TopDownController
     private Camera _camera;
     private int HP = 3;
 
+    // 인스턴스 (게임매니저 필요) 
+    public int PlayerHP
+    {
+        get { return HP; }
+    }
+
     private void Awake()
     {
         _camera = Camera.main;
@@ -24,9 +30,8 @@ public partial class Player : TopDownController
 
     private void Die()
     {
-        // 개임매니저와 연결
-        // 오브젝트 삭제 말고 다른 이벤트 o
-        Destroy(this.gameObject);
+       // 개임매니저와 연결
+       //Destroy(this.gameObject);
     }
 
     // ----- 이동 ----- 
@@ -51,10 +56,6 @@ public partial class Player : TopDownController
     {
         CallJumpEvent();
     }
-
-    // 더블 점프
-    // 달리기 
-    // 낙하 
 }
 
 
