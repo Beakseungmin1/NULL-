@@ -15,7 +15,9 @@ public enum Bgm
 public enum Sfx 
 {
     JumpSfx,
-    PopSfx
+    WinSfx,
+    LoseSfx,
+    HitSfx
 }
 
 public class SoundManager : MonoBehaviour
