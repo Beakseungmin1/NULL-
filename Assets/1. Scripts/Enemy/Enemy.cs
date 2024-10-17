@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 
 public enum EnemyPhase
@@ -25,17 +26,22 @@ public class Enemy : MonoBehaviour
     private GameObject Player;
     [SerializeField] private GameObject Weapon;
 
-
     float MoveSpeed = 0.01f;
     float ThinkTime = 0.8f;
-    float DropDelayTime = 0.3f;
-    float ShotDelayTime = 1f;
+    float DropDelayTime = 0.3f; // 1패턴 드랍쿨타임
+    float ShotDelayTime = 1f; // 2패턴 드랍쿨타임
+    float patternTime = 10f; // 패턴 유지시간
+
+    bool isFire = false;
+    Vector2 middlepositon;
 
     EnemyPhase enemyPhase;
-    Enemypattern enemypattern = Enemypattern.pattern2;
+    Enemypattern enemypattern;
 
-    float toTime;  //시간 계산용 변수
-    float totoTime;  // 시간 계산용 변수2
+    float toTime;  // 이동용 시간 계산용 변수
+    float tooTime;  // 화살발사 시간 계산용 변수
+    float toooTime = 10f; // 패턴 시간 계산용 변수
+
     int random;
 
 
@@ -48,42 +54,86 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         toTime += Time.deltaTime;
-        totoTime += Time.deltaTime;
+        tooTime += Time.deltaTime;
+        toooTime += Time.deltaTime;
 
+        switch (enemypattern)
+        {
+            case Enemypattern.pattern1:
+                whereigo();
+                DropProjectile();
+                isFire = false;
+                break;
 
-        if (enemypattern == Enemypattern.pattern1)
-        {
-            whereigo();
-            DropProjectile();
+            case Enemypattern.pattern2:
+                whereigo();
+                FireProjectile();
+                isFire = false;
+                break;
+
+            case Enemypattern.pattern3:
+                pattern3();
+                //StandMiddle();
+                //ShotBall();
+                break;
+
+            default:
+                return;
+
         }
-        else if (enemypattern == Enemypattern.pattern2)
+
+        Debug.Log(toooTime);
+        if (toooTime > patternTime)
         {
-            whereigo();
-            FireProjectile();
+            int ran = Random.Range(0, 3);
+            enemypattern = (Enemypattern)ran;
+            toooTime = 0;
         }
-        else
-        {
-            StandMiddle();
-        }
+
+        //if (enemypattern == Enemypattern.pattern1)
+        //{
+        //    whereigo();
+        //    DropProjectile();
+        //}
+        //else if (enemypattern == Enemypattern.pattern2)
+        //{
+        //    whereigo();
+        //    FireProjectile();
+        //}
+        //else
+        //{
+        //    StandMiddle();
+        //    ShotBall();
+        //}
 
     }
 
-    void FireCircle()
+    void ShotBall()
     {
-        int ballspeed = 5;
+        float ballspeed = 10f;
 
-        for (int i = -1; i < 2; i += 2)
-        { 
-            GameObject ball = ObjectPool._instance.SpawnFromPool("Ball");
-            Vector2 ballposition = new Vector2(transform.position.x + i, transform.position.y);
-            ball.transform.position = ballposition;
+        if (!isFire)
+        {
+            for (int i = -1; i < 2; i += 2)
+            {
+                //Debug.Log(i);
+                // 공을 소환한후 위치를 정해준다
+                GameObject ball = ObjectPool._instance.SpawnFromPool("Ball");
+                Vector2 ballposition = new Vector2(transform.position.x + i, transform.position.y);
+                ball.transform.position = ballposition;
+
+                Ball ballScript = ball.GetComponent<Ball>();
+
+                ballScript.Launch(i, ballspeed);
+            }
+            isFire = true;
         }
     }
 
 
     void FireProjectile()
     {
-        if (totoTime > ShotDelayTime)
+        if (tooTime > ShotDelayTime)
         {
             // 플레이어와 무기 간의 방향 벡터 계산
             Vector2 direction = (Player.transform.position - Weapon.transform.position).normalized;
@@ -108,13 +158,12 @@ public class Enemy : MonoBehaviour
 
                 // 화살 위치와 회전 설정
                 Arrow.transform.position = Weapon.transform.position;
-                //Arrow.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg);
                 float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
                 Arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
 
                 // 발사 후 타이머 초기화
-                totoTime = 0;
+                tooTime = 0;
             }
         }
     }
@@ -122,13 +171,24 @@ public class Enemy : MonoBehaviour
 
     void DropProjectile()
     {
-        if (totoTime > DropDelayTime)
+        if (tooTime > DropDelayTime)
         {
             GameObject shit = ObjectPool._instance.SpawnFromPool("Shit");
             shit.transform.position = transform.position;
-            totoTime = 0;
+            tooTime = 0;
         }
     }
+
+    void pattern3()
+    {
+        StandMiddle();
+        if (Vector2.Distance(transform.position, middlepositon) < 0.1f)
+        {
+            ShotBall();
+        }
+
+    }
+
 
     void whereigo()
     {
@@ -159,7 +219,7 @@ public class Enemy : MonoBehaviour
 
     void MoveLeft()
     {
-        gameObject.transform.position +=  Vector3.left * MoveSpeed;
+        gameObject.transform.position += Vector3.left * MoveSpeed;
     }
     void MoveRight()
     {
@@ -167,7 +227,7 @@ public class Enemy : MonoBehaviour
     }
     void StandMiddle()
     {
-        Vector2 targetPosition = new Vector2(0, 4.3f);
-        transform.position = Vector2.Lerp(transform.position, targetPosition, MoveSpeed);
+        middlepositon = new Vector2(0, 4.3f);
+        transform.position = Vector2.Lerp(transform.position, middlepositon, MoveSpeed);
     }
 }
