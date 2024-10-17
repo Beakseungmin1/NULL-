@@ -13,11 +13,6 @@ public partial class Player : TopDownController
         get { return HP; }
     }
 
-    private void Awake()
-    {
-        _camera = Camera.main;
-    }
-
     // ----- 체력 ----- 
     public void TakeDamage(int damage)
     {
@@ -41,17 +36,6 @@ public partial class Player : TopDownController
         CallMoveEvent(moveInput);
     }
 
-    public void OnLook(InputValue value) // 
-    {
-        Vector2 newAim = value.Get<Vector2>();
-        Vector2 worldPos = _camera.ScreenToWorldPoint(newAim);
-        newAim = (worldPos - (Vector2)transform.position).normalized;
-
-        if (newAim.magnitude >= .9f)
-        {
-            CallLookEvent(newAim);
-        }
-    }
     public void OnJump(InputValue value) // 점프 
     {
         CallJumpEvent();

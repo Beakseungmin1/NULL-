@@ -63,8 +63,6 @@ public class TopDownMovement : MonoBehaviour
             spriteRenderer.flipX = true; // 왼쪽
         }
 
-        //spriteRenderer.flipX = direction.x == -1;
-
         direction = direction * 5;
         movementRigidbody.velocity = new Vector2(direction.x, movementRigidbody.velocity.y);
     }
