@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//  ÀÓ½ÃBgmÀÔ´Ï´Ù.
+//  ï¿½Ó½ï¿½Bgmï¿½Ô´Ï´ï¿½.
 public enum Bgm
 {
     TitleBgm,
@@ -11,26 +11,28 @@ public enum Bgm
     BossBgm
 }
 
-//   Å×½ºÆ®¿ë È¿°úÀ½ÀÔ´Ï´Ù.
+//   ï¿½×½ï¿½Æ®ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
 public enum Sfx 
 {
     JumpSfx,
-    PopSfx
+    DoubleJumpSfx,
+    ItemSfx,
+    HitSfx
 }
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    //  ¼öÁ¤ ÀÌÈÄ »èÁ¦ ¿¹Á¤
-    public AudioSource bgm;
-    public AudioSource sfx;
-    //
     public AudioClip[] bgmClips;
     public AudioClip[] sfxClips;
 
     public Slider volumeSlider;
     public GameObject soundButton;
+
+    private AudioSource bgmSource;  // BGM ï¿½ï¿½ï¿½ï¿½ï¿½
+    private AudioSource sfxSource;  // SFX ï¿½ï¿½ï¿½ï¿½ï¿½
+    private float volume = 0.5f;    // ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     public void Awake()
     {
@@ -38,6 +40,9 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            bgmSource = gameObject.AddComponent<AudioSource>();
+            sfxSource = gameObject.AddComponent<AudioSource>();
         }
         else
         {
@@ -47,44 +52,54 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        // ï¿½×½ï¿½Æ®ï¿½ï¿½
+        SoundManager.instance.PlayBGM(Bgm.TitleBgm);
+        //
         volumeSlider.gameObject.SetActive(false);
-        soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //»ç¿îµå ¹öÆ° Å¬¸¯
+        soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ È°/ï¿½ï¿½È°ï¿½ï¿½È­)
 
         if (volumeSlider != null)
         {
-            volumeSlider.value = bgm.volume;
+            volumeSlider.value = volume;
             volumeSlider.onValueChanged.AddListener(SetVolume);
         }
     }
+
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
     public void ToggleSlider()
     {
-        // ½½¶óÀÌ´õÀÇ È°¼ºÈ­ »óÅÂ
         bool isActive = volumeSlider.gameObject.activeSelf;
         volumeSlider.gameObject.SetActive(!isActive);
     }
 
-    public void PlayBGM(AudioClip clip)
+    public void PlayBGM(Bgm bgm, bool loop = true)
     {
-        if (bgm.clip != clip)
+        int clipIndex = (int)bgm;
+        if (bgmClips.Length > clipIndex)
         {
-            bgm.clip = clip;
-            bgm.Play();
+            if (bgmSource.clip != bgmClips[clipIndex])
+            {
+                bgmSource.clip = bgmClips[clipIndex];
+                bgmSource.volume = volume;
+                bgmSource.loop = loop;  // BGM ï¿½Ýºï¿½ ï¿½ï¿½ï¿½, ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                bgmSource.Play();
+            }
         }
     }
 
-    public void PlaySFX(int clipIndex)
+    public void PlaySFX(Sfx sfx)
     {
-        AudioClip clip = sfxClips[clipIndex];
-        if (sfx.clip != clip || !sfx.isPlaying)
+        int clipIndex = (int)sfx;
+        if (sfxClips.Length > clipIndex)
         {
-            sfx.clip = clip;
-            sfx.Play();
+            sfxSource.PlayOneShot(sfxClips[clipIndex], volume);
         }
     }
 
-    public void SetVolume(float volume)
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public void SetVolume(float newVolume)
     {
-        bgm.volume = volume;
-        sfx.volume = volume;
+        volume = newVolume;
+        bgmSource.volume = volume;
     }
 }
