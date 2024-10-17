@@ -21,7 +21,6 @@ public class TopDownController : MonoBehaviour
 
     public void CallJumpEvent()
     {
-        Debug.Log("Jump call");
         OnJumpEvent?.Invoke();
     }
 

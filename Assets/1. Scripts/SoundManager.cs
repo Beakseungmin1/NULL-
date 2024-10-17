@@ -3,12 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//  임시Bgm입니다.
+public enum Bgm
+{
+    TitleBgm,
+    GameBgm,
+    BossBgm
+}
+
+//   테스트용 효과음입니다.
+public enum Sfx 
+{
+    JumpSfx,
+    PopSfx
+}
+
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
+    //  수정 이후 삭제 예정
     public AudioSource bgm;
     public AudioSource sfx;
+    //
+    public AudioClip[] bgmClips;
+    public AudioClip[] sfxClips;
 
     public Slider volumeSlider;
     public GameObject soundButton;
@@ -53,8 +72,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PlaySFX(int clipIndex)
     {
+        AudioClip clip = sfxClips[clipIndex];
         if (sfx.clip != clip || !sfx.isPlaying)
         {
             sfx.clip = clip;
