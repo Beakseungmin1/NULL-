@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 
 public enum EnemyPhase
@@ -21,21 +23,27 @@ public enum Enemypattern
 
 public class Enemy : MonoBehaviour
 {
-    protected GameObject Player;
+    private GameObject Player;
+    [SerializeField] private GameObject Weapon;
 
     float MoveSpeed = 0.01f;
-    float ThinkTime = 1f;
-    float DropDelayTime = 0.3f;
-    float ShotDelayTime = 1f;
+    float ThinkTime = 0.8f;
+    float DropDelayTime = 0.3f; // 1패턴 드랍쿨타임
+    float ShotDelayTime = 1f; // 2패턴 드랍쿨타임
+    float patternTime = 10f; // 패턴 유지시간
 
-    EnemyPhase enemyPhase = EnemyPhase.Phase2;
+    bool isFire = false;
+    Vector2 middlepositon;
+
+    EnemyPhase enemyPhase;
     Enemypattern enemypattern;
 
-    float toTime;  //시간 계산용 변수
-    float totoTime;  // 시간 계산용 변수2
+    float toTime;  // 이동용 시간 계산용 변수
+    float tooTime;  // 화살발사 시간 계산용 변수
+    float toooTime = 10f; // 패턴 시간 계산용 변수
+
     int random;
 
-    //[SerializeField] private GameObject shit;
 
     private void Awake()
     {
@@ -45,50 +53,145 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        totoTime += Time.deltaTime;
-        if (enemyPhase == EnemyPhase.Phase1)
+        toTime += Time.deltaTime;
+        tooTime += Time.deltaTime;
+        toooTime += Time.deltaTime;
+
+        switch (enemypattern)
         {
-            whereigo();
-            DropProjectile();
+            case Enemypattern.pattern1:
+                whereigo();
+                DropProjectile();
+                isFire = false;
+                break;
+
+            case Enemypattern.pattern2:
+                whereigo();
+                FireProjectile();
+                isFire = false;
+                break;
+
+            case Enemypattern.pattern3:
+                pattern3();
+                //StandMiddle();
+                //ShotBall();
+                break;
+
+            default:
+                return;
+
         }
-        else if (enemyPhase == EnemyPhase.Phase2)
+
+        Debug.Log(toooTime);
+        if (toooTime > patternTime)
         {
-            whereigo();
-            FireProjectile();
+            int ran = Random.Range(0, 3);
+            enemypattern = (Enemypattern)ran;
+            toooTime = 0;
         }
 
-
-
+        //if (enemypattern == Enemypattern.pattern1)
+        //{
+        //    whereigo();
+        //    DropProjectile();
+        //}
+        //else if (enemypattern == Enemypattern.pattern2)
+        //{
+        //    whereigo();
+        //    FireProjectile();
+        //}
+        //else
+        //{
+        //    StandMiddle();
+        //    ShotBall();
+        //}
 
     }
 
+    void ShotBall()
+    {
+        float ballspeed = 10f;
+
+        if (!isFire)
+        {
+            for (int i = -1; i < 2; i += 2)
+            {
+                //Debug.Log(i);
+                // 공을 소환한후 위치를 정해준다
+                GameObject ball = ObjectPool._instance.SpawnFromPool("Ball");
+                Vector2 ballposition = new Vector2(transform.position.x + i, transform.position.y);
+                ball.transform.position = ballposition;
+
+                Ball ballScript = ball.GetComponent<Ball>();
+
+                ballScript.Launch(i, ballspeed);
+            }
+            isFire = true;
+        }
+    }
+
+
     void FireProjectile()
     {
-        if (totoTime > ShotDelayTime)
+        if (tooTime > ShotDelayTime)
         {
-            //Vector2 direction = (Player.transform.position - transform.position).normalized;
+            // 플레이어와 무기 간의 방향 벡터 계산
+            Vector2 direction = (Player.transform.position - Weapon.transform.position).normalized;
 
-            //RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
-            GameObject Arrow = ObjectPool._instance.SpawnFromPool("Arrow");
-            Arrow.transform.position = transform.position;
-            totoTime = 0;
+            // 무기의 회전 각도 계산
+            float weaponangle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            // 무기 회전 설정
+            Weapon.transform.rotation = Quaternion.Euler(0, 0, weaponangle);
+
+            float spreadAngle = 16f; // 각도 간격
+            int numberOfProjectiles = 3; // 발사할 투사체 수
+
+            for (int i = 0; i < numberOfProjectiles; i++)
+            {
+                // 각 투사체의 방향 계산
+                float angleOffset = (i - 1) * spreadAngle; // -10, 0, +10
+                Vector2 projectileDirection = Quaternion.Euler(0, 0, angleOffset) * direction;
+
+                // 오브젝트 풀에서 화살 가져오기
+                GameObject Arrow = ObjectPool._instance.SpawnFromPool("Arrow");
+
+                // 화살 위치와 회전 설정
+                Arrow.transform.position = Weapon.transform.position;
+                float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
+                Arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+                // 발사 후 타이머 초기화
+                tooTime = 0;
+            }
         }
     }
 
 
     void DropProjectile()
     {
-        if (totoTime > DropDelayTime)
+        if (tooTime > DropDelayTime)
         {
             GameObject shit = ObjectPool._instance.SpawnFromPool("Shit");
             shit.transform.position = transform.position;
-            totoTime = 0;
+            tooTime = 0;
         }
     }
 
+    void pattern3()
+    {
+        StandMiddle();
+        if (Vector2.Distance(transform.position, middlepositon) < 0.1f)
+        {
+            ShotBall();
+        }
+
+    }
+
+
     void whereigo()
     {
-        toTime += Time.deltaTime;
         if (toTime > ThinkTime)
         {
             random = Random.Range(1, 3);
@@ -98,10 +201,11 @@ public class Enemy : MonoBehaviour
         {
             MoveLeft();
         }
-        if (random == 2)
+        else if (random == 2)
         {
             MoveRight();
         }
+
         if (gameObject.transform.position.x > 4)
         {
             random = 1;
@@ -115,10 +219,15 @@ public class Enemy : MonoBehaviour
 
     void MoveLeft()
     {
-        gameObject.transform.position +=  Vector3.left * MoveSpeed;
+        gameObject.transform.position += Vector3.left * MoveSpeed;
     }
     void MoveRight()
     {
         gameObject.transform.position += Vector3.right * MoveSpeed;
+    }
+    void StandMiddle()
+    {
+        middlepositon = new Vector2(0, 4.3f);
+        transform.position = Vector2.Lerp(transform.position, middlepositon, MoveSpeed);
     }
 }
