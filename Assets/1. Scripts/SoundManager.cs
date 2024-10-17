@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//  ÀÓ½ÃBgmÀÔ´Ï´Ù.
+//  ï¿½Ó½ï¿½Bgmï¿½Ô´Ï´ï¿½.
 public enum Bgm
 {
     TitleBgm,
@@ -11,12 +11,12 @@ public enum Bgm
     BossBgm
 }
 
-//   Å×½ºÆ®¿ë È¿°úÀ½ÀÔ´Ï´Ù.
+//   ï¿½×½ï¿½Æ®ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
 public enum Sfx 
 {
     JumpSfx,
-    WinSfx,
-    LoseSfx,
+    DoubleJumpSfx,
+    ItemSfx,
     HitSfx
 }
 
@@ -30,9 +30,9 @@ public class SoundManager : MonoBehaviour
     public Slider volumeSlider;
     public GameObject soundButton;
 
-    private AudioSource bgmSource;  // BGM Àç»ý¿ë
-    private AudioSource sfxSource;  // SFX Àç»ý¿ë
-    private float volume = 0.5f;    // ÃÊ±â º¼·ý ¼³Á¤
+    private AudioSource bgmSource;  // BGM ï¿½ï¿½ï¿½ï¿½ï¿½
+    private AudioSource sfxSource;  // SFX ï¿½ï¿½ï¿½ï¿½ï¿½
+    private float volume = 0.5f;    // ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     public void Awake()
     {
@@ -52,11 +52,11 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        // Å×½ºÆ®¿ë
+        // ï¿½×½ï¿½Æ®ï¿½ï¿½
         SoundManager.instance.PlayBGM(Bgm.TitleBgm);
         //
         volumeSlider.gameObject.SetActive(false);
-        soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //»ç¿îµå ¹öÆ° Å¬¸¯ (½½¶óÀÌµå È°/ºñÈ°¼ºÈ­)
+        soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ È°/ï¿½ï¿½È°ï¿½ï¿½È­)
 
         if (volumeSlider != null)
         {
@@ -65,7 +65,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // ½½¶óÀÌ´õÀÇ È°¼ºÈ­ »óÅÂ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
     public void ToggleSlider()
     {
         bool isActive = volumeSlider.gameObject.activeSelf;
@@ -81,7 +81,7 @@ public class SoundManager : MonoBehaviour
             {
                 bgmSource.clip = bgmClips[clipIndex];
                 bgmSource.volume = volume;
-                bgmSource.loop = loop;  // BGM ¹Ýº¹ Àç»ý, ÇÊ¿ä¾øÀ¸¸é ¼öÁ¤
+                bgmSource.loop = loop;  // BGM ï¿½Ýºï¿½ ï¿½ï¿½ï¿½, ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 bgmSource.Play();
             }
         }
@@ -96,7 +96,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // ½½¶óÀÌ´õ·Î ÀüÃ¼ º¼·ý Á¶Àý
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void SetVolume(float newVolume)
     {
         volume = newVolume;
