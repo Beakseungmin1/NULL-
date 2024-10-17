@@ -25,8 +25,8 @@ public partial class Player : TopDownController
 
     private void Die()
     {
-       // 개임매니저와 연결
-       //Destroy(this.gameObject);
+        // 개임매니저와 연결
+        //Destroy(this.gameObject);
     }
 
     // ----- 이동 ----- 
