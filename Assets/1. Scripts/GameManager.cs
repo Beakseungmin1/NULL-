@@ -1,22 +1,26 @@
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private Text timerText;
-    [SerializeField] private int score;
-    
+    public Text timerText;
+    public Text scoreText;
+    public Text HPText;
+
+    public float timeLimit = 5.0f;
     private float timer;
-    private float timeLimit = 5.0f;
-    private bool gamePlayState = true;
+    public int score; 
+    private bool gamePlayState;
+    
     public int playerHP = 5;
 
-    private StageManager stageManager;
+    [Range(0f, 1f)]
+    public float mainSound = 1.0f;
+
+    private GameSceneManager gameSceneManager;
 
     private void Awake()
     {
@@ -33,20 +37,23 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        stageManager = new StageManager();        
+        gameSceneManager = new GameSceneManager();        
         InitializeGame();
-        StartStage(1);
     }
 
     // Update is called once per frame
     private void Update()
     {
+        //////////////////////////////////////////////////////// test
         if (Input.GetKeyDown(KeyCode.C)) score++;
         if (Input.GetKeyDown(KeyCode.X)) playerHP--;
-
+        scoreText.text = score.ToString();
+        HPText.text = playerHP.ToString();
+        SoundManager.instance.SetVolume(mainSound);
+        //////////////////////////////////////////////////////// test
         if (gamePlayState)
         {
-            TimerText();
+            UadateTimer();
             if (timer > timeLimit)
             {
                 GameClear();
@@ -58,12 +65,13 @@ public class GameManager : MonoBehaviour
             }
         }        
     }
-    private void StartStage(int stageNumber)
+    private void StartScene(int SceneNumber)
     {
-        stageManager.StartStage(stageNumber);
-        ResetStageTimer();
+        gameSceneManager.StartScene(SceneNumber);
+        ResetSceneTimer();
     }
-    private void ResetStageTimer()
+
+    private void ResetSceneTimer()
     {
         timer = 0.0f;
     }
@@ -72,7 +80,13 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         timer = 0.0f;
+        gamePlayState = false;
+    }
+    public void StartGame()
+    {
+        GameObject.Find("UIManager").gameObject.transform.Find("Canvas").gameObject.SetActive(false);
         gamePlayState = true;
+        StartScene((int)Scenes.SCENE_1);
     }
 
     public void ReStartGame()
@@ -80,24 +94,23 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("TitleScene");
     }
 
-    public void SceneChanger()
-    {
-        SceneManager.LoadScene("MainScene");
-    }
-
     private void GameClear()
     {
-        Debug.Log($"{stageManager.currentStage} 스테이지 클리어");
+        Debug.Log($"{gameSceneManager.currentScene} 스테이지 클리어");
+        
         gamePlayState = false;
-        if (stageManager.currentStage == 3)
+
+        //다음 씬의 사운드
+
+        if (gameSceneManager.currentScene == (int)Scenes.LASTSCENE)
         {
             CompleteGame();
         }
         else
         {
-            gamePlayState = true;            
-            stageManager.CompleteStage();
-            StartStage(stageManager.currentStage);
+            gamePlayState = true;
+            gameSceneManager.CompleteScene();
+            StartScene(gameSceneManager.currentScene);
         }
     }
 
@@ -114,6 +127,9 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("게임오버");
+
+        //게임오버 사운드
+
         gamePlayState = false;
         GameOverUI();
     }
@@ -122,12 +138,23 @@ public class GameManager : MonoBehaviour
     {
         //gameObject.SetActive(true)
     }
-
-    private void TimerText()
+    private void UadateTimer()
     {
         timer += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(timer / 60f);
-        int seconds = Mathf.FloorToInt(timer % 60f);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        TimerText();
+    }
+    private void TimerText()
+    {
+        if (timerText != null)
+        {
+            int minutes = Mathf.FloorToInt(timer / 60f);
+            int seconds = Mathf.FloorToInt(timer % 60f);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+    }
+
+    public void GameExit() // 게임 종료
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

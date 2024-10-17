@@ -25,6 +25,7 @@ public class TopDownMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    // ------ movementController 구독 ------
     private void Start()
     {
         movementController.OnMoveEvent += Move;
@@ -49,9 +50,10 @@ public class TopDownMovement : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
-        else
+        else 
         {
-            animator.SetBool("isRunning", true);
+            if (isGround)
+                animator.SetBool("isRunning", true);
         }
 
         if (direction.x > 0)
@@ -79,12 +81,14 @@ public class TopDownMovement : MonoBehaviour
             {
                 isGround = false; 
                 animator.SetBool("isJumping", true);
+                animator.SetBool("isRunning", false);
             }
 
             else if (jumpCount == 2) // 더블 점프 
             {
                 animator.SetBool("isJumping", false);
-                animator.SetBool("isDouble", true); 
+                animator.SetBool("isDouble", true);
+                animator.SetBool("isRunning", false);
             }
         }
     }
