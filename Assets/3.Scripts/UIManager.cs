@@ -14,17 +14,17 @@ enum SCENESTATE
 
 public class UIManager : MonoBehaviour
 {
-    //-------------------------------------------- //³»ºÎ º¯¼ö ¸ñ·Ï
+    //-------------------------------------------- //ë‚´ë¶€ ë³€ìˆ˜ ëª©ë¡
     private UIManager           instance;
     private SCENESTATE          sceneState; 
     private UIConnectHandler    connectHandler;
 
-    [SerializeField] GameObject settingsPanel; //-----------------------------------ÁöÀ± Ãß°¡
+    [SerializeField] GameObject settingsPanel; //-----------------------------------ì§€ìœ¤ ì¶”ê°€
     [SerializeField] Text Score;
-    [SerializeField] Text Time;                //-----------------------------------ÁöÀ± Ãß°¡
-    //-------------------------------------------- //¾À ÀÎÅÍÆäÀÌ½º
+    [SerializeField] Text Time;                //-----------------------------------ì§€ìœ¤ ì¶”ê°€
+    //-------------------------------------------- //ì”¬ ì¸í„°í˜ì´ìŠ¤
     [SerializeField] GameObject[] Interfaces;
-    //-------------------------------------------- //À¯´ÏÆ¼ ÀÌº¥Æ®
+    //-------------------------------------------- //ìœ ë‹ˆí‹° ì´ë²¤íŠ¸
     private void Awake()
     {
         if (connectHandler == null) 
@@ -39,35 +39,35 @@ public class UIManager : MonoBehaviour
     {
         UpdateScene();
     }
-    //-------------------------------------------- //¿ÜºÎ¿¡ °ø°³µÇ´Â ÇÔ¼ö.
+    //-------------------------------------------- //ì™¸ë¶€ì— ê³µê°œë˜ëŠ” í•¨ìˆ˜.
     /// <summary>
-    /// [ÀÌ¹Î¼®]UI¿¡¼­ °ü¸®µÇ´Â Æ¯Á¤ ¹öÆ°ÀÌ ´­·ÈÀ»¶§ µ¿ÀÛÇÒ ÇÔ¼öµéÀ» µî·ÏÇÕ´Ï´Ù.
+    /// [ì´ë¯¼ì„]UIì—ì„œ ê´€ë¦¬ë˜ëŠ” íŠ¹ì • ë²„íŠ¼ì´ ëˆŒë ¸ì„ë•Œ ë™ì‘í•  í•¨ìˆ˜ë“¤ì„ ë“±ë¡í•©ë‹ˆë‹¤.
     /// </summary>
     /// <returns></returns>
     public UIConnectHandler SetFunction() 
     {
-        if (connectHandler == null) Debug.Log("UIÇÚµéÀÌ »ı¼ºµÇÁö ¸øÇß½À´Ï´Ù.[ÀÌ¹Î¼®]");
+        if (connectHandler == null) Debug.Log("UIí•¸ë“¤ì´ ìƒì„±ë˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.[ì´ë¯¼ì„]");
         return connectHandler; 
     }
     public UIManager GetUI() 
     {
-        if (instance == null) Debug.Log("UIManager°¡ ÃÊ±âÈ­ µÇÁö ¸øÇß½À´Ï´Ù.[ÀÌ¹Î¼®]");
+        if (instance == null) Debug.Log("UIManagerê°€ ì´ˆê¸°í™” ë˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.[ì´ë¯¼ì„]");
         return instance;
     }
     public void SetScoreText(int val)
     {
         Score.text = "SCORE:" + val.ToString();
     }
-    //-------------------------------------------- //¹öÆ°¿¡ ¸ÅÇÎµÇ´Â °ø°³ ÇÔ¼ö //»ç¿ëX
+    //-------------------------------------------- //ë²„íŠ¼ì— ë§¤í•‘ë˜ëŠ” ê³µê°œ í•¨ìˆ˜ //ì‚¬ìš©X
     /// <summary>
-    /// »ç¿ëX
+    /// ì‚¬ìš©X
     /// </summary>
     public void SoundButtonClicked()
     {
         connectHandler.SoundButtonInvoke();
     }
     /// <summary>
-    /// »ç¿ëX
+    /// ì‚¬ìš©X
     /// </summary>
     public void StartButtonCliecked()
     {
@@ -75,25 +75,25 @@ public class UIManager : MonoBehaviour
         sceneState = SCENESTATE.GAME;
     }
     /// <summary>
-    /// »ç¿ëX
+    /// ì‚¬ìš©X
     /// </summary>
     public void ExitButtonClicked()
     {
         connectHandler.ExitButtonInvoke();
     }
 
-    public void SettingsButtonClicked() //-----------------------------------ÁöÀ± Ãß°¡
+    public void SettingsButtonClicked() //-----------------------------------ì§€ìœ¤ ì¶”ê°€
     {
-        //GameManager.Instance.PauseGame(); //¼³Á¤ ¹öÆ°À» ´©¸£¸é, °ÔÀÓÀÌ pauseµÇ´Â °Í(»èÁ¦°¡´É)
+        //GameManager.Instance.PauseGame(); //ì„¤ì • ë²„íŠ¼ì„ ëˆ„ë¥´ë©´, ê²Œì„ì´ pauseë˜ëŠ” ê²ƒ(ì‚­ì œê°€ëŠ¥)
         settingsPanel.SetActive(true);
     }
-    //-------------------------------------------- //³»ºÎ ÀûÀ¸·Î »ç¿ëµÇ´Â ÇÔ¼ö. // Á¢±ÙXXX
+    //-------------------------------------------- //ë‚´ë¶€ ì ìœ¼ë¡œ ì‚¬ìš©ë˜ëŠ” í•¨ìˆ˜. // ì ‘ê·¼XXX
     void SetScene(SCENESTATE state)
     {
         GameObject temp = Interfaces[(int)state];
         if(temp.activeSelf == false) temp.SetActive(true);
     }
-    //-------------------------------------------- //³»ºÎ ÀûÀ¸·Î »ç¿ëµÇ´Â ÄÚ¾î ÇÔ¼ö. //Á¢±ÙXXXX
+    //-------------------------------------------- //ë‚´ë¶€ ì ìœ¼ë¡œ ì‚¬ìš©ë˜ëŠ” ì½”ì–´ í•¨ìˆ˜. //ì ‘ê·¼XXXX
     void UpdateScene()
     {
         switch (sceneState)
