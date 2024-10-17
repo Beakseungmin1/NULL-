@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         stageManager = new StageManager();        
         InitializeGame();
-        StartStage(1);
+        StartStage((int)Stages.STAGE1);
     }
 
     // Update is called once per frame
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"{stageManager.currentStage} 스테이지 클리어");
         gamePlayState = false;
-        if (stageManager.currentStage == 3)
+        if (stageManager.currentStage == (int)Stages.LASTSTAGE)
         {
             CompleteGame();
         }
