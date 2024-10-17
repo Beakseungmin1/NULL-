@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        UpdateScene();
+        //UpdateScene();
     }
     //-------------------------------------------- //외부에 공개되는 함수.
     /// <summary>
@@ -88,31 +88,31 @@ public class UIManager : MonoBehaviour
         settingsPanel.SetActive(true);
     }
     //-------------------------------------------- //내부 적으로 사용되는 함수. // 접근XXX
-    void SetScene(SCENESTATE state)
-    {
-        GameObject temp = Interfaces[(int)state];
-        if(temp.activeSelf == false) temp.SetActive(true);
-    }
-    //-------------------------------------------- //내부 적으로 사용되는 코어 함수. //접근XXXX
-    void UpdateScene()
-    {
-        switch (sceneState)
-        {
-            case SCENESTATE.TITLE:
-                SetScene(SCENESTATE.TITLE);
-                break;
-            case SCENESTATE.GAME:
-                SetScene(SCENESTATE.GAME);
-                break;
-            case SCENESTATE.END:
-                SetScene(SCENESTATE.END);
-                break;
-        }
+    //    void SetScene(SCENESTATE state)
+    //    {
+    //        GameObject temp = Interfaces[(int)state];
+    //        if(temp.activeSelf == false) temp.SetActive(true);
+    //    }
+    //    //-------------------------------------------- //내부 적으로 사용되는 코어 함수. //접근XXXX
+    //    void UpdateScene()
+    //    {
+    //        switch (sceneState)
+    //        {
+    //            case SCENESTATE.TITLE:
+    //                SetScene(SCENESTATE.TITLE);
+    //                break;
+    //            case SCENESTATE.GAME:
+    //                SetScene(SCENESTATE.GAME);
+    //                break;
+    //            case SCENESTATE.END:
+    //                SetScene(SCENESTATE.END);
+    //                break;
+    //        }
 
-        for (int i = 0; i < (int)SCENESTATE.LASTINDEX; i++)
-        {
-            if (i == (int)sceneState) continue;
-            Interfaces[i].SetActive(false);
-        }
-    }
+    //        for (int i = 0; i < (int)SCENESTATE.LASTINDEX; i++)
+    //        {
+    //            if (i == (int)sceneState) continue;
+    //            Interfaces[i].SetActive(false);
+    //        }
+    //    }
 }
