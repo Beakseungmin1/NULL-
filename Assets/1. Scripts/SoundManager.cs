@@ -22,15 +22,15 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    //  수정 이후 삭제 예정
-    public AudioSource bgm;
-    public AudioSource sfx;
-    //
     public AudioClip[] bgmClips;
     public AudioClip[] sfxClips;
 
     public Slider volumeSlider;
     public GameObject soundButton;
+
+    private AudioSource bgmSource;  // BGM 재생용
+    private AudioSource sfxSource;  // SFX 재생용
+    private float volume = 0.5f;    // 초기 볼륨 설정
 
     public void Awake()
     {
@@ -38,6 +38,9 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            bgmSource = gameObject.AddComponent<AudioSource>();
+            sfxSource = gameObject.AddComponent<AudioSource>();
         }
         else
         {
@@ -47,44 +50,54 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        // 테스트용
+        SoundManager.instance.PlayBGM(Bgm.TitleBgm);
+        //
         volumeSlider.gameObject.SetActive(false);
-        soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //사운드 버튼 클릭
+        soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //사운드 버튼 클릭 (슬라이드 활/비활성화)
 
         if (volumeSlider != null)
         {
-            volumeSlider.value = bgm.volume;
+            volumeSlider.value = volume;
             volumeSlider.onValueChanged.AddListener(SetVolume);
         }
     }
+
+    // 슬라이더의 활성화 상태
     public void ToggleSlider()
     {
-        // 슬라이더의 활성화 상태
         bool isActive = volumeSlider.gameObject.activeSelf;
         volumeSlider.gameObject.SetActive(!isActive);
     }
 
-    public void PlayBGM(AudioClip clip)
+    public void PlayBGM(Bgm bgm, bool loop = true)
     {
-        if (bgm.clip != clip)
+        int clipIndex = (int)bgm;
+        if (bgmClips.Length > clipIndex)
         {
-            bgm.clip = clip;
-            bgm.Play();
+            if (bgmSource.clip != bgmClips[clipIndex])
+            {
+                bgmSource.clip = bgmClips[clipIndex];
+                bgmSource.volume = volume;
+                bgmSource.loop = loop;  // BGM 반복 재생, 필요없으면 수정
+                bgmSource.Play();
+            }
         }
     }
 
-    public void PlaySFX(int clipIndex)
+    public void PlaySFX(Sfx sfx)
     {
-        AudioClip clip = sfxClips[clipIndex];
-        if (sfx.clip != clip || !sfx.isPlaying)
+        int clipIndex = (int)sfx;
+        if (sfxClips.Length > clipIndex)
         {
-            sfx.clip = clip;
-            sfx.Play();
+            sfxSource.PlayOneShot(sfxClips[clipIndex], volume);
         }
     }
 
-    public void SetVolume(float volume)
+    // 슬라이더로 전체 볼륨 조절
+    public void SetVolume(float newVolume)
     {
-        bgm.volume = volume;
-        sfx.volume = volume;
+        volume = newVolume;
+        bgmSource.volume = volume;
     }
 }
