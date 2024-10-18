@@ -5,10 +5,10 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
-    private float balllifetime = 10;
+    private float balllifetime = 10f;
     private float time;
 
-    void Start()
+    void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour
         if (time > balllifetime)
         {
             gameObject.SetActive(false);
+            time = 0;
         }
 
     }
@@ -27,6 +28,7 @@ public class Ball : MonoBehaviour
     {
         // 왼쪽 아래 -1, -1
         // 오른쪽 아래 1, -1
-        rigidbody2D.velocity = new Vector2 (angle * speed, -1 * speed);
+        Vector2 Shotdirection = new Vector2(angle * speed, -1 * speed);
+        rigidbody2D.velocity = Shotdirection;
     }
 }
