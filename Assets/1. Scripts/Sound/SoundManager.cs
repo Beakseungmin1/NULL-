@@ -32,7 +32,7 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource bgmSource;  // BGM 재생
     private AudioSource sfxSource;  // SFX 재생
-    private float volume = 0.5f;    // 초기 볼륨 설정
+    private float volume = 0.3f;    // 초기 볼륨 설정
 
     public void Awake()
     {

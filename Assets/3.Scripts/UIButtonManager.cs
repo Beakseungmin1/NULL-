@@ -7,17 +7,25 @@ public class UIButtonManager : MonoBehaviour
 {
     [SerializeField] GameObject settingsPanel;
 
+    //-------설정창 버튼-------//
     public void SettingsButtonClicked()
     {
         //GameManager.Instance.PauseGame(); //설정 버튼을 누르면, 게임이 pause되는 것(삭제가능)
         settingsPanel.SetActive(true);
     }
 
+    public void ResumeGameButtonClicked()
+    {
+        //GameManager.Instance.ResumeGame(); // 게임 시간 다시 흐르게 함
+        settingsPanel.SetActive(false);
+    }
+
     private CharacterClass selectedClass = CharacterClass.PinkMan; // 기본 캐릭터 설정
     private bool isCharacterSelected = false;  // 캐릭터 선택 여부 확인
+
+    //-------캐릭터선택 버튼-------//
     public void OnButtonClick(int index)
     {
-        // 캐락터 선택버튼
         switch (index)
         {
             case 0:
@@ -38,6 +46,7 @@ public class UIButtonManager : MonoBehaviour
         //GameManager.instance.SetSelectedCharacter(selectedClass);
     }
 
+    //-------게임시작 버튼-------//
     public void OnStartGameButton()
     {
         if (isCharacterSelected)

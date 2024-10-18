@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5752040488159108612, guid: 5b2b642b72661ee4fbfb27e59688f64c, type: 3}
+      propertyPath: volumeSlider
+      value: 
+      objectReference: {fileID: 972799656}
     - target: {fileID: 8271527650836743291, guid: 5b2b642b72661ee4fbfb27e59688f64c, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -885,6 +889,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &972799656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7461712877166958241, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}
+  m_PrefabInstance: {fileID: 2076710267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &993816330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,12 +1842,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: 821af9fc20cb2164ba225d0e8d60b4fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e66e95bb0806d0c4994503c28f69bcd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 19.2, y: 12.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5431,14 +5446,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1223339671399858849, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4496920918015139065, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4575153871246201270, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5477,18 +5484,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4575153871246201270, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5418054618183135576, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6534980524143309465, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7650933003213830113, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9024908257284492568, guid: 7a6b3bc2902552a4c85e2a07c0f254f4, type: 3}

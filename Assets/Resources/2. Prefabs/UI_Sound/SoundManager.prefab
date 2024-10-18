@@ -54,4 +54,3 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e2d9d94dec0de0d4bb2d022d9c9e783a, type: 3}
   - {fileID: 8300000, guid: 68956de6e68088d44803c40e9cc9c0a9, type: 3}
   volumeSlider: {fileID: 0}
-  soundButton: {fileID: 0}

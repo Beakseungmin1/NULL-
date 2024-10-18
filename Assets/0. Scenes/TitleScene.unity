@@ -193,7 +193,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6471bf35487a1d34f8c3b4d6a08900ef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.65882355}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.36078432}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -425,10 +425,6 @@ PrefabInstance:
     - target: {fileID: 4684423846966437884, guid: 5b2b642b72661ee4fbfb27e59688f64c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5752040488159108612, guid: 5b2b642b72661ee4fbfb27e59688f64c, type: 3}
-      propertyPath: soundButton
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5752040488159108612, guid: 5b2b642b72661ee4fbfb27e59688f64c, type: 3}
       propertyPath: volumeSlider

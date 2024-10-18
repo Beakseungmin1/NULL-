@@ -15,9 +15,9 @@ enum SCENESTATE
 public class UIManager : MonoBehaviour
 {
     //-------------------------------------------- //내부 변수 목록
-    private UIManager           instance;
-    private SCENESTATE          sceneState; 
-    private UIConnectHandler    connectHandler;
+    private UIManager instance;
+    private SCENESTATE sceneState;
+    private UIConnectHandler connectHandler;
 
     [SerializeField] Text Score;
     [SerializeField] Text Time;
@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     //-------------------------------------------- //유니티 이벤트
     private void Awake()
     {
-        if (connectHandler == null) 
+        if (connectHandler == null)
             connectHandler = new UIConnectHandler();
 
         if (instance == null)
@@ -43,12 +43,12 @@ public class UIManager : MonoBehaviour
     /// [이민석]UI에서 관리되는 특정 버튼이 눌렸을때 동작할 함수들을 등록합니다.
     /// </summary>
     /// <returns></returns>
-    public UIConnectHandler SetFunction() 
+    public UIConnectHandler SetFunction()
     {
         if (connectHandler == null) Debug.Log("UI핸들이 생성되지 못했습니다.[이민석]");
-        return connectHandler; 
+        return connectHandler;
     }
-    public UIManager GetUI() 
+    public UIManager GetUI()
     {
         if (instance == null) Debug.Log("UIManager가 초기화 되지 못했습니다.[이민석]");
         return instance;
