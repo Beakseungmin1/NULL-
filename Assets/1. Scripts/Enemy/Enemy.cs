@@ -5,22 +5,6 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
-
-public enum EnemyPhase
-{
-    Phase1,
-    Phase2,
-    Phase3
-}
-
-public enum Enemypattern
-{
-    pattern1,
-    pattern2,
-    pattern3
-}
-
-
 public class Enemy : MonoBehaviour
 {
     private GameObject Player;
@@ -32,11 +16,10 @@ public class Enemy : MonoBehaviour
     float ShotDelayTime = 1f; // 2패턴 드랍쿨타임
     float patternTime = 10f; // 패턴 유지시간
 
-    bool isFire = false;
+    bool isFire;
     Vector2 middlepositon;
 
-    EnemyPhase enemyPhase;
-    Enemypattern enemypattern;
+    EnemyEnum.Enemypattern enemypattern;// = Enemypattern.pattern3;
 
     float toTime;  // 이동용 시간 계산용 변수
     float tooTime;  // 화살발사 시간 계산용 변수
@@ -59,20 +42,18 @@ public class Enemy : MonoBehaviour
 
         switch (enemypattern)
         {
-            case Enemypattern.pattern1:
+            case EnemyEnum.Enemypattern.pattern1:
                 whereigo();
                 DropProjectile();
-                isFire = false;
                 break;
 
-            case Enemypattern.pattern2:
+            case EnemyEnum.Enemypattern.pattern2:
                 whereigo();
                 FireProjectile();
-                isFire = false;
                 break;
 
-            case Enemypattern.pattern3:
-                pattern3();
+            case EnemyEnum.Enemypattern.pattern3:
+                Pattern3();
                 //StandMiddle();
                 //ShotBall();
                 break;
@@ -83,28 +64,7 @@ public class Enemy : MonoBehaviour
         }
 
         Debug.Log(toooTime);
-        if (toooTime > patternTime)
-        {
-            int ran = Random.Range(0, 3);
-            enemypattern = (Enemypattern)ran;
-            toooTime = 0;
-        }
-
-        //if (enemypattern == Enemypattern.pattern1)
-        //{
-        //    whereigo();
-        //    DropProjectile();
-        //}
-        //else if (enemypattern == Enemypattern.pattern2)
-        //{
-        //    whereigo();
-        //    FireProjectile();
-        //}
-        //else
-        //{
-        //    StandMiddle();
-        //    ShotBall();
-        //}
+        SwitchPattern();
 
     }
 
@@ -112,24 +72,22 @@ public class Enemy : MonoBehaviour
     {
         float ballspeed = 10f;
 
-        if (!isFire)
+        for (int i = -1; i < 2; i += 2)
         {
-            for (int i = -1; i < 2; i += 2)
-            {
-                //Debug.Log(i);
-                // 공을 소환한후 위치를 정해준다
-                GameObject ball = ObjectPool._instance.SpawnFromPool("Ball");
-                Vector2 ballposition = new Vector2(transform.position.x + i, transform.position.y);
-                ball.transform.position = ballposition;
+            // 공을 소환한후 위치를 정해준다
+            GameObject ball = ObjectPool._instance.SpawnFromPool("Ball");
 
-                Ball ballScript = ball.GetComponent<Ball>();
+            // 공의 위치 설정 (현재 위치 + i)
+            Vector2 ballposition = new Vector2(transform.position.x + i, transform.position.y);
+            ball.transform.position = ballposition;
 
-                ballScript.Launch(i, ballspeed);
-            }
-            isFire = true;
+            Ball ballScript = ball.GetComponent<Ball>();
+
+            ballScript.Launch(i, ballspeed);
         }
-    }
 
+
+    }
 
     void FireProjectile()
     {
@@ -179,16 +137,35 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void pattern3()
+    void Pattern3()
     {
         StandMiddle();
+
+        if (toooTime == 0f)
+        {
+            isFire = false;
+        }
         if (Vector2.Distance(transform.position, middlepositon) < 0.1f)
         {
-            ShotBall();
+            if (!isFire)
+            {
+                ShotBall();
+                isFire = true;
+            }
         }
 
     }
 
+
+    void SwitchPattern()
+    {
+        if (toooTime > patternTime)
+        {
+            int ran = Random.Range(0, 3);
+            enemypattern = (EnemyEnum.Enemypattern)ran;
+            toooTime = 0;
+        }
+    }
 
     void whereigo()
     {
