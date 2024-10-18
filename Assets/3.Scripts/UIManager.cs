@@ -19,9 +19,8 @@ public class UIManager : MonoBehaviour
     private SCENESTATE          sceneState; 
     private UIConnectHandler    connectHandler;
 
-    [SerializeField] GameObject settingsPanel; //-----------------------------------지윤 추가
     [SerializeField] Text Score;
-    [SerializeField] Text Time;                //-----------------------------------지윤 추가
+    [SerializeField] Text Time;
     //-------------------------------------------- //씬 인터페이스
     [SerializeField] GameObject[] Interfaces;
     //-------------------------------------------- //유니티 이벤트
@@ -82,11 +81,6 @@ public class UIManager : MonoBehaviour
         connectHandler.ExitButtonInvoke();
     }
 
-    public void SettingsButtonClicked() //-----------------------------------지윤 추가
-    {
-        //GameManager.Instance.PauseGame(); //설정 버튼을 누르면, 게임이 pause되는 것(삭제가능)
-        settingsPanel.SetActive(true);
-    }
     //-------------------------------------------- //내부 적으로 사용되는 함수. // 접근XXX
     //    void SetScene(SCENESTATE state)
     //    {

@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] sfxClips;
 
     public Slider volumeSlider;
-    public GameObject soundButton;
+    //public GameObject soundButton;
 
     private AudioSource bgmSource;  // BGM 재생
     private AudioSource sfxSource;  // SFX 재생
@@ -54,9 +54,8 @@ public class SoundManager : MonoBehaviour
     {
         // 테스트용
         SoundManager.instance.PlayBGM(Bgm.TitleBgm);
-        //
-        volumeSlider.gameObject.SetActive(false);
-        soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //사운드 버튼 클릭 (슬라이더 활성/비활성화)
+
+        //soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //사운드 버튼 클릭 (슬라이더 활성/비활성화)
 
         if (volumeSlider != null)
         {
