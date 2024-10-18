@@ -40,6 +40,10 @@ public partial class Player : TopDownController
     {
         CallJumpEvent();
     }
+
+    // ----- 맵 상호작용 ------ 
+
+
 }
 
 
