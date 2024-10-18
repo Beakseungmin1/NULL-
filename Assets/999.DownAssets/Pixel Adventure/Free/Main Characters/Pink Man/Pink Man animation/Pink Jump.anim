@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Jump anim
+  m_Name: Pink Jump
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: a7280401c31685c4884957133ae83a41, type: 3}
+      value: {fileID: 21300000, guid: 9c81657766126d940a6e62eff80f83ca, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: efaf34584f7b9fd4cadd8f76be3132cd, type: 3}
+      value: {fileID: 21300000, guid: 100c572b42e35f946b1bc85d84af1080, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: a7280401c31685c4884957133ae83a41, type: 3}
-    - {fileID: 21300000, guid: efaf34584f7b9fd4cadd8f76be3132cd, type: 3}
+    - {fileID: 21300000, guid: 9c81657766126d940a6e62eff80f83ca, type: 3}
+    - {fileID: 21300000, guid: 100c572b42e35f946b1bc85d84af1080, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
