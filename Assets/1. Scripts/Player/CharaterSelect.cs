@@ -1,7 +1,7 @@
-﻿//using UnityEngine;
+﻿using UnityEngine;
 
-//public class CharaterSelect : MonoBehaviour
-//{
+public class CharaterSelect : MonoBehaviour
+{
 
     // ------ UI 버튼 ------
     // ------ 버튼 인덱스 값에 따라 selectedClass 값 할당
@@ -30,47 +30,47 @@
 
     // ------ 게임 매니저에서 characterClass 값 저장하기 ------
 
-    //private CharacterClass selectedCharacterClass;
-    //public void SetSelectedCharacter(CharacterClass characterClass)
-    //{
-    //    selectedCharacterClass = characterClass;
-    //}
+    public CharacterClass selectedCharacterClass;
+    public void SetSelectedCharacter(CharacterClass characterClass)
+    {
+        selectedCharacterClass = characterClass;
+    }
 
-    //public CharacterClass GetSelectedCharacter()
-    //{
-    //    return selectedCharacterClass;
-    //}
+    public CharacterClass GetSelectedCharacter()
+    {
+        return selectedCharacterClass;
+    }
 
     // ----- 게임 매니저에서 selectedClass 받아오기 
 
 
 
-//    private CharacterClass selectedClass = CharacterClass.MaskDude;
+    //    private CharacterClass selectedClass = CharacterClass.MaskDude;
 
-//    private void Start()
-//    {
-//        {
-//            //CharacterClass selectedClass = GameManager.instance.GetSelectedCharacter();
+    private void Start()
+    {
+        {
+            //CharacterClass selectedClass = GameManager.instance.GetSelectedCharacter();
 
-//            switch (selectedClass)
-//            {
-//                case CharacterClass.PinkMan:
-//                    Instantiate(Resources.Load<GameObject>("2.Prefabs/PlayerCharacter/pinkPlayer"));
-//                    break;
-//                case CharacterClass.MaskDude:
-//                    Instantiate(Resources.Load<GameObject>("2.Prefabs/PlayerCharacter/maskPlayer"));
-//                    break;
+            switch (selectedCharacterClass)
+            {
+                case CharacterClass.PinkMan:
+                    //Instantiate(Resources.Load<GameObject>("2.Prefabs/PlayerCharacter/pinkPlayer"));
+                    break;
+                case CharacterClass.MaskDude:
+                    //Instantiate(Resources.Load<GameObject>("2.Prefabs/PlayerCharacter/maskPlayer"));
+                    break;
 
-//                    //case CharacterClass.Virtual:
-//                    //    Instantiate(Virtual);
-//                    //    break;
-//                    //case CharacterClass.:
-//                    //    Instantiate();
-//                    //    break;
-//            }
-//        }
-//    }
-//}
+                    //case CharacterClass.Virtual:
+                    //    Instantiate(Virtual);
+                    //    break;
+                    //case CharacterClass.:
+                    //    Instantiate();
+                    //    break;
+            }
+        }
+    }
+}
 
 
 
