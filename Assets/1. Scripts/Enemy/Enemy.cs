@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     bool isFire;
     Vector2 middlepositon;
 
-    EnemyEnum.Enemypattern enemypattern;// = Enemypattern.pattern3;
+    EnemyEnum.Enemypattern enemypattern;// = EnemyEnum.Enemypattern.pattern3;
 
     float toTime;  // 이동용 시간 계산용 변수
     float tooTime;  // 화살발사 시간 계산용 변수
@@ -63,8 +63,12 @@ public class Enemy : MonoBehaviour
 
         }
 
-        Debug.Log(toooTime);
+        //Debug.Log(toooTime);
         SwitchPattern();
+        if (toooTime == 0)
+        {
+            isFire = false;
+        }
 
     }
 
@@ -139,22 +143,22 @@ public class Enemy : MonoBehaviour
 
     void Pattern3()
     {
+        Debug.Log(isFire);
         StandMiddle();
 
-        if (toooTime == 0f)
-        {
-            isFire = false;
-        }
         if (Vector2.Distance(transform.position, middlepositon) < 0.1f)
         {
             if (!isFire)
             {
+                Debug.Log("또뭔데");
                 ShotBall();
                 isFire = true;
             }
         }
 
     }
+
+
 
 
     void SwitchPattern()

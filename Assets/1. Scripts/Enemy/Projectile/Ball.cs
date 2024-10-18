@@ -5,10 +5,10 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
-    private float balllifetime = 9.9f;
+    private float balllifetime = 10f;
     private float time;
 
-    void Start()
+    void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour
         if (time > balllifetime)
         {
             gameObject.SetActive(false);
+            time = 0;
         }
 
     }

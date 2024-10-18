@@ -673,7 +673,7 @@ MonoBehaviour:
     size: 15
   - tag: Ball
     prefab: {fileID: 6023707919128889060, guid: cbf11bde3edbc624e9bf695df9efa317, type: 3}
-    size: 5
+    size: 6
 --- !u!4 &1469375031
 Transform:
   m_ObjectHideFlags: 0
