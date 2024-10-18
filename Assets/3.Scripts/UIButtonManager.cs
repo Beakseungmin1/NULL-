@@ -50,7 +50,7 @@ public class UIButtonManager : MonoBehaviour
                 selectedClass = CharacterClass.Virtual;
                 break;
             default:
-                selectedClass = CharacterClass.MaskDude; //일단 임의로 넣었습니다
+                selectedClass = CharacterClass.Frog; //일단 임의로 넣었습니다
                 break;
         }
         isCharacterSelected = true;

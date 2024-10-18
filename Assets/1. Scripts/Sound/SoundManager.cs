@@ -27,12 +27,13 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] bgmClips;
     public AudioClip[] sfxClips;
 
-    public Slider volumeSlider;
-    //public GameObject soundButton;
+    public Slider bgmVolumeSlider;
+    public Slider sfxVolumeSlider;
 
     private AudioSource bgmSource;  // BGM 재생
     private AudioSource sfxSource;  // SFX 재생
-    private float volume = 0.3f;    // 초기 볼륨 설정
+    private float bgmVolume = 0.3f; // BGM 초기 볼륨 설정
+    private float sfxVolume = 0.3f; // SFX 초기 볼륨 설정
 
     public void Awake()
     {
@@ -55,20 +56,32 @@ public class SoundManager : MonoBehaviour
         // 테스트용
         SoundManager.instance.PlayBGM(Bgm.TitleBgm);
 
-        //soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //사운드 버튼 클릭 (슬라이더 활성/비활성화)
-
-        if (volumeSlider != null)
+        // BGM 볼륨 슬라이더 설정
+        if (bgmVolumeSlider != null)
         {
-            volumeSlider.value = volume;
-            volumeSlider.onValueChanged.AddListener(SetVolume);
+            bgmVolumeSlider.value = bgmVolume;
+            bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
+        }
+
+        // SFX 볼륨 슬라이더 설정
+        if (sfxVolumeSlider != null)
+        {
+            sfxVolumeSlider.value = sfxVolume;
+            sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
         }
     }
 
-    // 볼륨 슬라이더 활성화 토글
-    public void ToggleSlider()
+    // BGM 볼륨 설정
+    public void SetBGMVolume(float newVolume)
     {
-        bool isActive = volumeSlider.gameObject.activeSelf;
-        volumeSlider.gameObject.SetActive(!isActive);
+        bgmVolume = newVolume;
+        bgmSource.volume = bgmVolume;
+    }
+
+    // SFX 볼륨 설정
+    public void SetSFXVolume(float newVolume)
+    {
+        sfxVolume = newVolume;
     }
 
     public void PlayBGM(Bgm bgm, bool loop = true)
@@ -79,8 +92,12 @@ public class SoundManager : MonoBehaviour
             if (bgmSource.clip != bgmClips[clipIndex])
             {
                 bgmSource.clip = bgmClips[clipIndex];
-                bgmSource.volume = volume;
+                bgmSource.volume = bgmVolume;
                 bgmSource.loop = loop;  // BGM 반복 여부, 필요에 따라 설정
+                                        // ex1 ) 보스가 등장할 때 loop를 false로 설정하여 일회성 재생
+                                        // SoundManager.instance.PlayBGM(Bgm.BossBgm, false);
+                                        // 타이틀 화면에서 배경음악을 무한 반복 재생
+                                        // ex2 ) SoundManager.instance.PlayBGM(Bgm.TitleBgm, true);
                 bgmSource.Play();
             }
         }
@@ -91,14 +108,7 @@ public class SoundManager : MonoBehaviour
         int clipIndex = (int)sfx;
         if (sfxClips.Length > clipIndex)
         {
-            sfxSource.PlayOneShot(sfxClips[clipIndex], volume);
+            sfxSource.PlayOneShot(sfxClips[clipIndex], sfxVolume);  // SFX 볼륨 설정 적용
         }
-    }
-
-    // 볼륨 슬라이더 값 변경 처리
-    public void SetVolume(float newVolume)
-    {
-        volume = newVolume;
-        bgmSource.volume = volume;
     }
 }
