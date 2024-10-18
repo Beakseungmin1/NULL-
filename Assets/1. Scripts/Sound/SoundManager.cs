@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//  �ӽ�Bgm�Դϴ�.
+//  임시Bgm입니다.
 public enum Bgm
 {
     TitleBgm,
@@ -11,8 +11,8 @@ public enum Bgm
     BossBgm
 }
 
-//   �׽�Ʈ�� ȿ�����Դϴ�.
-public enum Sfx 
+//   테스트용 효과음입니다.
+public enum Sfx
 {
     JumpSfx,
     DoubleJumpSfx,
@@ -28,11 +28,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] sfxClips;
 
     public Slider volumeSlider;
-    public GameObject soundButton;
+    //public GameObject soundButton;
 
-    private AudioSource bgmSource;  // BGM �����
-    private AudioSource sfxSource;  // SFX �����
-    private float volume = 0.5f;    // �ʱ� ���� ����
+    private AudioSource bgmSource;  // BGM 재생
+    private AudioSource sfxSource;  // SFX 재생
+    private float volume = 0.3f;    // 초기 볼륨 설정
 
     public void Awake()
     {
@@ -52,11 +52,10 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        // �׽�Ʈ��
+        // 테스트용
         SoundManager.instance.PlayBGM(Bgm.TitleBgm);
-        //
-        volumeSlider.gameObject.SetActive(false);
-        soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //���� ��ư Ŭ�� (�����̵� Ȱ/��Ȱ��ȭ)
+
+        //soundButton.GetComponent<Button>().onClick.AddListener(ToggleSlider);  //사운드 버튼 클릭 (슬라이더 활성/비활성화)
 
         if (volumeSlider != null)
         {
@@ -65,7 +64,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // �����̴��� Ȱ��ȭ ����
+    // 볼륨 슬라이더 활성화 토글
     public void ToggleSlider()
     {
         bool isActive = volumeSlider.gameObject.activeSelf;
@@ -81,7 +80,7 @@ public class SoundManager : MonoBehaviour
             {
                 bgmSource.clip = bgmClips[clipIndex];
                 bgmSource.volume = volume;
-                bgmSource.loop = loop;  // BGM �ݺ� ���, �ʿ������ ����
+                bgmSource.loop = loop;  // BGM 반복 여부, 필요에 따라 설정
                 bgmSource.Play();
             }
         }
@@ -96,7 +95,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // �����̴��� ��ü ���� ����
+    // 볼륨 슬라이더 값 변경 처리
     public void SetVolume(float newVolume)
     {
         volume = newVolume;

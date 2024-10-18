@@ -14,20 +14,19 @@ enum SCENESTATE
 
 public class UIManager : MonoBehaviour
 {
-    //-------------------------------------------- //³»ºÎ º¯¼ö ¸ñ·Ï
-    private UIManager           instance;
-    private SCENESTATE          sceneState; 
-    private UIConnectHandler    connectHandler;
+    //-------------------------------------------- //ë‚´ë¶€ ë³€ìˆ˜ ëª©ë¡
+    private UIManager instance;
+    private SCENESTATE sceneState;
+    private UIConnectHandler connectHandler;
 
-    [SerializeField] GameObject settingsPanel; //-----------------------------------ÁöÀ± Ãß°¡
     [SerializeField] Text Score;
-    [SerializeField] Text Time;                //-----------------------------------ÁöÀ± Ãß°¡
-    //-------------------------------------------- //¾À ÀÎÅÍÆäÀÌ½º
+    [SerializeField] Text Time;
+    //-------------------------------------------- //ì”¬ ì¸í„°í˜ì´ìŠ¤
     [SerializeField] GameObject[] Interfaces;
-    //-------------------------------------------- //À¯´ÏÆ¼ ÀÌº¥Æ®
+    //-------------------------------------------- //ìœ ë‹ˆí‹° ì´ë²¤íŠ¸
     private void Awake()
     {
-        if (connectHandler == null) 
+        if (connectHandler == null)
             connectHandler = new UIConnectHandler();
 
         if (instance == null)
@@ -37,37 +36,37 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        UpdateScene();
+        //UpdateScene();
     }
-    //-------------------------------------------- //¿ÜºÎ¿¡ °ø°³µÇ´Â ÇÔ¼ö.
+    //-------------------------------------------- //ì™¸ë¶€ì— ê³µê°œë˜ëŠ” í•¨ìˆ˜.
     /// <summary>
-    /// [ÀÌ¹Î¼®]UI¿¡¼­ °ü¸®µÇ´Â Æ¯Á¤ ¹öÆ°ÀÌ ´­·ÈÀ»¶§ µ¿ÀÛÇÒ ÇÔ¼öµéÀ» µî·ÏÇÕ´Ï´Ù.
+    /// [ì´ë¯¼ì„]UIì—ì„œ ê´€ë¦¬ë˜ëŠ” íŠ¹ì • ë²„íŠ¼ì´ ëˆŒë ¸ì„ë•Œ ë™ì‘í•  í•¨ìˆ˜ë“¤ì„ ë“±ë¡í•©ë‹ˆë‹¤.
     /// </summary>
     /// <returns></returns>
-    public UIConnectHandler SetFunction() 
+    public UIConnectHandler SetFunction()
     {
-        if (connectHandler == null) Debug.Log("UIÇÚµéÀÌ »ı¼ºµÇÁö ¸øÇß½À´Ï´Ù.[ÀÌ¹Î¼®]");
-        return connectHandler; 
+        if (connectHandler == null) Debug.Log("UIí•¸ë“¤ì´ ìƒì„±ë˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.[ì´ë¯¼ì„]");
+        return connectHandler;
     }
-    public UIManager GetUI() 
+    public UIManager GetUI()
     {
-        if (instance == null) Debug.Log("UIManager°¡ ÃÊ±âÈ­ µÇÁö ¸øÇß½À´Ï´Ù.[ÀÌ¹Î¼®]");
+        if (instance == null) Debug.Log("UIManagerê°€ ì´ˆê¸°í™” ë˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.[ì´ë¯¼ì„]");
         return instance;
     }
     public void SetScoreText(int val)
     {
         Score.text = "SCORE:" + val.ToString();
     }
-    //-------------------------------------------- //¹öÆ°¿¡ ¸ÅÇÎµÇ´Â °ø°³ ÇÔ¼ö //»ç¿ëX
+    //-------------------------------------------- //ë²„íŠ¼ì— ë§¤í•‘ë˜ëŠ” ê³µê°œ í•¨ìˆ˜ //ì‚¬ìš©X
     /// <summary>
-    /// »ç¿ëX
+    /// ì‚¬ìš©X
     /// </summary>
     public void SoundButtonClicked()
     {
         connectHandler.SoundButtonInvoke();
     }
     /// <summary>
-    /// »ç¿ëX
+    /// ì‚¬ìš©X
     /// </summary>
     public void StartButtonCliecked()
     {
@@ -75,44 +74,39 @@ public class UIManager : MonoBehaviour
         sceneState = SCENESTATE.GAME;
     }
     /// <summary>
-    /// »ç¿ëX
+    /// ì‚¬ìš©X
     /// </summary>
     public void ExitButtonClicked()
     {
         connectHandler.ExitButtonInvoke();
     }
 
-    public void SettingsButtonClicked() //-----------------------------------ÁöÀ± Ãß°¡
-    {
-        //GameManager.Instance.PauseGame(); //¼³Á¤ ¹öÆ°À» ´©¸£¸é, °ÔÀÓÀÌ pauseµÇ´Â °Í(»èÁ¦°¡´É)
-        settingsPanel.SetActive(true);
-    }
-    //-------------------------------------------- //³»ºÎ ÀûÀ¸·Î »ç¿ëµÇ´Â ÇÔ¼ö. // Á¢±ÙXXX
-    void SetScene(SCENESTATE state)
-    {
-        GameObject temp = Interfaces[(int)state];
-        if(temp.activeSelf == false) temp.SetActive(true);
-    }
-    //-------------------------------------------- //³»ºÎ ÀûÀ¸·Î »ç¿ëµÇ´Â ÄÚ¾î ÇÔ¼ö. //Á¢±ÙXXXX
-    void UpdateScene()
-    {
-        switch (sceneState)
-        {
-            case SCENESTATE.TITLE:
-                SetScene(SCENESTATE.TITLE);
-                break;
-            case SCENESTATE.GAME:
-                SetScene(SCENESTATE.GAME);
-                break;
-            case SCENESTATE.END:
-                SetScene(SCENESTATE.END);
-                break;
-        }
+    //-------------------------------------------- //ë‚´ë¶€ ì ìœ¼ë¡œ ì‚¬ìš©ë˜ëŠ” í•¨ìˆ˜. // ì ‘ê·¼XXX
+    //    void SetScene(SCENESTATE state)
+    //    {
+    //        GameObject temp = Interfaces[(int)state];
+    //        if(temp.activeSelf == false) temp.SetActive(true);
+    //    }
+    //    //-------------------------------------------- //ë‚´ë¶€ ì ìœ¼ë¡œ ì‚¬ìš©ë˜ëŠ” ì½”ì–´ í•¨ìˆ˜. //ì ‘ê·¼XXXX
+    //    void UpdateScene()
+    //    {
+    //        switch (sceneState)
+    //        {
+    //            case SCENESTATE.TITLE:
+    //                SetScene(SCENESTATE.TITLE);
+    //                break;
+    //            case SCENESTATE.GAME:
+    //                SetScene(SCENESTATE.GAME);
+    //                break;
+    //            case SCENESTATE.END:
+    //                SetScene(SCENESTATE.END);
+    //                break;
+    //        }
 
-        for (int i = 0; i < (int)SCENESTATE.LASTINDEX; i++)
-        {
-            if (i == (int)sceneState) continue;
-            Interfaces[i].SetActive(false);
-        }
-    }
+    //        for (int i = 0; i < (int)SCENESTATE.LASTINDEX; i++)
+    //        {
+    //            if (i == (int)sceneState) continue;
+    //            Interfaces[i].SetActive(false);
+    //        }
+    //    }
 }
