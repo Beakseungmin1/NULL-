@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIButtonManager : MonoBehaviour
 {
     [SerializeField] GameObject settingsPanel;
+    [SerializeField] GameObject CharCreatePanel;
 
     //-------설정창 버튼-------//
     public void SettingsButtonClicked()
@@ -20,10 +21,21 @@ public class UIButtonManager : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
+    //-------타이틀 씬 버튼-------//
+    public void StorymodeButton()
+    {
+        CharCreatePanel.SetActive(true);
+    }
+
     private CharacterClass selectedClass = CharacterClass.PinkMan; // 기본 캐릭터 설정
     private bool isCharacterSelected = false;  // 캐릭터 선택 여부 확인
 
-    //-------캐릭터선택 버튼-------//
+    //-------캐릭터선택창 버튼-------//
+    public void ReturnButton()
+    {
+        CharCreatePanel.SetActive(false);
+    }
+
     public void OnButtonClick(int index)
     {
         switch (index)
