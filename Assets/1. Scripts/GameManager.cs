@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X)) playerHP--;
         scoreText.text = score.ToString();
         HPText.text = playerHP.ToString();
-        SoundManager.instance.SetVolume(mainSound);
+        SoundManager.instance.SetBGMVolume(mainSound);
         //////////////////////////////////////////////////////// test
         if (gamePlayState)
         {
@@ -96,11 +96,11 @@ public class GameManager : MonoBehaviour
 
     private void GameClear()
     {
-        Debug.Log($"{gameSceneManager.currentScene} ½ºÅ×ÀÌÁö Å¬¸®¾î");
+        Debug.Log($"{gameSceneManager.currentScene} ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´");
         
         gamePlayState = false;
 
-        //´ÙÀ½ ¾ÀÀÇ »ç¿îµå
+        //ë‹¤ìŒ ì”¬ì˜ ì‚¬ìš´ë“œ
 
         if (gameSceneManager.currentScene == (int)Scenes.LASTSCENE)
         {
@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     private void CompleteGame()
     {
-        Debug.Log("¸ğµç ½ºÅ×ÀÌÁö Å¬¸®¾î");
+        Debug.Log("ëª¨ë“  ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´");
         GameClearUI();
     }
 
@@ -126,9 +126,9 @@ public class GameManager : MonoBehaviour
     }
     private void GameOver()
     {
-        Debug.Log("°ÔÀÓ¿À¹ö");
+        Debug.Log("ê²Œì„ì˜¤ë²„");
 
-        //°ÔÀÓ¿À¹ö »ç¿îµå
+        //ê²Œì„ì˜¤ë²„ ì‚¬ìš´ë“œ
 
         gamePlayState = false;
         GameOverUI();
@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameExit() // °ÔÀÓ Á¾·á
+    public void GameExit() // ê²Œì„ ì¢…ë£Œ
     {
         UnityEditor.EditorApplication.isPlaying = false;
     }

@@ -72,4 +72,10 @@ public class UIButtonManager : MonoBehaviour
             Debug.Log("캐릭터를 먼저 선택하세요.");
         }
     }
+
+    //-------테스트 버튼-------//
+    public void TestButton()
+    {
+     SceneManager.LoadScene("StageScene1");
+    }
 }

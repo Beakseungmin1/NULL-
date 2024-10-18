@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text Time;
     //-------------------------------------------- //씬 인터페이스
     [SerializeField] GameObject[] Interfaces;
+    [SerializeField] GameObject CoreInterface;
+
     //-------------------------------------------- //유니티 이벤트
     private void Awake()
     {
@@ -82,31 +84,37 @@ public class UIManager : MonoBehaviour
     }
 
     //-------------------------------------------- //내부 적으로 사용되는 함수. // 접근XXX
-    //    void SetScene(SCENESTATE state)
-    //    {
-    //        GameObject temp = Interfaces[(int)state];
-    //        if(temp.activeSelf == false) temp.SetActive(true);
-    //    }
-    //    //-------------------------------------------- //내부 적으로 사용되는 코어 함수. //접근XXXX
-    //    void UpdateScene()
-    //    {
-    //        switch (sceneState)
-    //        {
-    //            case SCENESTATE.TITLE:
-    //                SetScene(SCENESTATE.TITLE);
-    //                break;
-    //            case SCENESTATE.GAME:
-    //                SetScene(SCENESTATE.GAME);
-    //                break;
-    //            case SCENESTATE.END:
-    //                SetScene(SCENESTATE.END);
-    //                break;
-    //        }
+        void SetScene(SCENESTATE state)
+    {
+        GameObject temp = Interfaces[(int)state];
+        if (temp.activeSelf == false) temp.SetActive(true); // Title이면 0번 인터페이스를 setactive true
+    }
+    //-------------------------------------------- //내부 적으로 사용되는 코어 함수. //접근XXXX
+    void UpdateScene()
+    {
+        switch (sceneState) // scenState를 확인 후, 해당하는 인터페잇그를 활성화
+        {
+            case SCENESTATE.TITLE:
+                SetScene(SCENESTATE.TITLE);
+                break;
+            case SCENESTATE.GAME:
+                SetScene(SCENESTATE.GAME);
+                break;
+            case SCENESTATE.END:
+                SetScene(SCENESTATE.END);
+                break;
+        }
 
-    //        for (int i = 0; i < (int)SCENESTATE.LASTINDEX; i++)
-    //        {
-    //            if (i == (int)sceneState) continue;
-    //            Interfaces[i].SetActive(false);
-    //        }
-    //    }
+        for (int i = 0; i < (int)SCENESTATE.LASTINDEX; i++)  // 해당하지 않는 나머지를 비활성화  // LastIndex??? 열거형의 끝을 알 수있게 해줌? 범위설정용
+        {
+            if (i == (int)sceneState) continue;
+            Interfaces[i].SetActive(false);
+        }
+
+        // CoreInterface는 항상 켜진 상태 유지
+        if (CoreInterface != null)
+        {
+            CoreInterface.SetActive(true);
+        }
+    }
 }
