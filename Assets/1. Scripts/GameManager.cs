@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
     public float mainSound = 1.0f;
 
     private GameSceneManager gameSceneManager;
-    public CharaterSelect charaterSelect;
-    CharacterClass characterClass;
 
     private void Awake()
     {
@@ -40,20 +38,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameSceneManager = new GameSceneManager();        
-        charaterSelect = GetComponent<CharaterSelect>();
         InitializeGame();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        //////////////////////////////////////////////////////// test1
+        //////////////////////////////////////////////////////// test
         if (Input.GetKeyDown(KeyCode.C)) score++;
         if (Input.GetKeyDown(KeyCode.X)) playerHP--;
         scoreText.text = score.ToString();
         HPText.text = playerHP.ToString();
-        SoundManager.instance.SetVolume(mainSound);
-        //////////////////////////////////////////////////////// test1
+        SoundManager.instance.SetBGMVolume(mainSound);
+        //////////////////////////////////////////////////////// test
         if (gamePlayState)
         {
             UadateTimer();
@@ -68,65 +65,10 @@ public class GameManager : MonoBehaviour
             }
         }        
     }
-    //////////////////////////////////////////////////////// test2
-    public void Select1()
-    {
-        charaterSelect.SetSelectedCharacter(CharacterClass.PinkMan);        
-        Debug.Log(charaterSelect.GetSelectedCharacter());
-        characterClass = charaterSelect.GetSelectedCharacter();
-
-    }
-    public void Select2()
-    {
-        charaterSelect.SetSelectedCharacter(CharacterClass.MaskDude);
-        Debug.Log(charaterSelect.GetSelectedCharacter());
-        characterClass = charaterSelect.GetSelectedCharacter();
-    }
-    public void Select3()
-    {
-
-    }
-    public void DrowPlayer()
-    {
-        // ±âÁ¸ ÇÃ·¹ÀÌ¾î°¡ ¾ÆÁ÷ Á¸ÀçÇÏ´Â °æ¿ì »õ·Î¿î Ä³¸¯ÅÍ¸¦ »ı¼ºÇÏÁö ¾ÊÀ½
-        if (GameObject.FindWithTag("Player") != null)
-        {
-            Debug.Log("ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ®°¡ ÀÌ¹Ì Á¸ÀçÇÕ´Ï´Ù. »õ·Î¿î Ä³¸¯ÅÍ¸¦ »ı¼ºÇÏÁö ¾Ê½À´Ï´Ù.");
-            //return;
-        }
-
-        GameObject playerPrefab;
-        switch (characterClass)
-        {
-            case CharacterClass.PinkMan:
-                playerPrefab = Resources.Load<GameObject>("2. Prefabs/PlayerCharater/pinkPlayer");
-                if (playerPrefab != null)
-                {
-                    Instantiate(playerPrefab, new Vector3(-13.15f, -0.97f, 0), Quaternion.identity);
-                }
-                break;
-
-            case CharacterClass.MaskDude:
-                playerPrefab = Resources.Load<GameObject>("2. Prefabs/PlayerCharater/maskPlayer");
-                if (playerPrefab != null)
-                {
-                    Instantiate(playerPrefab, new Vector3(-13.15f, -0.97f, 0), Quaternion.identity);
-                }
-                break;
-        }
-    }
-    public void DeleteCharater()
-    {
-        if (GameObject.FindWithTag("Player") != null) Destroy(GameObject.FindWithTag("Player"));
-    }
-    //////////////////////////////////////////////////////// test2
     private void StartScene(int SceneNumber)
     {
-        Debug.Log(charaterSelect.GetSelectedCharacter());
         gameSceneManager.StartScene(SceneNumber);
         ResetSceneTimer();
-        DrowPlayer(); ///////////test
-        Debug.Log(charaterSelect.GetSelectedCharacter());
     }
 
     private void ResetSceneTimer()
@@ -150,16 +92,15 @@ public class GameManager : MonoBehaviour
     public void ReStartGame()
     {
         SceneManager.LoadScene("TitleScene");
-        StartScene((int)Scenes.SCENE_1);
     }
 
     private void GameClear()
     {
-        Debug.Log($"{gameSceneManager.currentScene} ½ºÅ×ÀÌÁö Å¬¸®¾î");
+        Debug.Log($"{gameSceneManager.currentScene} ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´");
         
         gamePlayState = false;
 
-        //´ÙÀ½ ¾ÀÀÇ »ç¿îµå
+        //ë‹¤ìŒ ì”¬ì˜ ì‚¬ìš´ë“œ
 
         if (gameSceneManager.currentScene == (int)Scenes.LASTSCENE)
         {
@@ -175,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     private void CompleteGame()
     {
-        Debug.Log("¸ğµç ½ºÅ×ÀÌÁö Å¬¸®¾î");
+        Debug.Log("ëª¨ë“  ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´");
         GameClearUI();
     }
 
@@ -185,9 +126,9 @@ public class GameManager : MonoBehaviour
     }
     private void GameOver()
     {
-        Debug.Log("°ÔÀÓ¿À¹ö");
+        Debug.Log("ê²Œì„ì˜¤ë²„");
 
-        //°ÔÀÓ¿À¹ö »ç¿îµå
+        //ê²Œì„ì˜¤ë²„ ì‚¬ìš´ë“œ
 
         gamePlayState = false;
         GameOverUI();
@@ -212,9 +153,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameExit() // °ÔÀÓ Á¾·á
+    public void GameExit() // ê²Œì„ ì¢…ë£Œ
     {
         UnityEditor.EditorApplication.isPlaying = false;
     }
-
 }

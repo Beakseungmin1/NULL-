@@ -50,7 +50,7 @@ public class UIButtonManager : MonoBehaviour
                 selectedClass = CharacterClass.Virtual;
                 break;
             default:
-                selectedClass = CharacterClass.MaskDude; //일단 임의로 넣었습니다
+                selectedClass = CharacterClass.Frog; //일단 임의로 넣었습니다
                 break;
         }
         isCharacterSelected = true;
@@ -71,5 +71,11 @@ public class UIButtonManager : MonoBehaviour
         {
             Debug.Log("캐릭터를 먼저 선택하세요.");
         }
+    }
+
+    //-------테스트 버튼-------//
+    public void TestButton()
+    {
+     SceneManager.LoadScene("StageScene1");
     }
 }
