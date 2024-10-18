@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public float mainSound = 1.0f;
 
     private GameSceneManager gameSceneManager;
+    public CharaterSelect charaterSelect;
+    CharacterClass characterClass;
 
     private void Awake()
     {
@@ -38,19 +40,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameSceneManager = new GameSceneManager();        
+        charaterSelect = GetComponent<CharaterSelect>();
         InitializeGame();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        //////////////////////////////////////////////////////// test
+        //////////////////////////////////////////////////////// test1
         if (Input.GetKeyDown(KeyCode.C)) score++;
         if (Input.GetKeyDown(KeyCode.X)) playerHP--;
         scoreText.text = score.ToString();
         HPText.text = playerHP.ToString();
         SoundManager.instance.SetVolume(mainSound);
-        //////////////////////////////////////////////////////// test
+        //////////////////////////////////////////////////////// test1
         if (gamePlayState)
         {
             UadateTimer();
@@ -65,10 +68,65 @@ public class GameManager : MonoBehaviour
             }
         }        
     }
+    //////////////////////////////////////////////////////// test2
+    public void Select1()
+    {
+        charaterSelect.SetSelectedCharacter(CharacterClass.PinkMan);        
+        Debug.Log(charaterSelect.GetSelectedCharacter());
+        characterClass = charaterSelect.GetSelectedCharacter();
+
+    }
+    public void Select2()
+    {
+        charaterSelect.SetSelectedCharacter(CharacterClass.MaskDude);
+        Debug.Log(charaterSelect.GetSelectedCharacter());
+        characterClass = charaterSelect.GetSelectedCharacter();
+    }
+    public void Select3()
+    {
+
+    }
+    public void DrowPlayer()
+    {
+        // 기존 플레이어가 아직 존재하는 경우 새로운 캐릭터를 생성하지 않음
+        if (GameObject.FindWithTag("Player") != null)
+        {
+            Debug.Log("플레이어 오브젝트가 이미 존재합니다. 새로운 캐릭터를 생성하지 않습니다.");
+            //return;
+        }
+
+        GameObject playerPrefab;
+        switch (characterClass)
+        {
+            case CharacterClass.PinkMan:
+                playerPrefab = Resources.Load<GameObject>("2. Prefabs/PlayerCharater/pinkPlayer");
+                if (playerPrefab != null)
+                {
+                    Instantiate(playerPrefab, new Vector3(-13.15f, -0.97f, 0), Quaternion.identity);
+                }
+                break;
+
+            case CharacterClass.MaskDude:
+                playerPrefab = Resources.Load<GameObject>("2. Prefabs/PlayerCharater/maskPlayer");
+                if (playerPrefab != null)
+                {
+                    Instantiate(playerPrefab, new Vector3(-13.15f, -0.97f, 0), Quaternion.identity);
+                }
+                break;
+        }
+    }
+    public void DeleteCharater()
+    {
+        if (GameObject.FindWithTag("Player") != null) Destroy(GameObject.FindWithTag("Player"));
+    }
+    //////////////////////////////////////////////////////// test2
     private void StartScene(int SceneNumber)
     {
+        Debug.Log(charaterSelect.GetSelectedCharacter());
         gameSceneManager.StartScene(SceneNumber);
         ResetSceneTimer();
+        DrowPlayer(); ///////////test
+        Debug.Log(charaterSelect.GetSelectedCharacter());
     }
 
     private void ResetSceneTimer()
@@ -92,6 +150,7 @@ public class GameManager : MonoBehaviour
     public void ReStartGame()
     {
         SceneManager.LoadScene("TitleScene");
+        StartScene((int)Scenes.SCENE_1);
     }
 
     private void GameClear()
@@ -157,4 +216,5 @@ public class GameManager : MonoBehaviour
     {
         UnityEditor.EditorApplication.isPlaying = false;
     }
+
 }
