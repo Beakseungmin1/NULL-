@@ -50,23 +50,16 @@
 //    private void Start()
 //    {
 //        {
-//            //CharacterClass selectedClass = GameManager.instance.GetSelectedCharacter();
+//            CharacterClass selectedClass = GameManager.instance.GetSelectedCharacter();
 
 //            switch (selectedClass)
 //            {
 //                case CharacterClass.PinkMan:
-//                    Instantiate(Resources.Load<GameObject>("2.Prefabs/PlayerCharacter/pinkPlayer"));
+//                    Instantiate(Resources.Load<GameObject>("2.Prefabs/PlayerCharacter/pinkPlayer")); 
 //                    break;
 //                case CharacterClass.MaskDude:
 //                    Instantiate(Resources.Load<GameObject>("2.Prefabs/PlayerCharacter/maskPlayer"));
 //                    break;
-
-//                    //case CharacterClass.Virtual:
-//                    //    Instantiate(Virtual);
-//                    //    break;
-//                    //case CharacterClass.:
-//                    //    Instantiate();
-//                    //    break;
 //            }
 //        }
 //    }
