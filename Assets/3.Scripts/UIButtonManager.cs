@@ -2,18 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIButtonManager : MonoBehaviour
 {
     [SerializeField] GameObject settingsPanel;
     [SerializeField] GameObject CharCreatePanel;
 
+    public Button SettingButton;
+    public Button ResumeGameButton;
+    public Button StorymodeButton;
+
     //-------설정창 버튼-------//
-    public void SettingsButtonClicked()
+    public void Start()
     {
         //GameManager.Instance.PauseGame(); //설정 버튼을 누르면, 게임이 pause되는 것(삭제가능)
+        //settingsPanel.SetActive(true);
+        SettingButton.onClick.AddListener(ShowSettingsPanel);
+        ResumeGameButton.onClick.AddListener(ResumeGameButtonClicked);
+        StorymodeButton.onClick.AddListener(StorymodeButtonClicked);
+    }
+    public void ShowSettingsPanel()
+    {
         settingsPanel.SetActive(true);
     }
+
 
     public void ResumeGameButtonClicked()
     {
@@ -22,7 +35,7 @@ public class UIButtonManager : MonoBehaviour
     }
 
     //-------타이틀 씬 버튼-------//
-    public void StorymodeButton()
+    public void StorymodeButtonClicked()
     {
         CharCreatePanel.SetActive(true);
     }

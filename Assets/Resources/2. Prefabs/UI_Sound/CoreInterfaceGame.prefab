@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 7922164669735880853}
   - component: {fileID: 6086826569152779738}
   m_Layer: 5
-  m_Name: CoreInterface
+  m_Name: CoreInterfaceGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
