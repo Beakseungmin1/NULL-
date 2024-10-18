@@ -1,4 +1,4 @@
-﻿public enum CharacterClass
+public enum CharacterClass
 {
     PinkMan = 0, // 0
     MaskDude = 1,

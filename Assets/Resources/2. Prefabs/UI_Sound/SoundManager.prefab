@@ -49,9 +49,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 84c6aaea5fed82249b7aae18816befe8, type: 3}
   - {fileID: 8300000, guid: 04f067817c29ff14aae2996fa7e83470, type: 3}
   sfxClips:
-  - {fileID: 8300000, guid: c36fa08ef01a24023aed81ce8c980720, type: 3}
-  - {fileID: 8300000, guid: 524fb3698f9864ea4a953e57aefc11ad, type: 3}
-  - {fileID: 8300000, guid: adcbbbae313cb40978e30faf82938987, type: 3}
-  - {fileID: 8300000, guid: e2a915bbc58734650bd17de4e87a001c, type: 3}
+  - {fileID: 8300000, guid: 6576f195010aba3458bd650f2dc11df4, type: 3}
+  - {fileID: 8300000, guid: ad2b9b8a3073c7b429c37749938dea13, type: 3}
+  - {fileID: 8300000, guid: e2d9d94dec0de0d4bb2d022d9c9e783a, type: 3}
+  - {fileID: 8300000, guid: 68956de6e68088d44803c40e9cc9c0a9, type: 3}
   volumeSlider: {fileID: 0}
   soundButton: {fileID: 0}
