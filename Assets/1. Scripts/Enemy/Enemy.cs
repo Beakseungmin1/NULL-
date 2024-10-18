@@ -54,8 +54,6 @@ public class Enemy : MonoBehaviour
 
             case EnemyEnum.Enemypattern.pattern3:
                 Pattern3();
-                //StandMiddle();
-                //ShotBall();
                 break;
 
             default:
@@ -63,7 +61,6 @@ public class Enemy : MonoBehaviour
 
         }
 
-        //Debug.Log(toooTime);
         SwitchPattern();
         if (toooTime == 0)
         {
@@ -157,8 +154,6 @@ public class Enemy : MonoBehaviour
         }
 
     }
-
-
 
 
     void SwitchPattern()
