@@ -46,34 +46,36 @@ public class GameSceneManager : MonoBehaviour
 
     public void Scene1()
     {
-        SceneManager.LoadScene("[sing]EnemyPhase1");
+        SceneManager.LoadScene("StageScene1");
     }
     public void Scene2()
     {
-        //SceneManager.LoadScene("[sing]EnemyPhase2");
+        SceneManager.LoadScene("StageScene1");
     }
     public void Scene3()
     {
-        
+        SceneManager.LoadScene("StageScene1");
     }
     public void Scene4()
     {
-
+        SceneManager.LoadScene("StageScene1");
     }
     public void Scene5()
     {
-
+        SceneManager.LoadScene("StageScene1");
     }
     public void Scene6()
     {
+        SceneManager.LoadScene("StageScene1");
 
     }
     public void LastScene()
     {
-
+        SceneManager.LoadScene("StageScene1");
     }
     public void CompleteScene()
     {
+        
         currentScene++;
     }
 
