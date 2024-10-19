@@ -539,6 +539,7 @@ GameObject:
   - component: {fileID: 1929728688561310863}
   - component: {fileID: 7010547778787811847}
   - component: {fileID: 1683824631147230276}
+  - component: {fileID: 128984197940171321}
   m_Layer: 5
   m_Name: Char1Btn
   m_TagString: Untagged
@@ -647,7 +648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 128984197940171321}
         m_TargetAssemblyTypeName: UIButtonManager, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 3
@@ -659,6 +660,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &128984197940171321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2315793613373920566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196b799d91504d8469b0992f375236c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsPanel: {fileID: 0}
+  CharCreatePanel: {fileID: 0}
+  SettingButton: {fileID: 0}
+  ResumeGameButton: {fileID: 0}
+  StorymodeButton: {fileID: 0}
 --- !u!1 &2514765504381443489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3405420048173862811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2557,6 +2575,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7973910251618704173, guid: d8930f453cb16a24a90440d863323499, type: 3}
     - {fileID: 3302457965077507913, guid: d8930f453cb16a24a90440d863323499, type: 3}
+    - {fileID: 6086826569152779738, guid: d8930f453cb16a24a90440d863323499, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1280640063780605864, guid: d8930f453cb16a24a90440d863323499, type: 3}
     m_AddedGameObjects:
