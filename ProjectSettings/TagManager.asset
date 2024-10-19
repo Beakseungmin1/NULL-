@@ -9,6 +9,9 @@ TagManager:
   - Consume
   - Projectile
   - ProjectileGen
+  - Item
+  - Damage
+  - Destroy
   layers:
   - Default
   - TransparentFX

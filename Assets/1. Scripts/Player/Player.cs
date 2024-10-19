@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public partial class Player : TopDownController
 {
     private Camera _camera;
-    private int HP = 3;
+    [SerializeField] private int HP = 3;
 
     // 인스턴스 (게임매니저 필요) 
     public int PlayerHP
@@ -46,9 +46,26 @@ public partial class Player : TopDownController
         CallJumpEvent();
     }
 
-    // ----- 맵 상호작용 ------ 
+    // ----- 맵 오브젝트 상호작용 ------ 
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Damage")) // 트랩과 충돌
+        {
+            HP -= 1;   
+        }
 
+        if (collision.gameObject.CompareTag("Item")) // 아이템과 충돌 
+        {
+            HP += 1;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Destroy")) // 부서지는 블록과 충돌
+        {
+            Destroy(collision.gameObject, 1f);
+        }
+    }
 }
 
 

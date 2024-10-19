@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LeftRightMove : MonoBehaviour
+public partial class LeftRightMove : MonoBehaviour
 {
     public int speed = 1;
     public int leftLength = 2;
