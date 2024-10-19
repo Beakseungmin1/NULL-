@@ -19,7 +19,7 @@ public class UIButtonManager : MonoBehaviour
         //GameManager.Instance.PauseGame(); //설정 버튼을 누르면, 게임이 pause되는 것(삭제가능)
         //settingsPanel.SetActive(true);
         SettingButton.onClick.AddListener(ShowSettingsPanel);
-        ResumeGameButton.onClick.AddListener(ResumeGameButtonClicked);
+        ResumeGameButton.onClick.AddListener(SettingPanelOffButtonClicked);
         StorymodeButton.onClick.AddListener(StorymodeButtonClicked);
     }
     public void ShowSettingsPanel()
@@ -27,8 +27,9 @@ public class UIButtonManager : MonoBehaviour
         settingsPanel.SetActive(true);
     }
 
-
-    public void ResumeGameButtonClicked()
+    // Pause Btn따로 만들 예정
+    
+    public void SettingPanelOffButtonClicked()
     {
         //GameManager.Instance.ResumeGame(); // 게임 시간 다시 흐르게 함
         settingsPanel.SetActive(false);
@@ -63,7 +64,7 @@ public class UIButtonManager : MonoBehaviour
                 selectedClass = CharacterClass.Virtual;
                 break;
             default:
-                selectedClass = CharacterClass.Frog; //일단 임의로 넣었습니다
+                selectedClass = CharacterClass.Frog;
                 break;
         }
         isCharacterSelected = true;
