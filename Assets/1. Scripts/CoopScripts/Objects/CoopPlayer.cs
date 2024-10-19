@@ -17,19 +17,21 @@ public enum DIRECTION
 }
 public class CoopPlayer : MonoBehaviour
 {
-    [SerializeField] private float jumpVal = 0;
-    [SerializeField] private float speedVal = 0;
-    [SerializeField] private float attackDelay = 0;
-    [SerializeField] private int playerLife = 0;
+    [SerializeField] private float jumpVal          = 0;
+    [SerializeField] private float speedVal         = 0;
+    [SerializeField] private float attackDelay      = 0;
+    [SerializeField] private int playerLife         = 0;
     //------------------------------------------
-    private int     playerId = 0;
-    private bool    isJump = false;
-    private bool    isJumpPressed = false;
+    private int     playerId    = 0;
+    
+    private bool    isJump          = false;
+    private bool    isJumpPressed   = false;
     private bool    isAttackPressed = false;
-    private bool    isHit = false;
-    private float   InputAxis = 0;
-    private float   localTimer = 0f;
-    private float   HitTimer = 0f;
+    private bool    isHit           = false;
+    
+    private float   InputAxis   = 0;
+    private float   localTimer  = 0f;
+    private float   HitTimer    = 0f;
     //------------------------------------------
     private Animator animator;
     private Rigidbody2D rg2d;
@@ -165,6 +167,7 @@ public class CoopPlayer : MonoBehaviour
     private void IsDead()
     {
         Destroy(gameObject);
+        CoopGameManager.instance.PopPlayerInDIct(playerId);
         //TODO
     }
 

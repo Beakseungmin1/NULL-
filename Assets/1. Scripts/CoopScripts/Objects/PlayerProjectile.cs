@@ -24,9 +24,7 @@ public class PlayerProjectile : MonoBehaviour
                 break;
         }
     }
-
     public int GetID() { return spawnerID; }
-
     private void Update()
     {
         if (Mathf.Abs(transform.position.x) > 25f)
