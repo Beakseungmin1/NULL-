@@ -3,7 +3,7 @@ guid: a469f256fb3ea4345adc649f622f1b6d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -74,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -86,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -98,6 +103,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -933,48 +965,47 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      button_purple_other_6: 459931457
-      button_purple_other_17: -1514682775
-      button_purple_other_15: -88157871
-      button_purple_other_25: -708420488
-      button_purple_other_37: 1231918572
-      button_purple_other_36: -1149386146
-      button_purple_other_35: 726390384
-      button_purple_other_21: -1845004489
-      button_purple_other_13: -256907790
-      button_purple_other_27: -964864185
-      button_purple_other_26: 1882246044
-      button_purple_other_34: 1824708181
       button_purple_other_0: 69813594
+      button_purple_other_1: -274004056
       button_purple_other_10: -1119416340
+      button_purple_other_11: -370565865
+      button_purple_other_12: -917081558
+      button_purple_other_13: -256907790
+      button_purple_other_14: 2071584759
+      button_purple_other_15: -88157871
+      button_purple_other_16: -210322233
+      button_purple_other_17: -1514682775
+      button_purple_other_18: -292137761
       button_purple_other_19: -990107163
+      button_purple_other_2: 2005433250
       button_purple_other_20: 728235917
+      button_purple_other_21: -1845004489
       button_purple_other_22: -1643539554
       button_purple_other_23: 297774565
-      button_purple_other_31: 665988402
-      button_purple_other_1: -274004056
-      button_purple_other_32: -691732732
-      button_purple_other_8: 2143995885
-      button_purple_other_11: -370565865
-      button_purple_other_2: 2005433250
-      button_purple_other_7: -726846705
-      button_purple_other_18: -292137761
       button_purple_other_24: 1046211407
-      button_purple_other_9: 1010518479
-      button_purple_other_3: -811519431
-      button_purple_other_12: -917081558
-      button_purple_other_16: -210322233
-      button_purple_other_5: -1840938543
-      button_purple_other_4: 183793975
-      button_purple_other_14: 2071584759
-      button_purple_other_29: -2133603616
-      button_purple_other_38: 1967517155
-      button_purple_other_33: 379693220
+      button_purple_other_25: -708420488
+      button_purple_other_26: 1882246044
+      button_purple_other_27: -964864185
       button_purple_other_28: -741977364
+      button_purple_other_29: -2133603616
+      button_purple_other_3: -811519431
       button_purple_other_30: 1067873106
-  spritePackingTag: 
+      button_purple_other_31: 665988402
+      button_purple_other_32: -691732732
+      button_purple_other_33: 379693220
+      button_purple_other_34: 1824708181
+      button_purple_other_35: 726390384
+      button_purple_other_36: -1149386146
+      button_purple_other_37: 1231918572
+      button_purple_other_38: 1967517155
+      button_purple_other_4: 183793975
+      button_purple_other_5: -1840938543
+      button_purple_other_6: 459931457
+      button_purple_other_7: -726846705
+      button_purple_other_8: 2143995885
+      button_purple_other_9: 1010518479
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
