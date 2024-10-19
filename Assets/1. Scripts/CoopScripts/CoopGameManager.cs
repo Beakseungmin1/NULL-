@@ -26,7 +26,6 @@ public class CoopGameManager : MonoBehaviour
     {
         CreateChar(PLAYERTYPE.FROG, new Vector2(-5, -7));
         CreateChar(PLAYERTYPE.BLUE, new Vector2(5, -7));
-        CreateChar(PLAYERTYPE.PINK, new Vector2(5, -7));
         Generator.instance.ChangeState(GENSTATE.WORK);
     }
 
