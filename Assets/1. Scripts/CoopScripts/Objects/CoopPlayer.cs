@@ -67,6 +67,8 @@ public class CoopPlayer : MonoBehaviour
         AnimUpdate();
     }
 
+    public PLAYERTYPE GetCharType() { return playerType; }
+    public int GetPlayerHealth() { return playerLife; }
     /// <summary>
     /// 캐릭터를 초기화 합니다.
     /// </summary>

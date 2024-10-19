@@ -2,14 +2,13 @@ using System.Collections;
 using Assets._1._Scripts.CoopScripts.Objects;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum MAPSTATE
 {
     NONE,
-    SELECTCHAR,
     PLAYGAME,
-    WINGAME,
-    DEFEATGAME,
+    ENDGAME,
 }
 
 
@@ -17,31 +16,41 @@ public class CoopGameManager : MonoBehaviour
 {
     [SerializeField]private float mainTime = 0;
     private int spawnid = 0;
+    private float loaclTimer = 0f;
 
     private Dictionary<int, CoopPlayer> currentPlayers = new Dictionary<int, CoopPlayer>();
     private MAPSTATE mapState = MAPSTATE.NONE;    
     public GameObject playerPrefab;
-    
+    //============================================================================
+    //UI SECTION
+    public Text     TimerText;
+    public Text     redPlayerHealthText;
+    public Text     bluePlayerHealthText;
+    public Image    redPlayerImage;
+    public Image    bluePlayerImage;
+
+    //============================================================================
+
     void Start()
     {
         CreateChar(PLAYERTYPE.FROG, new Vector2(-5, -7));
         CreateChar(PLAYERTYPE.BLUE, new Vector2(5, -7));
         Generator.instance.ChangeState(GENSTATE.WORK);
+        SetInterfaceImage();
+        ChangeMapState(MAPSTATE.PLAYGAME);
     }
 
     void Update()
     {
+        loaclTimer += Time.deltaTime;
+        TimerText.text = loaclTimer.ToString();
+
         switch(mapState)
         {
-            case MAPSTATE.NONE:
-                break;
-            case MAPSTATE.SELECTCHAR:
-                break;
             case MAPSTATE.PLAYGAME:
+                UpdateInterfaceText();
                 break;
-            case MAPSTATE.WINGAME:
-                break;
-            case MAPSTATE.DEFEATGAME:
+            case MAPSTATE.ENDGAME:
                 break;
         }
     }
@@ -62,6 +71,22 @@ public class CoopGameManager : MonoBehaviour
     private void CreateChar(PLAYERTYPE type, Vector2 pos)
     {
         GameObject playerObject = Instantiate(playerPrefab, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
-        playerObject.GetComponent<CoopPlayer>().InitChar(++spawnid, type);
+        CoopPlayer player = playerObject.GetComponent<CoopPlayer>();
+        player.InitChar(++spawnid, type);
+        currentPlayers.Add(spawnid, player);
+    }
+
+    private void SetInterfaceImage()
+    {
+        redPlayerImage.sprite = ResourceHandler.instance.GetSprites()[(int)currentPlayers[1].GetCharType()]; 
+        bluePlayerImage.sprite = ResourceHandler.instance.GetSprites()[(int)currentPlayers[2].GetCharType()]; 
+    }
+
+    private void UpdateInterfaceText()
+    {
+        redPlayerHealthText.text = currentPlayers[1].GetPlayerHealth().ToString();
+        bluePlayerHealthText.text = currentPlayers[2].GetPlayerHealth().ToString();
+
     }
 }
+
