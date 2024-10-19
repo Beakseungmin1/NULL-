@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 
@@ -11,6 +11,11 @@ public partial class Player : TopDownController
     public int PlayerHP
     {
         get { return HP; }
+    }
+
+    public void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
 
     // ----- 체력 ----- 
