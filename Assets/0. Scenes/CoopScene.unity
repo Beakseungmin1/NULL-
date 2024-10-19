@@ -9115,6 +9115,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainTime: 0
   playerPrefab: {fileID: 7966185371260112410, guid: ef3f6f5f12df63143b13448f0dc1dfbd, type: 3}
+  TimerText: {fileID: 466477951}
+  redPlayerHealthText: {fileID: 341332214}
+  bluePlayerHealthText: {fileID: 447072782}
+  redPlayerImage: {fileID: 1392701923}
+  bluePlayerImage: {fileID: 272342799}
 --- !u!4 &2146199548
 Transform:
   m_ObjectHideFlags: 0
