@@ -54,7 +54,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         // 테스트용
-        SoundManager.instance.PlayBGM(Bgm.TitleBgm);
+        //SoundManager.instance.PlayBGM(Bgm.TitleBgm);
 
         // BGM 볼륨 슬라이더 설정
         if (bgmVolumeSlider != null)
