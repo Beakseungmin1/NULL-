@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,10 +22,38 @@ public class GameManager : MonoBehaviour
     public float mainSound = 1.0f;
 
     private GameSceneManager gameSceneManager;
-    public CharaterSelect charaterSelect;
-    CharacterClass characterClass;
 
+    [SerializeField] public GameObject[] CharacterPrefab;
+    private GameObject currentCharacterInstance;
+    CharacterClass characterClass = CharacterClass.Frog;
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name.StartsWith("StageScene") || scene.name.StartsWith("[sing]Enemy"))
+        {
+            SpawnCharacter();
+        }
+    }
+
+    private void SpawnCharacter()
+    {
+        if (currentCharacterInstance != null)
+        {
+            Destroy(currentCharacterInstance);
+        }
+
+        currentCharacterInstance = Instantiate(CharacterPrefab[(int)characterClass], Vector3.zero, Quaternion.identity);
+    }
     private void Awake()
     {
         if (Instance == null)
