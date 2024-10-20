@@ -2,10 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
+
 public partial class Player : TopDownController
 {
     private Camera _camera;
     [SerializeField] private int HP = 3;
+
+    TopDownMovement topDownMovement;
 
     // 인스턴스 (게임매니저 필요) 
     public int PlayerHP
@@ -16,7 +19,9 @@ public partial class Player : TopDownController
     public void Awake()
     {
         DontDestroyOnLoad(this);
+        topDownMovement = GetComponent<TopDownMovement>();
     }
+
 
     // ----- 체력 ----- 
     public void TakeDamage(int damage)
@@ -52,7 +57,8 @@ public partial class Player : TopDownController
     {
         if (collision.gameObject.CompareTag("Damage")) // 트랩과 충돌
         {
-            HP -= 1;   
+            HP -= 1;
+            topDownMovement.Damage();
         }
 
         if (collision.gameObject.CompareTag("Item")) // 아이템과 충돌 
@@ -64,6 +70,15 @@ public partial class Player : TopDownController
         if (collision.gameObject.CompareTag("Destroy")) // 부서지는 블록과 충돌
         {
             Destroy(collision.gameObject, 1f);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Damage")) 
+        {
+            Debug.Log("충돌 종료");
+            topDownMovement.StopDamage(); 
         }
     }
 }

@@ -7,9 +7,11 @@ public partial class LeftRightMove : MonoBehaviour
     public int rightLength = 2;
     public bool turn = true;
     Vector3 startPos;
+    public int direction = 0; // 0이면 왼쪽쪽, 1이면 오른쪽 먼저 
     private void Start()
     {
         startPos = transform.position;
+        turn = direction == 1;
     }
     private void Update()
     {
