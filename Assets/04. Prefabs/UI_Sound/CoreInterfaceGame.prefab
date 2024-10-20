@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5853623630085250460}
   - component: {fileID: 6297271333843371833}
   - component: {fileID: 6561054974887057148}
-  - component: {fileID: 3302457965077507913}
   m_Layer: 5
   m_Name: Resume Game
   m_TagString: Untagged
@@ -122,23 +121,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3302457965077507913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212294108777389331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196b799d91504d8469b0992f375236c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingsPanel: {fileID: 4365701246707328613}
-  CharCreatePanel: {fileID: 0}
-  SettingButton: {fileID: 0}
-  ResumeGameButton: {fileID: 0}
-  StorymodeButton: {fileID: 0}
 --- !u!1 &587519505652717137
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7922164669735880853}
-  - component: {fileID: 6086826569152779738}
   m_Layer: 5
   m_Name: CoreInterfaceGame
   m_TagString: Untagged
@@ -177,23 +158,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6086826569152779738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587519505652717137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196b799d91504d8469b0992f375236c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingsPanel: {fileID: 4365701246707328613}
-  CharCreatePanel: {fileID: 0}
-  SettingButton: {fileID: 4597919061469966855}
-  ResumeGameButton: {fileID: 6561054974887057148}
-  StorymodeButton: {fileID: 0}
 --- !u!1 &1280640063780605864
 GameObject:
   m_ObjectHideFlags: 0
