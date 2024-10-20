@@ -1,23 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //  임시Bgm입니다.
 public enum Bgm
 {
     TitleBgm,
-    GameBgm,
-    BossBgm
+    Stage1Bgm,
+    Stage2Bgm,
+    Stage3Bgm,
+    MultiBgm
 }
 
-//   테스트용 효과음입니다.
+//   S_는 Story / M_은 Multi / Hit(뭐 맞는 사운드)공용
 public enum Sfx
 {
-    JumpSfx,
-    DoubleJumpSfx,
-    ItemSfx,
-    HitSfx
+    S_JumpSfx,
+    S_DoubleJumpSfx,
+    HitSfx,
+    M_FruitSfx,    // 나무에서 과일 생성
+    M_EatFruitSfx, // 과일 먹을 때
+    M_AttackSfx,
+    M_JumpSfx,
+    M_Winnersfx,
+    UI_BtnClick
 }
 
 public class SoundManager : MonoBehaviour
@@ -54,7 +62,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         // 테스트용
-        //SoundManager.instance.PlayBGM(Bgm.TitleBgm);
+        //SoundManager.instance.PlayBGM(Bgm.TitleBgm,false);
 
         // BGM 볼륨 슬라이더 설정
         if (bgmVolumeSlider != null)
@@ -93,10 +101,11 @@ public class SoundManager : MonoBehaviour
             {
                 bgmSource.clip = bgmClips[clipIndex];
                 bgmSource.volume = bgmVolume;
+                ///// 일회성 재생 bgm 추가 시 유지, 아니면 이후 삭제 /////
                 bgmSource.loop = loop;  // BGM 반복 여부, 필요에 따라 설정
                                         // ex1 ) 보스가 등장할 때 loop를 false로 설정하여 일회성 재생
                                         // SoundManager.instance.PlayBGM(Bgm.BossBgm, false);
-                                        // 타이틀 화면에서 배경음악을 무한 반복 재생
+                                        // 타이틀 화면에서 배경음악을 무한 반복 재생 // 근데 기본이 루프로 되어있을 것 
                                         // ex2 ) SoundManager.instance.PlayBGM(Bgm.TitleBgm, true);
                 bgmSource.Play();
             }
