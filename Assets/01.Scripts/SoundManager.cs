@@ -34,14 +34,14 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip[] bgmClips;
     public AudioClip[] sfxClips;
-
+    
     public Slider bgmVolumeSlider;
     public Slider sfxVolumeSlider;
 
     private AudioSource bgmSource;  // BGM 재생
     private AudioSource sfxSource;  // SFX 재생
     private float bgmVolume = 0.3f; // BGM 초기 볼륨 설정
-    private float sfxVolume = 0.3f; // SFX 초기 볼륨 설정
+    private float sfxVolume = 0.7f; // SFX 초기 볼륨 설정
 
     public void Awake()
     {
@@ -52,6 +52,8 @@ public class SoundManager : MonoBehaviour
 
             bgmSource = gameObject.AddComponent<AudioSource>();
             sfxSource = gameObject.AddComponent<AudioSource>();
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -62,7 +64,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         // 테스트용
-        //SoundManager.instance.PlayBGM(Bgm.TitleBgm,false);
+        SoundManager.instance.PlayBGM(Bgm.TitleBgm);
 
         // BGM 볼륨 슬라이더 설정
         if (bgmVolumeSlider != null)
@@ -90,6 +92,27 @@ public class SoundManager : MonoBehaviour
     public void SetSFXVolume(float newVolume)
     {
         sfxVolume = newVolume;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode Mode)
+    {
+        switch (scene. name)
+        {
+            case "TitleScene":
+                PlayBGM(Bgm.TitleBgm);
+                break;
+            case "StageScene1":
+                PlayBGM(Bgm.Stage1Bgm);
+                break;
+            case "StageScene2":
+                PlayBGM(Bgm.Stage2Bgm);
+                break;
+            case "CoopScene":
+                PlayBGM(Bgm.MultiBgm);
+                break;
+            default:
+                break;
+        }
     }
 
     public void PlayBGM(Bgm bgm, bool loop = true)
