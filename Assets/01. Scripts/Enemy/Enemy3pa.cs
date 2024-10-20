@@ -5,23 +5,23 @@ using UnityEngine;
 public class Enemy3pa : MonoBehaviour
 {
     private GameObject Player;
-    private Camera mainCamera;
     [SerializeField] private GameObject Weapon;
-    EnemyEnum.Enemypattern enemypattern;
+    EnemyEnum.Enemypattern enemypattern = EnemyEnum.Enemypattern.pattern1;
 
-    float ShotDelayTime = 3f; // 2ÆĞÅÏ µå¶øÄğÅ¸ÀÓ
-    float patternTime = 10f; // ÆĞÅÏ À¯Áö½Ã°£
+    float ShotDelayTime = 3f; // 2íŒ¨í„´ ë“œëì¿¨íƒ€ì„
+    float patternTime = 10f; // íŒ¨í„´ ìœ ì§€ì‹œê°„
 
-    float toTime;  // ÀÌµ¿¿ë ½Ã°£ °è»ê¿ë º¯¼ö
-    float tooTime;  // È­»ì¹ß»ç ½Ã°£ °è»ê¿ë º¯¼ö
-    float toooTime = 10f; // ÆĞÅÏ ½Ã°£ °è»ê¿ë º¯¼ö
+    bool isFire;
+
+    float toTime;  // ì´ë™ìš© ì‹œê°„ ê³„ì‚°ìš© ë³€ìˆ˜
+    float tooTime;  // í™”ì‚´ë°œì‚¬ ì‹œê°„ ê³„ì‚°ìš© ë³€ìˆ˜
+    float toooTime = 10f; // íŒ¨í„´ ì‹œê°„ ê³„ì‚°ìš© ë³€ìˆ˜
 
     int fireProjectiles = 0;
 
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        mainCamera = Camera.main;
     }
 
     void Update()
@@ -30,17 +30,15 @@ public class Enemy3pa : MonoBehaviour
         tooTime += Time.deltaTime;
         toooTime += Time.deltaTime;
 
-        PositionAboveCamera();
-
         switch (enemypattern)
         {
             case EnemyEnum.Enemypattern.pattern1:
-                ShotGun();
+                Shotmissile();
                 break;
 
             case EnemyEnum.Enemypattern.pattern2:
-                Weapon.SetActive(false);
-                Pas2FireProjectile();
+                //Weapon.SetActive(false);
+               // Pas2FireProjectile();
                 break;
 
             default:
@@ -49,41 +47,75 @@ public class Enemy3pa : MonoBehaviour
         }
 
 
-        SwitchPattern();
+       // SwitchPattern();
 
     }
 
-    void PositionAboveCamera()
+    void Shotmissile()
     {
-        Vector2 targetposition = new Vector2(mainCamera.transform.position.x + 2f, mainCamera.transform.position.y + 3f);
-        transform.position = Vector2.Lerp(transform.position, targetposition, 0.1f);
+        int missiles = 7;
+
+        if (!isFire)
+        {
+
+            for (int i = 0; i < missiles; i++)
+            {
+                GameObject Missile = ObjectPool._instance.SpawnFromPool("Missile");
+
+                // ì™¼ìª½ë²½ë¶€í„° ë¯¸ì‚¬ì¼ ìƒì„±
+                Missile.transform.position = new Vector2(-8.6f + (i * 2), 5);
+            }
+            isFire = true;
+        }
     }
+
+    void Shotmissile2()
+    {
+        int missiles = 7;
+
+        if (!isFire)
+        {
+
+            for (int i = 0; i < missiles; i++)
+            {
+                GameObject Missile = ObjectPool._instance.SpawnFromPool("Missile");
+
+                // ì™¼ìª½ë²½ë¶€í„° ë¯¸ì‚¬ì¼ ìƒì„±
+                Missile.transform.position = new Vector2(-8.6f + (i * 2), 5);
+            }
+            isFire = true;
+        }
+    }
+
+
+
+
 
     void ShotGun()
     {
-        float delaytime = 0.1f; //ÃÑ¾Ë»çÀÌÀÇ ¹ß»ç°£°İ
-        int numberOfProjectiles = 5; // ¹ß»çÇÒ Åõ»çÃ¼ ¼ö
+        float delaytime = 0.1f; //ì´ì•Œì‚¬ì´ì˜ ë°œì‚¬ê°„ê²©
+        int numberOfProjectiles = 5; // ë°œì‚¬í•  íˆ¬ì‚¬ì²´ ìˆ˜
 
         if (tooTime > ShotDelayTime)
         {
             Weapon.SetActive(true);
 
-            // ÇÃ·¹ÀÌ¾î¿Í ¹«±â °£ÀÇ ¹æÇâ º¤ÅÍ °è»ê
+            // í”Œë ˆì´ì–´ì™€ ë¬´ê¸° ê°„ì˜ ë°©í–¥ ë²¡í„° ê³„ì‚°
             Vector2 direction = (Player.transform.position - Weapon.transform.position).normalized;
 
-            // ¹«±âÀÇ È¸Àü °¢µµ °è»ê
+            // ë¬´ê¸°ì˜ íšŒì „ ê°ë„ ê³„ì‚°
             float weaponangle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            // ¹«±â È¸Àü ¼³Á¤
+            // ë¬´ê¸° íšŒì „ ì„¤ì •
             Weapon.transform.rotation = Quaternion.Euler(0, 0, weaponangle);
 
 
             if (toTime > delaytime)
             {
-                // ¿ÀºêÁ§Æ® Ç®¿¡¼­ ÃÑ¾Ë °¡Á®¿À±â
+                // ì˜¤ë¸Œì íŠ¸ í’€ì—ì„œ ì´ì•Œ ê°€ì ¸ì˜¤ê¸°
                 GameObject Bullet = ObjectPool._instance.SpawnFromPool("Bullet");
 
-                // ÃÑ¾Ë À§Ä¡¿Í È¸Àü ¼³Á¤
+                // ì´ì•Œ ìœ„ì¹˜ì™€ íšŒì „ ì„¤ì •
                 Bullet.transform.position = Weapon.transform.position;
                 Bullet.transform.rotation = Quaternion.Euler(0, 0, weaponangle);
 
@@ -105,28 +137,28 @@ void Pas2FireProjectile()
 {
     if (tooTime > ShotDelayTime)
     {
-        // ÇÃ·¹ÀÌ¾î¿Í ¹«±â °£ÀÇ ¹æÇâ º¤ÅÍ °è»ê
+        // í”Œë ˆì´ì–´ì™€ ë¬´ê¸° ê°„ì˜ ë°©í–¥ ë²¡í„° ê³„ì‚°
         Vector2 direction = (Player.transform.position - transform.position).normalized;
 
-        float spreadAngle = 16f; // °¢µµ °£°İ
-        int numberOfProjectiles = 5; // ¹ß»çÇÒ Åõ»çÃ¼ ¼ö
+        float spreadAngle = 16f; // ê°ë„ ê°„ê²©
+        int numberOfProjectiles = 5; // ë°œì‚¬í•  íˆ¬ì‚¬ì²´ ìˆ˜
 
         for (int i = 0; i < numberOfProjectiles; i++)
         {
-            // °¢ Åõ»çÃ¼ÀÇ ¹æÇâ °è»ê
+            // ê° íˆ¬ì‚¬ì²´ì˜ ë°©í–¥ ê³„ì‚°
             float angleOffset = (i - 1) * spreadAngle; // -10, 0, +10
             Vector2 projectileDirection = Quaternion.Euler(0, 0, angleOffset) * direction;
 
-            // ¿ÀºêÁ§Æ® Ç®¿¡¼­ È­»ì °¡Á®¿À±â
+            // ì˜¤ë¸Œì íŠ¸ í’€ì—ì„œ í™”ì‚´ ê°€ì ¸ì˜¤ê¸°
             GameObject Arrow = ObjectPool._instance.SpawnFromPool("Arrow");
 
-            // È­»ì À§Ä¡¿Í È¸Àü ¼³Á¤
+            // í™”ì‚´ ìœ„ì¹˜ì™€ íšŒì „ ì„¤ì •
             Arrow.transform.position = transform.position;
             float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
             Arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
 
-            // ¹ß»ç ÈÄ Å¸ÀÌ¸Ó ÃÊ±âÈ­
+            // ë°œì‚¬ í›„ íƒ€ì´ë¨¸ ì´ˆê¸°í™”
             tooTime = 0;
         }
     }
