@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public float mainSound = 1.0f;
 
     private GameSceneManager gameSceneManager;
+    public CharaterSelect charaterSelect;
+    CharacterClass characterClass;
+
 
     private void Awake()
     {
@@ -77,7 +80,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
-        GameObject.Find("UIManager").gameObject.transform.Find("Canvas").gameObject.SetActive(false);
+        GameObject.Find("Canvas").gameObject.SetActive(false);
         gamePlayState = true;
         StartScene((int)Scenes.SCENE_1);
     }
@@ -149,5 +152,10 @@ public class GameManager : MonoBehaviour
     public void GameExit() // 게임 종료
     {
         UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    public void SetSelectedCharacter(CharacterClass selectedClass)
+    {
+        characterClass = selectedClass;
     }
 }
