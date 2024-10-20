@@ -42,6 +42,7 @@ public class CoopPlayer : MonoBehaviour
     //------------------------------------------
     public Text playerTagText;
     public GameObject projectile;
+    public GameObject particle;
 
     private void Awake()
     {
