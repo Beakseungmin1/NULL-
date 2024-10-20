@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,9 +24,11 @@ public class UIManager : MonoBehaviour
     }*/
     private CharacterClass playerType = CharacterClass.Frog;
 
-    void Update()
+    private void Start()
     {
-
+        Slider[] objects = Resources.FindObjectsOfTypeAll<Slider>();
+        SoundManager.instance.bgmVolumeSlider = (objects.FirstOrDefault(obj => obj.name == "VolumeSliderBGM"));
+        SoundManager.instance.sfxVolumeSlider = (objects.FirstOrDefault(obj => obj.name == "VolumeSliderSFX"));
     }
 
     public void StroyModButtonTrigger()

@@ -80,6 +80,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        bgmVolumeSlider.value = bgmVolume;
+        sfxVolumeSlider.value = sfxVolume;
+    }
+
     // BGM 볼륨 설정
     public void SetBGMVolume(float newVolume)
     {
