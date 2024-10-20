@@ -93,6 +93,7 @@ public class SoundManager : MonoBehaviour
         sfxVolume = newVolume;
     }
 
+    //  Scene마다 Bgm 설정
     private void OnSceneLoaded(Scene scene, LoadSceneMode Mode)
     {
         switch (scene. name)
