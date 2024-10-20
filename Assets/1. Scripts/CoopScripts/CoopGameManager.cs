@@ -43,6 +43,10 @@ public class CoopGameManager : MonoBehaviour
     //Create char UI
     public Image    redshowImageSelect;
     public Image    blueshowImageSelect;
+    public Button   redReadyButton;
+    public Button   blueReadyButton;
+    public GameObject CreatePanel;
+    public GameObject inGamePanel;
     //============================================================================
 
     private void Awake()
@@ -62,30 +66,34 @@ public class CoopGameManager : MonoBehaviour
 
     void Update()
     {
-        loaclTimer += Time.deltaTime;
-        TimerText.text = loaclTimer.ToString("2N");
-
         switch(mapState)
         {
             case MAPSTATE.CREATE:
                 UpdateCreateState();
                 if (readyboolean[0] && readyboolean[1])
                 {
-                    SetInterfaceImage();
-                    Generator.instance.ChangeState(GENSTATE.WORK);
-
                     CreateChar((PLAYERTYPE)inputs[0], new Vector2(-5, -7));
                     CreateChar((PLAYERTYPE)inputs[1], new Vector2(5, -7));
+                    SetInterfaceImage();
+                    Generator.instance.ChangeState(GENSTATE.WORK);
+                    CreatePanel.SetActive(false);
                     ChangeMapState(MAPSTATE.PLAYGAME);
                 }//ALL READY
                 break;
             case MAPSTATE.PLAYGAME:
-                UpdateInterfaceText();
                 if (currentPlayers.Count <= 1)
+                {
                     ChangeMapState(MAPSTATE.ENDGAME);
+                    break;
+                }
+                loaclTimer += Time.deltaTime;
+                TimerText.text = loaclTimer.ToString("F2");
+                UpdateInterfaceText();
                 break;
             case MAPSTATE.ENDGAME:
                 Debug.Log("isFinish..");
+                Generator.instance.ChangeState(GENSTATE.WAIT);
+                inGamePanel.SetActive(false);
                 break;
         }
     }
@@ -136,17 +144,18 @@ public class CoopGameManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.A))
             {
-                inputs[0] = Math.Min(currentCharList.Count - 1, inputs[0] + 1);
+                inputs[0] = Math.Max(0, inputs[0] - 1);
                 redshowImageSelect.sprite = currentCharList[inputs[0]];
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                inputs[0] = Math.Max(0, inputs[0] - 1);
+                inputs[0] = Math.Min(currentCharList.Count - 1, inputs[0] + 1);
                 redshowImageSelect.sprite = currentCharList[inputs[0]];
             }
             else if(Input.GetKeyDown(KeyCode.F))
             {
                 readyboolean[0] = true;
+                redReadyButton.Select();
             }
             
         }
@@ -154,17 +163,18 @@ public class CoopGameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                inputs[1] = Math.Min(currentCharList.Count - 1, inputs[1] + 1);
+                inputs[1] = Math.Max(0, inputs[1] - 1);
                 blueshowImageSelect.sprite = currentCharList[inputs[1]];
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                inputs[1] = Math.Max(0, inputs[1] - 1);
+                inputs[1] = Math.Min(currentCharList.Count - 1, inputs[1] + 1);
                 blueshowImageSelect.sprite = currentCharList[inputs[1]];
             }
-            else if (Input.GetKeyDown(KeyCode.F))
+            else if (Input.GetKeyDown(KeyCode.L))
             {
                 readyboolean[1] = true;
+                blueReadyButton.Select();
             }
 
         }

@@ -140,7 +140,7 @@ public class CoopPlayer : MonoBehaviour
     private void HitCheckUpate()
     {
         if (isHit) HitTimer += Time.deltaTime;
-        if(HitTimer > 0.5f)
+        if(HitTimer > 0.1f)
         {
             HitTimer = 0;
             isHit = false;
