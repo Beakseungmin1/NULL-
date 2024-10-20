@@ -146,7 +146,6 @@ public class Enemy : MonoBehaviour
         {
             if (!isFire)
             {
-                Debug.Log("또뭔데");
                 ShotBall();
                 isFire = true;
             }
