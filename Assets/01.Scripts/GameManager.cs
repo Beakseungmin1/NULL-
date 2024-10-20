@@ -88,7 +88,10 @@ public class GameManager : MonoBehaviour
             {
                 GameOver();
             }
-        }        
+        }
+
+        playerHP = currentCharacterInstance.GetComponent<Player>().PlayerHP;
+
     }
     private void StartScene(int SceneNumber)
     {
@@ -188,4 +191,6 @@ public class GameManager : MonoBehaviour
     {
         characterClass = selectedClass;
     }
+
+    public int GetCurrentHealth() { return playerHP; }
 }

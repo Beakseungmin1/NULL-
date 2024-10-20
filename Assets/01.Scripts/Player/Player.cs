@@ -52,7 +52,8 @@ public partial class Player : TopDownController
     {
         if (collision.gameObject.CompareTag("Damage")) // 트랩과 충돌
         {
-            HP -= 1;   
+            HP -= 1;
+
         }
 
         if (collision.gameObject.CompareTag("Item")) // 아이템과 충돌 
