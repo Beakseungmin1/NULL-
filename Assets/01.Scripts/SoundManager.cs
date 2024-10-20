@@ -10,7 +10,6 @@ public enum Bgm
     TitleBgm,
     Stage1Bgm,
     Stage2Bgm,
-    Stage3Bgm,
     MultiBgm
 }
 
