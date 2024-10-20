@@ -4,34 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-enum SCENESTATE
-{
-
-    
-}
-
 public class UIManager : MonoBehaviour
 {
     public GameObject SoundPanel;
-    public Slider bgmSlider;
-    public Slider sfxSlider;
+    public GameObject BackToTitlePanel;
+    public GameObject CharCreatePanel;
 
-    public static UIManager Instance;
+    //public Slider bgmSlider;
+    //public Slider sfxSlider;
+
+    /*public static UIManager Instance;
     private void Awake()
     {
         if (Instance == null)
         Instance = this;
 
         DontDestroyOnLoad(this);
-    }
+    }*/
+    private CharacterClass playerType = CharacterClass.Frog;
 
     void Update()
     {
+
     }
 
-    public void StroyModButton()
+    public void StroyModButtonTrigger()
     {
-        SceneManager.LoadScene("StageScene1");
+        CharCreatePanel.SetActive(!CharCreatePanel.activeSelf);
+    }
+
+    public void GoTitlePanelTrigger()
+    {
+        BackToTitlePanel.SetActive(!BackToTitlePanel.activeSelf);
     }
 
     public void MultiPlayButton()
@@ -44,6 +48,11 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void GoTitleButtonAccept()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
     public void SoundButton()
     {
         SoundPanel.SetActive(true);
@@ -54,9 +63,31 @@ public class UIManager : MonoBehaviour
         SoundPanel.SetActive(false);
     }
 
+    public void FrogButton()
+    {
+        playerType = CharacterClass.Frog;
+    }
+
+    public void PinkButton()
+    {
+        playerType = CharacterClass.PinkMan;
+    }
+
+    public void BlueButton()
+    {
+        playerType = CharacterClass.Virtual;
+    }
+
+    public void MaskButton()
+    {
+        playerType = CharacterClass.MaskDude;
+    }
+
     public void SelectChar()
     {
-        
+        SceneManager.LoadScene("StageScene1");
+        //TODO GameManager;
+        GameManager.Instance.SetSelectedCharacter(playerType);
     }
 
 }
