@@ -93,9 +93,9 @@ public class CoopPlayer : MonoBehaviour
     {
         InputAxis = Input.GetAxisRaw(playerId == 1 ? "P1Horizontal" : "P2Horizontal");
         if (((Input.GetKeyDown(KeyCode.W) && playerId == 1) || (Input.GetKeyDown(KeyCode.UpArrow) && playerId == 2))
-            && !isJump) isJumpPressed = true;
+            && !isJump) { isJumpPressed = true; SoundManager.instance.PlaySFX(Sfx.M_JumpSfx); }
         if (((Input.GetKeyDown(KeyCode.F) && playerId == 1) || (Input.GetKeyDown(KeyCode.L) && playerId == 2))
-            && !isJump) isAttackPressed = true;
+            && !isJump) { isAttackPressed = true; SoundManager.instance.PlaySFX(Sfx.M_AttackSfx); }
     }
     /// <summary>
     /// 입력을 바탕으로 캐릭터를 이동 시킵니다. [2]
@@ -208,6 +208,7 @@ public class CoopPlayer : MonoBehaviour
             if (tempId != playerId)
             {
                 Destroy(collision.gameObject);
+                SoundManager.instance.PlaySFX(Sfx.HitSfx);
                 IsHit();
             }
         }
@@ -215,6 +216,7 @@ public class CoopPlayer : MonoBehaviour
         if (collision.CompareTag("ProjectileGen"))
         {   
             Destroy(collision.gameObject);
+            SoundManager.instance.PlaySFX(Sfx.HitSfx);
             IsHit();       
         }
     }
@@ -228,6 +230,7 @@ public class CoopPlayer : MonoBehaviour
         if (collision.collider.CompareTag("Consume"))
         {
             Destroy(collision.gameObject);
+            SoundManager.instance.PlaySFX(Sfx.M_EatFruitSfx);
             IsConsume();
         }
     }

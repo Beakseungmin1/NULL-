@@ -2063,7 +2063,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 424055874}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2146199547}
+        m_TargetAssemblyTypeName: CoopGameCore, Assembly-CSharp
+        m_MethodName: InfoButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &424055874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14284,6 +14296,7 @@ MonoBehaviour:
   blueReadyButton: {fileID: 2057566054}
   winnerText: {fileID: 499417880}
   winnerImage: {fileID: 1796105603}
+  infoPanel: {fileID: 1482690707}
   createPanel: {fileID: 820380223}
   inGamePanel: {fileID: 235536230}
   endPanel: {fileID: 846434731}
