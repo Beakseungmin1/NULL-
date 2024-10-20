@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Bullet
-    prefab: {fileID: 6690241508154072495, guid: ee963bd1fc5366d42b41050ef61985a3, type: 3}
+  - tag: Missile
+    prefab: {fileID: 7261907280232470353, guid: 6a030f8232addd04da544d8620758673, type: 3}
     size: 10
   - tag: Arrow
     prefab: {fileID: 4836779924952128959, guid: 9bf1422bfe49c5d4285e32c07e74ce9c, type: 3}
@@ -808,7 +808,7 @@ Transform:
   m_GameObject: {fileID: 1726918751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.63, y: -2.56, z: 0}
+  m_LocalPosition: {x: -8.76, y: -3.93, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -905,8 +905,8 @@ Transform:
   m_GameObject: {fileID: 1788457282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4404, y: 0.09, z: 0}
-  m_LocalScale: {x: 4.469409, y: 7.9270787, z: 1}
+  m_LocalPosition: {x: 6.54, y: -0.86, z: 0}
+  m_LocalScale: {x: 3.433847, y: 6.933023, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1274020813}
@@ -919,12 +919,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788457282}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80c2dc3c05c4ec546b4ee9890724f172, type: 3}
+  m_Script: {fileID: 11500000, guid: a1b4e173bae1f614f8b28fbc3e675898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 1274020811}
+  Weapon: {fileID: 0}
 --- !u!1 &1869954105
 GameObject:
   m_ObjectHideFlags: 0
