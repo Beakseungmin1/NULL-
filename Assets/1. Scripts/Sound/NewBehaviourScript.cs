@@ -11,6 +11,6 @@ public class NewBehaviourScript : MonoBehaviour
     public void TestButtonClick()
     {
         SceneManager.LoadScene("StageScene1"); // 씬 로드
-        SoundManager.instance.PlayBGM(Bgm.BossBgm);
+        SoundManager.instance.PlayBGM(Bgm.Stage1Bgm);
     }
 }
