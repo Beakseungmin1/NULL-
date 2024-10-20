@@ -19,6 +19,7 @@ namespace Assets._1._Scripts.CoopScripts.Objects
                 int itemindex = Random.Range(0, items.Count);
                 Vector3 pos = spawnPosition[index].transform.position;
                 Instantiate(items[itemindex], pos, Quaternion.identity);
+                SoundManager.instance.PlaySFX(Sfx.M_FruitSfx);
                 localTimer = 0;
             }
         }
