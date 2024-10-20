@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("StageScene1");
         //TODO GameManager;
-
+        GameManager.Instance.SetSelectedCharacter(playerType);
     }
 
 }
