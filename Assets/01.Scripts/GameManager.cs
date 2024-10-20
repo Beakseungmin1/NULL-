@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    /*
     public Text timerText;
     public Text scoreText;
     public Text HPText;
-
+    */
     public float timeLimit = 5.0f;
     private float timer;
     public int score; 
@@ -166,8 +166,9 @@ public class GameManager : MonoBehaviour
     private void UadateTimer()
     {
         timer += Time.deltaTime;
-        TimerText();
+        //TimerText();
     }
+    /*
     private void TimerText()
     {
         if (timerText != null)
@@ -177,7 +178,7 @@ public class GameManager : MonoBehaviour
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
-
+    */
     public void GameExit() // 게임 종료
     {
         UnityEditor.EditorApplication.isPlaying = false;

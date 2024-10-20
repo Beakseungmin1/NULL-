@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/00.Scenes/[sing]EnemyPhase1.unity
     guid: 20601a31d74dbef4da521b0c25a7d65f
   - enabled: 1
+    path: Assets/00.Scenes/[sing]EnemyPhase2.unity
+    guid: 3bfcd9e129a1fd241a1995346b55ace6
+  - enabled: 1
+    path: Assets/00.Scenes/[sing]EnemyPhase3.unity
+    guid: 1d5baee0008bb8548b4051c0f4f0514e
+  - enabled: 1
     path: Assets/00.Scenes/CoopScene.unity
     guid: dab5079fa81195048b87683d940af4f3
   m_configObjects: {}
