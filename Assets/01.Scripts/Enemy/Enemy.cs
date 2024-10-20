@@ -12,18 +12,18 @@ public class Enemy : MonoBehaviour
 
     float MoveSpeed = 0.01f;
     float ThinkTime = 0.8f;
-    float DropDelayTime = 0.3f; // 1ÆĞÅÏ µå¶øÄğÅ¸ÀÓ
-    float ShotDelayTime = 1f; // 2ÆĞÅÏ µå¶øÄğÅ¸ÀÓ
-    float patternTime = 10f; // ÆĞÅÏ À¯Áö½Ã°£
+    float DropDelayTime = 0.3f; // 1íŒ¨í„´ ë“œëì¿¨íƒ€ì„
+    float ShotDelayTime = 1f; // 2íŒ¨í„´ ë“œëì¿¨íƒ€ì„
+    float patternTime = 10f; // íŒ¨í„´ ìœ ì§€ì‹œê°„
 
     bool isFire;
     Vector2 middlepositon;
 
     EnemyEnum.Enemypattern enemypattern;// = EnemyEnum.Enemypattern.pattern3;
 
-    float toTime;  // ÀÌµ¿¿ë ½Ã°£ °è»ê¿ë º¯¼ö
-    float tooTime;  // È­»ì¹ß»ç ½Ã°£ °è»ê¿ë º¯¼ö
-    float toooTime = 10f; // ÆĞÅÏ ½Ã°£ °è»ê¿ë º¯¼ö
+    float toTime;  // ì´ë™ìš© ì‹œê°„ ê³„ì‚°ìš© ë³€ìˆ˜
+    float tooTime;  // í™”ì‚´ë°œì‚¬ ì‹œê°„ ê³„ì‚°ìš© ë³€ìˆ˜
+    float toooTime = 10f; // íŒ¨í„´ ì‹œê°„ ê³„ì‚°ìš© ë³€ìˆ˜
 
     int random;
 
@@ -75,10 +75,10 @@ public class Enemy : MonoBehaviour
 
         for (int i = -1; i < 2; i += 2)
         {
-            // °øÀ» ¼ÒÈ¯ÇÑÈÄ À§Ä¡¸¦ Á¤ÇØÁØ´Ù
+            // ê³µì„ ì†Œí™˜í•œí›„ ìœ„ì¹˜ë¥¼ ì •í•´ì¤€ë‹¤
             GameObject ball = ObjectPool._instance.SpawnFromPool("Ball");
 
-            // °øÀÇ À§Ä¡ ¼³Á¤ (ÇöÀç À§Ä¡ + i)
+            // ê³µì˜ ìœ„ì¹˜ ì„¤ì • (í˜„ì¬ ìœ„ì¹˜ + i)
             Vector2 ballposition = new Vector2(transform.position.x + i, transform.position.y);
             ball.transform.position = ballposition;
 
@@ -94,34 +94,34 @@ public class Enemy : MonoBehaviour
     {
         if (tooTime > ShotDelayTime)
         {
-            // ÇÃ·¹ÀÌ¾î¿Í ¹«±â °£ÀÇ ¹æÇâ º¤ÅÍ °è»ê
-            Vector2 direction = (Player.transform.position - Weapon.transform.position).normalized;
+            // í”Œë ˆì´ì–´ì™€ ë¬´ê¸° ê°„ì˜ ë°©í–¥ ë²¡í„° ê³„ì‚°
+            Vector2 direction = (Player.transform.position - transform.position).normalized;
 
-            // ¹«±âÀÇ È¸Àü °¢µµ °è»ê
-            float weaponangle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            // ë¬´ê¸°ì˜ íšŒì „ ê°ë„ ê³„ì‚°
+            //float weaponangle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            // ¹«±â È¸Àü ¼³Á¤
-            Weapon.transform.rotation = Quaternion.Euler(0, 0, weaponangle);
+            // ë¬´ê¸° íšŒì „ ì„¤ì •
+            //Weapon.transform.rotation = Quaternion.Euler(0, 0, weaponangle);
 
-            float spreadAngle = 16f; // °¢µµ °£°İ
-            int numberOfProjectiles = 3; // ¹ß»çÇÒ Åõ»çÃ¼ ¼ö
+            float spreadAngle = 16f; // ê°ë„ ê°„ê²©
+            int numberOfProjectiles = 3; // ë°œì‚¬í•  íˆ¬ì‚¬ì²´ ìˆ˜
 
             for (int i = 0; i < numberOfProjectiles; i++)
             {
-                // °¢ Åõ»çÃ¼ÀÇ ¹æÇâ °è»ê
+                // ê° íˆ¬ì‚¬ì²´ì˜ ë°©í–¥ ê³„ì‚°
                 float angleOffset = (i - 1) * spreadAngle; // -10, 0, +10
                 Vector2 projectileDirection = Quaternion.Euler(0, 0, angleOffset) * direction;
 
-                // ¿ÀºêÁ§Æ® Ç®¿¡¼­ È­»ì °¡Á®¿À±â
+                // ì˜¤ë¸Œì íŠ¸ í’€ì—ì„œ í™”ì‚´ ê°€ì ¸ì˜¤ê¸°
                 GameObject Arrow = ObjectPool._instance.SpawnFromPool("Arrow");
 
-                // È­»ì À§Ä¡¿Í È¸Àü ¼³Á¤
-                Arrow.transform.position = Weapon.transform.position;
+                // í™”ì‚´ ìœ„ì¹˜ì™€ íšŒì „ ì„¤ì •
+                Arrow.transform.position = transform.position;
                 float angle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
                 Arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
 
 
-                // ¹ß»ç ÈÄ Å¸ÀÌ¸Ó ÃÊ±âÈ­
+                // ë°œì‚¬ í›„ íƒ€ì´ë¨¸ ì´ˆê¸°í™”
                 tooTime = 0;
             }
         }
@@ -140,14 +140,13 @@ public class Enemy : MonoBehaviour
 
     void Pattern3()
     {
-        Debug.Log(isFire);
         StandMiddle();
 
         if (Vector2.Distance(transform.position, middlepositon) < 0.1f)
         {
             if (!isFire)
             {
-                Debug.Log("¶Ç¹ºµ¥");
+                Debug.Log("ë˜ë­”ë°");
                 ShotBall();
                 isFire = true;
             }

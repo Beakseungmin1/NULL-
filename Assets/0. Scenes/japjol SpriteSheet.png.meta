@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ad9ad5a8422b7b45b76d2dae5fbe913
+guid: 8c6dc563313efbd45b0c17890a53a94c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,6 +82,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -106,30 +119,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lava_frames (16 x 32)_0
+      name: japjol SpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
+        x: 57
+        y: 58
+        width: 41
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 290ce3903e96f8d498e64b0c2c90c00f
-      internalID: 599614990
+      spriteID: e206c74e5fac13b4fa3efd4cfed56743
+      internalID: 1694995111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lava_frames (16 x 32)_1
+      name: japjol SpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
+        x: 207
+        y: 58
+        width: 41
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8679568fc84b0ce43b1f14d2b871f8ec
-      internalID: -186205296
+      spriteID: be3cf437599132b42a9914ac7ed2f0c7
+      internalID: 1927538999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lava_frames (16 x 32)_2
+      name: japjol SpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
+        x: 357
+        y: 61
+        width: 40
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7f25ee640ce8f4381661914691333b
-      internalID: 1538533093
+      spriteID: 03fb8a8cf22a89f4ea2b4ce4f55b6849
+      internalID: 423557382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lava_frames (16 x 32)_3
+      name: japjol SpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
+        x: 508
+        y: 60
+        width: 39
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eafc1db69de26224fab244ebcd73cb47
-      internalID: -330515424
+      spriteID: bff0049a114037a45b4c82b78f12e014
+      internalID: 738605823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lava_frames (16 x 32)_4
+      name: japjol SpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 657
+        y: 60
+        width: 40
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 869ba04666dfc3746b29dbafe788e005
-      internalID: -1943447778
+      spriteID: c51536047e96e054da2e548f42f4d27a
+      internalID: 1368970590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lava_frames (16 x 32)_5
+      name: japjol SpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
+        x: 806
+        y: 59
+        width: 42
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 371a14b80a91a144da3a8437339dc2b2
-      internalID: 2048724573
+      spriteID: 5260088ede5f70f4091036a57c8f106e
+      internalID: -1028527141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lava_frames (16 x 32)_6
+      name: japjol SpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
+        x: 958
+        y: 58
+        width: 40
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cf6a7749a008704e910bf962a230d39
-      internalID: -417197462
+      spriteID: 98b188e67abd71e4e8c9fd7d058d7e4c
+      internalID: -1556001660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lava_frames (16 x 32)_7
+      name: japjol SpriteSheet_7
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
+        x: 1108
+        y: 57
+        width: 40
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcd8b6ec1e3045c4895a97786a64abaa
-      internalID: -1314768164
+      spriteID: 3530b374cb5ada24ea7534b44d9e17bb
+      internalID: 720448633
       vertices: []
       indices: 
       edges: []
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lava_frames (16 x 32)_0: 599614990
-      Lava_frames (16 x 32)_1: -186205296
-      Lava_frames (16 x 32)_2: 1538533093
-      Lava_frames (16 x 32)_3: -330515424
-      Lava_frames (16 x 32)_4: -1943447778
-      Lava_frames (16 x 32)_5: 2048724573
-      Lava_frames (16 x 32)_6: -417197462
-      Lava_frames (16 x 32)_7: -1314768164
+      japjol SpriteSheet_0: 1694995111
+      japjol SpriteSheet_1: 1927538999
+      japjol SpriteSheet_2: 423557382
+      japjol SpriteSheet_3: 738605823
+      japjol SpriteSheet_4: 1368970590
+      japjol SpriteSheet_5: -1028527141
+      japjol SpriteSheet_6: -1556001660
+      japjol SpriteSheet_7: 720448633
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
