@@ -496,7 +496,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 384986294}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GoTitleButtonAccept
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &384986294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,7 +978,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1934400345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GoTitlePanelTrigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1934400345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,7 +1279,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5122926968958167200}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GoTitlePanelTrigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &423109923927905414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,7 +1391,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2941714351951992870}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: FrogButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &470117199470133476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,7 +1899,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7010547778368888403}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PinkButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1688944773861084454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,7 +2085,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9003122641277130571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: StroyModButtonTrigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2315793614063315298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,7 +2602,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5509398321649586994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: MaskButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3372777731411737508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,7 +3523,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7627541860816681694}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BlueButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &5834503818276808851
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3866,7 +3962,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6026065025438950733}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SelectChar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6997937969658310781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4045,7 +4153,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9024908256865644877}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: StroyModButton
+        m_MethodName: StroyModButtonTrigger
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4775,8 +4883,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoundPanel: {fileID: 470117199470133476}
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  BackToTitlePanel: {fileID: 1951394231}
+  CharCreatePanel: {fileID: 7650933002826320821}
 --- !u!1 &9115444373377994977
 GameObject:
   m_ObjectHideFlags: 0
