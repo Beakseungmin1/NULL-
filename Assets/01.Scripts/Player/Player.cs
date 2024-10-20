@@ -53,20 +53,18 @@ public partial class Player : TopDownController
         if (collision.gameObject.CompareTag("Damage")) // 트랩과 충돌
         {
             HP -= 1;
-            SoundManager.instance.PlaySFX(Sfx.HitSfx);
+
         }
 
         if (collision.gameObject.CompareTag("Item")) // 아이템과 충돌 
         {
             HP += 1;
             Destroy(collision.gameObject);
-            SoundManager.instance.PlaySFX(Sfx.M_EatFruitSfx);
         }
 
         if (collision.gameObject.CompareTag("Destroy")) // 부서지는 블록과 충돌
         {
             Destroy(collision.gameObject, 1f);
-            SoundManager.instance.PlaySFX(Sfx.HitSfx);
         }
     }
 }
