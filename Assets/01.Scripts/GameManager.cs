@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     public float mainSound = 1.0f;
 
     private GameSceneManager gameSceneManager;
+    public CharaterSelect charaterSelect;
+    CharacterClass characterClass;
+
 
     private void Awake()
     {
@@ -44,13 +47,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //////////////////////////////////////////////////////// test
-        if (Input.GetKeyDown(KeyCode.C)) score++;
-        if (Input.GetKeyDown(KeyCode.X)) playerHP--;
-        scoreText.text = score.ToString();
-        HPText.text = playerHP.ToString();
-        SoundManager.instance.SetBGMVolume(mainSound);
-        //////////////////////////////////////////////////////// test
         if (gamePlayState)
         {
             UadateTimer();
@@ -84,7 +80,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
-        GameObject.Find("UIManager").gameObject.transform.Find("Canvas").gameObject.SetActive(false);
+        GameObject.Find("Canvas").gameObject.SetActive(false);
         gamePlayState = true;
         StartScene((int)Scenes.SCENE_1);
     }
@@ -156,5 +152,10 @@ public class GameManager : MonoBehaviour
     public void GameExit() // 게임 종료
     {
         UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    public void SetSelectedCharacter(CharacterClass selectedClass)
+    {
+        characterClass = selectedClass;
     }
 }
