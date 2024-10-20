@@ -41,6 +41,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource sfxSource;  // SFX 재생
     private float bgmVolume = 0.3f; // BGM 초기 볼륨 설정
     private float sfxVolume = 0.7f; // SFX 초기 볼륨 설정
+    bool isFirst = false;
 
     public void Awake()
     {
@@ -81,9 +82,12 @@ public class SoundManager : MonoBehaviour
     }
 
     private void Update()
-    {
-        bgmVolumeSlider.value = bgmVolume;
-        sfxVolumeSlider.value = sfxVolume;
+    {       
+       bgmVolumeSlider.value = bgmVolume;
+       sfxVolumeSlider.value = sfxVolume;
+       bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
+       sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+        
     }
 
     // BGM 볼륨 설정
