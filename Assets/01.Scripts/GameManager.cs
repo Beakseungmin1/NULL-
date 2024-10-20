@@ -44,13 +44,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //////////////////////////////////////////////////////// test
-        if (Input.GetKeyDown(KeyCode.C)) score++;
-        if (Input.GetKeyDown(KeyCode.X)) playerHP--;
-        scoreText.text = score.ToString();
-        HPText.text = playerHP.ToString();
-        SoundManager.instance.SetBGMVolume(mainSound);
-        //////////////////////////////////////////////////////// test
         if (gamePlayState)
         {
             UadateTimer();

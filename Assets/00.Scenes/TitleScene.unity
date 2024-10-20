@@ -364,7 +364,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 381266475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &381266475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,7 +1299,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1670416947796147167}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SoundButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &430802399003238156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,11 +1601,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8316348954861637844}
+  m_Father: {fileID: 4961583242027819948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -902, y: -472}
+  m_AnchoredPosition: {x: -902, y: -439}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1223339671786323701
@@ -2893,8 +2917,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5531740150487271402}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4703874751204580202
@@ -3060,6 +3083,7 @@ RectTransform:
   - {fileID: 3766916893953124029}
   - {fileID: 381266473}
   - {fileID: 7014372289609833218}
+  - {fileID: 1118466413794768649}
   m_Father: {fileID: 8316348954861637844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3114,7 +3138,7 @@ Transform:
   m_GameObject: {fileID: 8398261457664456744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 956.95056, y: 730.748, z: -14.396961}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3250,7 +3274,7 @@ RectTransform:
   m_Children:
   - {fileID: 8316348954861637844}
   - {fileID: 6332353504560131604}
-  m_Father: {fileID: 4575153870593584610}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3574,7 +3598,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7955762453543258222}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: MultiPlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &6141499589413729068
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3874,7 +3910,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7887001228565832120}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SoundExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6999773238791631527
 GameObject:
   m_ObjectHideFlags: 0
@@ -3994,7 +4042,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2421785715958868064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9024908256865644877}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: StroyModButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &7109980879014380917
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4454,7 +4514,6 @@ RectTransform:
   - {fileID: 4961583242027819948}
   - {fileID: 6471334920938700619}
   - {fileID: 3405420047521051599}
-  - {fileID: 1118466413794768649}
   m_Father: {fileID: 5531740150487271402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4695,6 +4754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4575153870593584610}
+  - component: {fileID: 9024908256865644877}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -4702,6 +4762,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9024908256865644877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024908256865644876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56c10d8d2e9f5e46b93a2224eff69fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundPanel: {fileID: 470117199470133476}
+  bgmSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
 --- !u!1 &9115444373377994977
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,3 +4805,4 @@ SceneRoots:
   - {fileID: 5135416896154114991}
   - {fileID: 316957960}
   - {fileID: 4575153870593584610}
+  - {fileID: 5531740150487271402}

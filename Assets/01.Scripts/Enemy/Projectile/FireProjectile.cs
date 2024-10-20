@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireProjectile : MonoBehaviour
 {
-    private float speed = 10f;
+    [SerializeField]private float speed = 10f;
 
     void Update()
     {
