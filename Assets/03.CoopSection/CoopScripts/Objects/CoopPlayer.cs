@@ -69,6 +69,7 @@ public class CoopPlayer : MonoBehaviour
         AnimUpdate();
     }
 
+    public int GetPlayerId() { return playerId; }
     public PLAYERTYPE GetCharType() { return playerType; }
     public int GetPlayerHealth() { return playerLife; }
     /// <summary>
@@ -94,7 +95,7 @@ public class CoopPlayer : MonoBehaviour
         if (((Input.GetKeyDown(KeyCode.W) && playerId == 1) || (Input.GetKeyDown(KeyCode.UpArrow) && playerId == 2))
             && !isJump) isJumpPressed = true;
         if (((Input.GetKeyDown(KeyCode.F) && playerId == 1) || (Input.GetKeyDown(KeyCode.L) && playerId == 2))
-            ) isAttackPressed = true;
+            && !isJump) isAttackPressed = true;
     }
     /// <summary>
     /// 입력을 바탕으로 캐릭터를 이동 시킵니다. [2]
@@ -167,7 +168,7 @@ public class CoopPlayer : MonoBehaviour
     private void IsDead()
     {
         Destroy(gameObject);
-        CoopGameManager.instance.PopPlayerInDIct(playerId);
+        CoopGameCore.instance.PopPlayerInDIct(playerId);
         //TODO
     }
 

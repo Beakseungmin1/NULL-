@@ -43,6 +43,7 @@ namespace Assets._1._Scripts.CoopScripts.Objects
            switch(currentState)
             {
                 case GENSTATE.WAIT:
+                    rg2d.velocity = Vector2.zero;
                     break;
                 case GENSTATE.WORK:
                     GenOrderWork();

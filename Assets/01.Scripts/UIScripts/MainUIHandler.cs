@@ -19,4 +19,6 @@ public class MainUIHandler : MonoBehaviour
         //TEMP CODE
         SceneManager.LoadScene("CoopScene");
     }
+
+
 }

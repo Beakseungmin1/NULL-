@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public enum MAPSTATE
 {
@@ -18,7 +19,7 @@ public enum Press
     RIGHT
 }
 
-public class CoopGameManager : MonoBehaviour
+public class CoopGameCore : MonoBehaviour
 {
     [SerializeField]private float mainTime = 0;
     private int spawnid = 0;
@@ -27,9 +28,10 @@ public class CoopGameManager : MonoBehaviour
     private int[] inputs = new int[2];
     private int maxInput = 0;
 
+    [SerializeField]private List<GameObject> generators = new List<GameObject>();
     private Dictionary<int, CoopPlayer> currentPlayers = new Dictionary<int, CoopPlayer>();
     List<Sprite> currentCharList = new List<Sprite>();
-    public static CoopGameManager instance;
+    public static CoopGameCore instance;
     private MAPSTATE mapState = MAPSTATE.CREATE;    
     public GameObject playerPrefab;
     //============================================================================
@@ -40,13 +42,21 @@ public class CoopGameManager : MonoBehaviour
     public Text     bluePlayerHealthText;
     public Image    redPlayerImage;
     public Image    bluePlayerImage;
+    
     //Create char UI
     public Image    redshowImageSelect;
     public Image    blueshowImageSelect;
     public Button   redReadyButton;
     public Button   blueReadyButton;
-    public GameObject CreatePanel;
+
+    //End game UI
+    public Text winnerText;
+    public Image winnerImage;
+
+    //Panel
+    public GameObject createPanel;
     public GameObject inGamePanel;
+    public GameObject endPanel;
     //============================================================================
 
     private void Awake()
@@ -70,15 +80,7 @@ public class CoopGameManager : MonoBehaviour
         {
             case MAPSTATE.CREATE:
                 UpdateCreateState();
-                if (readyboolean[0] && readyboolean[1])
-                {
-                    CreateChar((PLAYERTYPE)inputs[0], new Vector2(-5, -7));
-                    CreateChar((PLAYERTYPE)inputs[1], new Vector2(5, -7));
-                    SetInterfaceImage();
-                    Generator.instance.ChangeState(GENSTATE.WORK);
-                    CreatePanel.SetActive(false);
-                    ChangeMapState(MAPSTATE.PLAYGAME);
-                }//ALL READY
+                UpdateAllMemReadey();
                 break;
             case MAPSTATE.PLAYGAME:
                 if (currentPlayers.Count <= 1)
@@ -91,13 +93,15 @@ public class CoopGameManager : MonoBehaviour
                 UpdateInterfaceText();
                 break;
             case MAPSTATE.ENDGAME:
-                Debug.Log("isFinish..");
-                Generator.instance.ChangeState(GENSTATE.WAIT);
-                inGamePanel.SetActive(false);
+                UpdateEndGameState();
                 break;
         }
     }
 
+    public void ReturnTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
     /// <summary>
     /// 맵의 현재 상황을 변화 시킵니다.
     /// </summary>
@@ -138,6 +142,7 @@ public class CoopGameManager : MonoBehaviour
         bluePlayerHealthText.text = currentPlayers[2].GetPlayerHealth().ToString();
 
     }
+    
     private void UpdateCreateState()
     {
         if (!readyboolean[0])
@@ -179,5 +184,36 @@ public class CoopGameManager : MonoBehaviour
 
         }
     }
+    private void UpdateAllMemReadey()
+    {
+        if (readyboolean[0] && readyboolean[1])
+        {
+            CreateChar((PLAYERTYPE)inputs[0], new Vector2(-5, -7));
+            CreateChar((PLAYERTYPE)inputs[1], new Vector2(5, -7));
+            SetInterfaceImage();
+            foreach(GameObject gen in generators)
+            {
+                gen.GetComponent<Generator>().ChangeState(GENSTATE.WORK);
+            }
+            createPanel.SetActive(false);
+            ChangeMapState(MAPSTATE.PLAYGAME);
+        }//ALL READY
+    }
+    
+    private void UpdateEndGameState()
+    {
+        inGamePanel.SetActive(false);
+        endPanel.SetActive(true);
+        foreach (GameObject gen in generators)
+        {
+            gen.GetComponent<Generator>().ChangeState(GENSTATE.WAIT);
+        }
+        foreach (var winner in currentPlayers)
+        {
+            winnerText.text = winner.Value.GetPlayerId().ToString() + "P";
+            winnerImage.sprite = ResourceHandler.instance.GetSprites()[(int)winner.Value.GetCharType()];
+        }
+    }
+   
 }
 
