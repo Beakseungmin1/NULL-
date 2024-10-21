@@ -14332,6 +14332,8 @@ MonoBehaviour:
   - {fileID: 1660691163}
   - {fileID: 1176585361}
   - {fileID: 1402625468}
+  itemGenerators:
+  - {fileID: 367213597}
   playerPrefab: {fileID: 7966185371260112410, guid: ef3f6f5f12df63143b13448f0dc1dfbd, type: 3}
   TimerText: {fileID: 466477951}
   redPlayerHealthText: {fileID: 341332214}

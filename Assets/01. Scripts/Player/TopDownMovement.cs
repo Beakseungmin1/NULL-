@@ -8,6 +8,7 @@ public class TopDownMovement : MonoBehaviour
     private Rigidbody2D movementRigidbody;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private float damageY = 0.5f;
 
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private LayerMask groundLayer;
@@ -106,6 +107,23 @@ public class TopDownMovement : MonoBehaviour
             jumpCount = 0;
         }
     } 
+
+    // ------- 피격 -------
+    public void Damage(Vector2 targetPos)
+    {
+        animator.SetBool("isHit", true);
+        animator.SetBool("isJumping", false);
+        animator.SetBool("isDouble", false);
+        animator.SetBool("isRunning", false);
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+    }
+
+    public void StopDamage() // 해제 
+    {
+        Debug.Log("애니메이션 전환");
+        animator.SetBool("isHit", false); 
+
+    }
 }
 
 
