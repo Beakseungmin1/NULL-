@@ -16,12 +16,12 @@ public class GameManager : MonoBehaviour
     public int score; 
     private bool gamePlayState;
 
-    public int playerHP = 5;
+    public int playerHP = 0;
 
-    [Range(0f, 1f)]
-    public float mainSound = 1.0f;
+    //[Range(0f, 1f)]
+    //public float mainSound = 1.0f;
 
-    private GameSceneManager gameSceneManager;
+    //private GameSceneManager gameSceneManager;
 
     [SerializeField] public GameObject[] CharacterPrefab;
     private GameObject currentCharacterInstance;
@@ -77,54 +77,54 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        gameSceneManager = new GameSceneManager();        
+        //gameSceneManager = new GameSceneManager();        
         InitializeGame();
     }
 
     // Update is called once per frame
     private void Update()
     {
+        //    UadateTimer();
+        //    if (timer > timeLimit)
+        //    {
+        //        GameClear();
+        //    }
+
+        if (currentCharacterInstance != null)
+        {
+            playerHP = currentCharacterInstance.GetComponent<Player>().PlayerHP;
+        }
         if (gamePlayState)
         {
-            UadateTimer();
-            if (timer > timeLimit)
-            {
-                GameClear();
-            }
-
             if (playerHP <= 0)
             {
                 GameOver();
             }
         }
 
-        if(currentCharacterInstance != null)
-        {
-            playerHP = currentCharacterInstance.GetComponent<Player>().PlayerHP;
-        }
-
-    }
-    private void StartScene(int SceneNumber)
-    {
-        gameSceneManager.StartScene(SceneNumber);
-        ResetSceneTimer();
     }
 
-    private void ResetSceneTimer()
-    {
-        timer = 0.0f;
-    }
+    //private void StartScene(int SceneNumber)
+    //{
+    //    gameSceneManager.StartScene(SceneNumber);
+    //    ResetSceneTimer();
+    //}
+
+    //private void ResetSceneTimer()
+    //{
+    //    timer = 0.0f;
+    //}
 
     private void InitializeGame()
     {
-        score = 0;
-        timer = 0.0f;
+        //score = 0;
+        //timer = 0.0f;
         gamePlayState = false;
     }
     public void StartGame()
     {
         gamePlayState = true;
-        StartScene((int)Scenes.SCENE_1);
+        //StartScene((int)Scenes.SCENE_1);
     }
 
     public void ReStartGame()
@@ -132,49 +132,50 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("TitleScene");
     }
 
-    private void GameClear()
-    {
-        Debug.Log($"{gameSceneManager.currentScene} 스테이지 클리어");
+    //private void GameClear()
+    //{
+        //Debug.Log($"{gameSceneManager.currentScene} 스테이지 클리어");
         
-        gamePlayState = false;
+        //gamePlayState = false;
 
         //다음 씬의 사운드
 
-        if (gameSceneManager.currentScene == (int)Scenes.LASTSCENE)
-        {
-            CompleteGame();
-        }
-        else
-        {
-            gamePlayState = true;
-            gameSceneManager.CompleteScene();
-            StartScene(gameSceneManager.currentScene);
-        }
-    }
+        //if (gameSceneManager.currentScene == (int)Scenes.LASTSCENE)
+        //{
+        //    CompleteGame();
+        //}
+        //else
+        //{
+        //    gamePlayState = true;
+        //    gameSceneManager.CompleteScene();
+        //    //StartScene(gameSceneManager.currentScene);
+        //}
+    //}
 
-    private void CompleteGame()
-    {
-        Debug.Log("모든 스테이지 클리어");
-        GameClearUI();
-    }
+    //private void CompleteGame()
+    //{
+        //Debug.Log("모든 스테이지 클리어");
+        //GameClearUI();
+    //}
 
-    private void GameClearUI()
-    {
+   //private void GameClearUI()
+    //{
         //gameObject.SetActive(true)
-    }
+    //}
     private void GameOver()
     {
         Debug.Log("게임오버");
 
         //게임오버 사운드
-
+        currentCharacterInstance = null;
         gamePlayState = false;
+        playerHP = currentCharacterInstance.GetComponent<Player>().PlayerMaxHP;
         GameOverUI();
     }
 
     private void GameOverUI()
     {
-        //gameObject.SetActive(true)
+        SceneManager.LoadScene("TitleScene");
     }
     private void UadateTimer()
     {
@@ -200,6 +201,7 @@ public class GameManager : MonoBehaviour
     public void SetSelectedCharacter(CharacterClass selectedClass)
     {
         characterClass = selectedClass;
+        gamePlayState = true;
     }
 
     public int GetCurrentHealth() { return playerHP; }

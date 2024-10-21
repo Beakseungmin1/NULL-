@@ -1,6 +1,7 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public partial class Player : TopDownController
@@ -15,6 +16,10 @@ public partial class Player : TopDownController
     public int PlayerHP
     {
         get { return HP; }
+    }
+    public int PlayerMaxHP
+    {
+        get { return maxHP; }
     }
 
     public void Awake()
@@ -75,6 +80,17 @@ public partial class Player : TopDownController
             Destroy(collision.gameObject, 1f);
             topDownMovement.BreakBlock();
 
+        }
+        if (collision.gameObject.CompareTag("Portal")) // 아이템과 충돌 
+        {
+            if (SceneManager.GetActiveScene().name == "StageScene1")
+            {
+                SceneManager.LoadScene("StageScene2");
+            }
+            else if (SceneManager.GetActiveScene().name == "StageScene2")
+            {
+                SceneManager.LoadScene("EndCutScene");
+            }
         }
     }
     private void OnCollisionExit2D(Collision2D collision)

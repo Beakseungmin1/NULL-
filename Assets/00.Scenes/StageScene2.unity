@@ -46619,6 +46619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndPonit
       objectReference: {fileID: 0}
+    - target: {fileID: 1510991587173743753, guid: e67641568fc5d5545a7925c05fe9cb81, type: 3}
+      propertyPath: m_TagString
+      value: Portal
+      objectReference: {fileID: 0}
     - target: {fileID: 5925149733036082457, guid: e67641568fc5d5545a7925c05fe9cb81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 169.8845
