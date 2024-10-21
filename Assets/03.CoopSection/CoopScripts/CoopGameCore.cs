@@ -31,6 +31,7 @@ public class CoopGameCore : MonoBehaviour
     private int maxInput = 0;
 
     [SerializeField]private List<GameObject> generators = new List<GameObject>();
+    [SerializeField]private List<GameObject> itemGenerators = new List<GameObject>();
     private Dictionary<int, CoopPlayer> currentPlayers = new Dictionary<int, CoopPlayer>();
     List<Sprite> currentCharList = new List<Sprite>();
     public static CoopGameCore instance;
@@ -213,6 +214,10 @@ public class CoopGameCore : MonoBehaviour
             {
                 gen.GetComponent<Generator>().ChangeState(GENSTATE.WORK);
             }
+            foreach (GameObject igen in itemGenerators)
+            {
+                igen.GetComponent<ItemGenerator>().ChangeState(GENSTATE.WORK);
+            }
             createPanel.SetActive(false);
             ChangeMapState(MAPSTATE.PLAYGAME);
         }//ALL READY
@@ -232,6 +237,10 @@ public class CoopGameCore : MonoBehaviour
         foreach (GameObject gen in generators)
         {
             gen.GetComponent<Generator>().ChangeState(GENSTATE.WAIT);
+        }
+        foreach (GameObject igen in itemGenerators)
+        {
+            igen.GetComponent<ItemGenerator>().ChangeState(GENSTATE.WAIT);
         }
         foreach (var winner in currentPlayers)
         {
