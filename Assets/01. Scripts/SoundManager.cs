@@ -63,9 +63,6 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        // 테스트용
-        SoundManager.instance.PlayBGM(Bgm.TitleBgm);
-
         // BGM 볼륨 슬라이더 설정
         if (bgmVolumeSlider != null)
         {
@@ -86,8 +83,7 @@ public class SoundManager : MonoBehaviour
        bgmVolumeSlider.value = bgmVolume;
        sfxVolumeSlider.value = sfxVolume;
        bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
-       sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
-        
+       sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);       
     }
 
     // BGM 볼륨 설정
@@ -120,7 +116,11 @@ public class SoundManager : MonoBehaviour
             case "CoopScene":
                 PlayBGM(Bgm.MultiBgm);
                 break;
+            case "StartCutScene":  // BGM을 재생하지 않는 씬
+                StopBGM(); // BGM 멈추기
+                break;
             default:
+                StopBGM();
                 break;
         }
     }
@@ -153,4 +153,10 @@ public class SoundManager : MonoBehaviour
             sfxSource.PlayOneShot(sfxClips[clipIndex], sfxVolume);  // SFX 볼륨 설정 적용
         }
     }
+
+    private void StopBGM()
+    {
+        bgmSource.Stop();
+    }
+
 }
