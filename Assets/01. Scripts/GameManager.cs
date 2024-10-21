@@ -90,7 +90,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        playerHP = currentCharacterInstance.GetComponent<Player>().PlayerHP;
+        if(currentCharacterInstance != null)
+        {
+            playerHP = currentCharacterInstance.GetComponent<Player>().PlayerHP;
+        }
 
     }
     private void StartScene(int SceneNumber)
