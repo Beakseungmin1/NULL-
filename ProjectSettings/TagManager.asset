@@ -12,8 +12,6 @@ TagManager:
   - Item
   - Damage
   - Destroy
-  - Portal
-  - PlayerCamera
   layers:
   - Default
   - TransparentFX
