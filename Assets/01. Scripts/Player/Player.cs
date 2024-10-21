@@ -51,8 +51,18 @@ public partial class Player : TopDownController
 
     // ----- 맵 오브젝트 상호작용 ------ 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Damage"))
+        {
+            HP -= 1;
+            Vector2 attackerPosition = collision.transform.position;
+            topDownMovement.Damage(attackerPosition);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("Damage")) // 트랩과 충돌
         {
             HP -= 1;
@@ -71,7 +81,6 @@ public partial class Player : TopDownController
         {
             Destroy(collision.gameObject, 1f);
             topDownMovement.BreakBlock();
-
         }
     }
 }
