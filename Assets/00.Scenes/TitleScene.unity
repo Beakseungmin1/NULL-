@@ -322,6 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934706e1bb476004fb7d949b39ee26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
+  scoreText: {fileID: 0}
+  HPText: {fileID: 0}
   timeLimit: 5
   score: 0
   playerHP: 3
@@ -1312,6 +1315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934706e1bb476004fb7d949b39ee26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
+  scoreText: {fileID: 0}
+  HPText: {fileID: 0}
   timeLimit: 5
   score: 0
   playerHP: 5
@@ -3432,8 +3438,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 888de1670b5230d4398c9fa623db1076, type: 3}
   - {fileID: 8300000, guid: 7a2e8ea916745f94998cd00ff0d5bc6a, type: 3}
   sfxClips:
-  - {fileID: 8300000, guid: c8d6b8bf7ace5e843af532be6e1e738b, type: 3}
-  - {fileID: 8300000, guid: b25638e96c7b74741a57372e4b5e0345, type: 3}
+  - {fileID: 8300000, guid: 7878b285d78137246a38bc755d0349a3, type: 3}
+  - {fileID: 8300000, guid: 113c759697414eb41aed22a7dbe9f3e6, type: 3}
   - {fileID: 8300000, guid: 86fb0d018d417884ea2d95202ae4efa6, type: 3}
   - {fileID: 8300000, guid: e2d9d94dec0de0d4bb2d022d9c9e783a, type: 3}
   - {fileID: 8300000, guid: 68956de6e68088d44803c40e9cc9c0a9, type: 3}
