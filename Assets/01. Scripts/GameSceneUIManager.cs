@@ -27,12 +27,12 @@ public class GameSceneUIManager : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        int currentHealth = GameManager.Instance.GetCurrentHealth();
+        /*int currentHealth = GameManager.Instance.GetCurrentHealth();
         foreach (GameObject obj in Hearts) obj.SetActive(false);
         for (int i = 0; i < currentHealth; i++)
         {
             Hearts[i].SetActive(true);
-        }
+        }*/
     }
 
     public void TitlePanelOn()

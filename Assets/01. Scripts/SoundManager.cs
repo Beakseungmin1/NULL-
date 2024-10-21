@@ -45,84 +45,38 @@ public class SoundManager : MonoBehaviour
 
     public void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
-
             bgmSource = gameObject.AddComponent<AudioSource>();
             sfxSource = gameObject.AddComponent<AudioSource>();
-
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
-
-        if (bgmVolumeSlider != null)
-        {
-            bgmVolumeSlider.value = bgmVolume;
-            bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
-        }
-
-        if (sfxVolumeSlider != null)
-        {
-            sfxVolumeSlider.value = sfxVolume;
-            sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
-        }
     }
-
-    private void Start()
-    {
-        // BGM 볼륨 슬라이더
-        if (bgmVolumeSlider != null)
-        {
-            bgmVolumeSlider.value = bgmVolume;
-            bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
-        }
-
-        // SFX 볼륨 슬라이더
-        if (sfxVolumeSlider != null)
-        {
-            sfxVolumeSlider.value = sfxVolume;
-            sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
-        }
-    }
-
-    private void Update()
-    {
-        if (bgmVolumeSlider != null)  // 슬라이더가 있을 때만 실행
-        {
-            bgmVolumeSlider.value = bgmVolume;
-        }
-
-        if (sfxVolumeSlider != null)  // 슬라이더가 있을 때만 실행
-        {
-            sfxVolumeSlider.value = sfxVolume;
-        }
-    }
-
     // BGM 볼륨 설정
     public void SetBGMVolume(float newVolume)
     {
         bgmVolume = newVolume;
         bgmSource.volume = bgmVolume;
     }
-
     // SFX 볼륨 설정
     public void SetSFXVolume(float newVolume)
     {
         sfxVolume = newVolume;
     }
-
     //  Scene마다 Bgm 설정
     private void OnSceneLoaded(Scene scene, LoadSceneMode Mode)
     {
-        switch (scene. name)
+        switch (scene.name)
         {
             case "TitleScene":
                 PlayBGM(Bgm.TitleBgm);
+                InitSoundSlider();
                 break;
             case "StageScene1":
                 PlayBGM(Bgm.Stage1Bgm);
@@ -136,12 +90,8 @@ public class SoundManager : MonoBehaviour
             case "StartCutScene":  // BGM을 재생하지 않는 씬
                 StopBGM(); // BGM 멈추기
                 break;
-            default:
-                StopBGM();
-                break;
         }
     }
-
     public void PlayBGM(Bgm bgm, bool loop = true)
     {
         int clipIndex = (int)bgm;
@@ -161,7 +111,6 @@ public class SoundManager : MonoBehaviour
             }
         }
     }
-
     public void PlaySFX(Sfx sfx)
     {
         int clipIndex = (int)sfx;
@@ -170,10 +119,18 @@ public class SoundManager : MonoBehaviour
             sfxSource.PlayOneShot(sfxClips[clipIndex], sfxVolume);  // SFX 볼륨 설정 적용
         }
     }
-
     private void StopBGM()
     {
         bgmSource.Stop();
+    }
+    private void InitSoundSlider()
+    {
+        bgmVolumeSlider = UIManager.instance.BgmSlider;
+        sfxVolumeSlider = UIManager.instance.SfxSlider;
+        bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
+        sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+        bgmVolumeSlider.value = bgmVolume;
+        sfxVolumeSlider.value = sfxVolume;
     }
 
 }
