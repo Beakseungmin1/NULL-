@@ -97,7 +97,6 @@ public partial class Player : TopDownController
             else if (SceneManager.GetActiveScene().name == "StageScene2")
             {
                 SceneManager.LoadScene("EndCutScene");
-                CutSceneManager._instance.LoadNextCutscene();
             }
         }
     }
