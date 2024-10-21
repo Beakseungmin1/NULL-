@@ -879,7 +879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &315183435
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2358,56 +2358,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d9ab1f725584847a96e4cd4dcdefbf, type: 3}
---- !u!1 &821812038 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1510991587173743753, guid: e67641568fc5d5545a7925c05fe9cb81, type: 3}
-  m_PrefabInstance: {fileID: 1860247802771165284}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &821812041
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821812038}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.12223053, y: -0.5222639}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
-    newSize: {x: 2.9375, y: 2.9375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.51091003, y: 1.75544}
-  m_EdgeRadius: 0
 --- !u!4 &868276794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 938454151150439123, guid: 1cbb8418966a7164cbb871d7cd050dbd, type: 3}
@@ -16126,10 +16076,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1510991587173743753, guid: e67641568fc5d5545a7925c05fe9cb81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 821812041}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e67641568fc5d5545a7925c05fe9cb81, type: 3}
 --- !u!1 &2367442857877655192 stripped
 GameObject:
