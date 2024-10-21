@@ -73,13 +73,14 @@ public partial class Player : TopDownController
         if (collision.gameObject.CompareTag("Destroy")) // 부서지는 블록과 충돌
         {
             Destroy(collision.gameObject, 1f);
+            topDownMovement.BreakBlock();
+
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Damage"))
         {
-            Debug.Log("충돌 종료");
             topDownMovement.StopDamage();
         }
     }
