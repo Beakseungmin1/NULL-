@@ -34,10 +34,16 @@ public class GameSceneUIManager : MonoBehaviour
         }
     }
 
-    public void GoTitlePanelTrigger()
+    public void TitlePanelOn()
     {
-        BackToTitlePanel.SetActive(!BackToTitlePanel.activeSelf);
+        BackToTitlePanel.SetActive(true);
     }
+
+    public void TitlePanelOff()
+    {
+        BackToTitlePanel.SetActive(false);
+    }
+
     public void GoTitleButtonAccept()
     {
         SceneManager.LoadScene("TitleScene");

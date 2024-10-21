@@ -574,6 +574,7 @@ GameObject:
   - component: {fileID: 465738168506846049}
   - component: {fileID: 9204209669635194324}
   - component: {fileID: 541774053173280051}
+  - component: {fileID: 23877896857374742}
   m_Layer: 5
   m_Name: GotoTitleButton
   m_TagString: Untagged
@@ -682,9 +683,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CoopGameManager, Assembly-CSharp
-        m_MethodName: ReturnTitle
+      - m_Target: {fileID: 23877896857374742}
+        m_TargetAssemblyTypeName: GameSceneUIManager, Assembly-CSharp
+        m_MethodName: GoTitlePanelTrigger
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -694,6 +695,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &23877896857374742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202599408830252094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c242cf39babf44989752d49f134f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hearts: []
+  BackToTitlePanel: {fileID: 0}
 --- !u!1 &2017500112372632510
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,7 +979,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1859914885380252155}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameSceneUIManager, Assembly-CSharp
+        m_MethodName: TestStage2Btn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2374712293992714484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,19 +1520,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3288216342049721585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CoopGameManager, Assembly-CSharp
-        m_MethodName: ReturnTitle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4574412093277313901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,6 +2317,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: _CoreInterface
       objectReference: {fileID: 0}
+    - target: {fileID: 783281876018986168, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 783281876018986168, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 783281876018986168, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 783281876018986168, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TitlePanelOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 783281876018986168, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSceneUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 783281876018986168, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522994707282009812, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522994707282009812, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522994707282009812, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522994707282009812, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TitlePanelOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522994707282009812, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSceneUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522994707282009812, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8426864147655771859, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2381,6 +2444,30 @@ PrefabInstance:
     - target: {fileID: 8426864147655771859, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539405372865519348, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539405372865519348, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539405372865519348, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539405372865519348, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoTitleButtonAccept
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539405372865519348, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSceneUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8539405372865519348, guid: 85c6d9d49ee366343b7ae920452304c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
