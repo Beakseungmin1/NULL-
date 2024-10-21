@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject SoundPanel;
     public GameObject BackToTitlePanel;
     public GameObject CharCreatePanel;
-
+   
     //public Slider bgmSlider;
     //public Slider sfxSlider;
 
@@ -92,5 +92,4 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.SetSelectedCharacter(playerType);
         CutSceneManager._instance.StartCutscene();
     }
-
 }

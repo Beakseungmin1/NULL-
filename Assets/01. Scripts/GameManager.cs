@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    /*
+    
     public Text timerText;
     public Text scoreText;
     public Text HPText;
-    */
+    
     public float timeLimit = 5.0f;
     private float timer;
     public int score; 
@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour
         if (scene.name.StartsWith("StageScene") || scene.name.StartsWith("[sing]Enemy"))
         {
             SpawnCharacter();
+        }
+
+        if (scene.name.StartsWith("TitleScene"))
+        {
+            if (currentCharacterInstance != null)
+            {
+                Destroy(currentCharacterInstance);
+            }
         }
     }
 
@@ -90,7 +98,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        playerHP = currentCharacterInstance.GetComponent<Player>().PlayerHP;
+        if(currentCharacterInstance != null)
+        {
+            playerHP = currentCharacterInstance.GetComponent<Player>().PlayerHP;
+        }
 
     }
     private void StartScene(int SceneNumber)
@@ -112,7 +123,6 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
-        GameObject.Find("Canvas").gameObject.SetActive(false);
         gamePlayState = true;
         StartScene((int)Scenes.SCENE_1);
     }
@@ -169,9 +179,9 @@ public class GameManager : MonoBehaviour
     private void UadateTimer()
     {
         timer += Time.deltaTime;
-        //TimerText();
+        TimerText();
     }
-    /*
+    
     private void TimerText()
     {
         if (timerText != null)
@@ -181,7 +191,7 @@ public class GameManager : MonoBehaviour
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
-    */
+    
     public void GameExit() // 게임 종료
     {
         UnityEditor.EditorApplication.isPlaying = false;
