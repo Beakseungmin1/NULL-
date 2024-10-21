@@ -227,7 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934706e1bb476004fb7d949b39ee26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 5
+  timerText: {fileID: 0}
+  scoreText: {fileID: 0}
+  HPText: {fileID: 0}
+  timeLimit: 60
   score: 0
   playerHP: 3
   mainSound: 1
@@ -1324,6 +1327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934706e1bb476004fb7d949b39ee26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
+  scoreText: {fileID: 0}
+  HPText: {fileID: 0}
   timeLimit: 5
   score: 0
   playerHP: 5
