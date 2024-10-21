@@ -51,7 +51,7 @@ public class TopDownMovement : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
-        else 
+        else
         {
             if (isGround)
                 animator.SetBool("isRunning", true);
@@ -71,9 +71,9 @@ public class TopDownMovement : MonoBehaviour
     }
 
     // ------ 점프 ------
-    private void Jump() 
+    private void Jump()
     {
-        if (jumpCount < 2) 
+        if (jumpCount < 2)
         {
             movementRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
@@ -81,7 +81,7 @@ public class TopDownMovement : MonoBehaviour
             if (jumpCount == 1) // 기본 점프
             {
                 SoundManager.instance.PlaySFX(Sfx.S_JumpSfx);
-                isGround = false; 
+                isGround = false;
                 animator.SetBool("isJumping", true);
                 animator.SetBool("isRunning", false);
             }
@@ -106,23 +106,29 @@ public class TopDownMovement : MonoBehaviour
             isGround = true; // 바닥에 닿았음을 설정
             jumpCount = 0;
         }
-    } 
+    }
 
     // ------- 피격 -------
     public void Damage(Vector2 targetPos)
     {
         animator.SetBool("isHit", true);
-        animator.SetBool("isJumping", false);
-        animator.SetBool("isDouble", false);
-        animator.SetBool("isRunning", false);
+        //animator.SetBool("isJumping", false);
+        //animator.SetBool("isDouble", false);
+        //animator.SetBool("isRunning", false);
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
     }
 
     public void StopDamage() // 해제 
     {
-        Debug.Log("애니메이션 전환");
-        animator.SetBool("isHit", false); 
+        animator.SetBool("isHit", false);
+    }
 
+    // ------ 블록 밟기 ---------
+
+    public void BreakBlock()
+    {
+        Debug.Log("블록 애니메이션");
+        animator.SetBool("isBreak", true); // 블록에 안 달려있고 플레이어에 달려 있어서 오류 ( 오브젝트 매니저에서 추가 작업)
     }
 }
 
