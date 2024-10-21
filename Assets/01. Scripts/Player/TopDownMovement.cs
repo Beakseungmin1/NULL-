@@ -103,19 +103,14 @@ public class TopDownMovement : MonoBehaviour
             isGround = true;
             jumpCount = 0;
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.layer == LayerMask.NameToLayer("End"))
         {
-
-            Debug.Log("충돌");
-            //Camera.main.transform.SetParent(null);
-            //Transform cameraTransform = Camera.main.transform;
-            //cameraTransform.SetParent(null);
-
             Camera cam = GetComponentInChildren<Camera>();
             cam.transform.SetParent(null);
-            player.PlayerHP = 0;
-
         }
     }
 
