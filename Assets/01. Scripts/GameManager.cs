@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private float timer;
     public int score; 
     private bool gamePlayState;
-    
+
     public int playerHP = 5;
 
     [Range(0f, 1f)]
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             SpawnCharacter();
         }
 
-        if (scene.name.StartsWith("TitleScene"))
+        if (scene.name.StartsWith("TitleScene") || scene.name.StartsWith("Phase1EndCutScene") || scene.name.StartsWith("EndCutScene"))
         {
             if (currentCharacterInstance != null)
             {
@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
         TimerText();
     }
     
-    private void TimerText()
+    public void TimerText()
     {
         if (timerText != null)
         {
