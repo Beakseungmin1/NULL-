@@ -59,21 +59,30 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    private void Start()
-    {
-        // 테스트용
-        SoundManager.instance.PlayBGM(Bgm.TitleBgm);
-
-        // BGM 볼륨 슬라이더 설정
         if (bgmVolumeSlider != null)
         {
             bgmVolumeSlider.value = bgmVolume;
             bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
         }
 
-        // SFX 볼륨 슬라이더 설정
+        if (sfxVolumeSlider != null)
+        {
+            sfxVolumeSlider.value = sfxVolume;
+            sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+        }
+    }
+
+    private void Start()
+    {
+        // BGM 볼륨 슬라이더
+        if (bgmVolumeSlider != null)
+        {
+            bgmVolumeSlider.value = bgmVolume;
+            bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
+        }
+
+        // SFX 볼륨 슬라이더
         if (sfxVolumeSlider != null)
         {
             sfxVolumeSlider.value = sfxVolume;
@@ -82,12 +91,16 @@ public class SoundManager : MonoBehaviour
     }
 
     private void Update()
-    {       
-       bgmVolumeSlider.value = bgmVolume;
-       sfxVolumeSlider.value = sfxVolume;
-       bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
-       sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
-        
+    {
+        if (bgmVolumeSlider != null)  // 슬라이더가 있을 때만 실행
+        {
+            bgmVolumeSlider.value = bgmVolume;
+        }
+
+        if (sfxVolumeSlider != null)  // 슬라이더가 있을 때만 실행
+        {
+            sfxVolumeSlider.value = sfxVolume;
+        }
     }
 
     // BGM 볼륨 설정
@@ -120,7 +133,11 @@ public class SoundManager : MonoBehaviour
             case "CoopScene":
                 PlayBGM(Bgm.MultiBgm);
                 break;
+            case "StartCutScene":  // BGM을 재생하지 않는 씬
+                StopBGM(); // BGM 멈추기
+                break;
             default:
+                StopBGM();
                 break;
         }
     }
@@ -153,4 +170,10 @@ public class SoundManager : MonoBehaviour
             sfxSource.PlayOneShot(sfxClips[clipIndex], sfxVolume);  // SFX 볼륨 설정 적용
         }
     }
+
+    private void StopBGM()
+    {
+        bgmSource.Stop();
+    }
+
 }

@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c05c995-85b0-4de9-85f8-b3a711af05fa" name="Changes" comment="" />
+    <list default="true" id="5c05c995-85b0-4de9-85f8-b3a711af05fa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/StageScene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/StageScene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TitleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TitleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scripts/Player/TopDownMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scripts/Player/TopDownMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scripts/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scripts/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04. Prefabs/UI_Sound/GameSceneUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04. Prefabs/UI_Sound/GameSceneUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/07. Animations/PlayerAnimController/Pink Controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/07. Animations/PlayerAnimController/Pink Controller.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/999.DownAssets/Images_UI/UI_Animations/PinkLight.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/999.DownAssets/Images_UI/UI_Animations/PinkLight.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/999.DownAssets/Sound/FinalStage.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/999.DownAssets/Sound/FinalStage_vol2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/999.DownAssets/Sound/FinalStage.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/999.DownAssets/Sound/FinalStage_vol2.wav.meta" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +43,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "feat-love",
+    "git-widget-placeholder": "Merging feat-love",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>

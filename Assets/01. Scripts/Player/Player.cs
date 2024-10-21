@@ -12,7 +12,6 @@ public partial class Player : TopDownController
 
     TopDownMovement topDownMovement;
 
-    // 인스턴스 (게임매니저 필요) 
     public int PlayerHP
     {
         get { return HP; }
@@ -41,8 +40,6 @@ public partial class Player : TopDownController
 
     private void Die()
     {
-        // 개임매니저와 연결
-        //Destroy(this.gameObject);
     }
 
     // ----- 이동 ----- 
@@ -59,8 +56,18 @@ public partial class Player : TopDownController
 
     // ----- 맵 오브젝트 상호작용 ------ 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Damage"))
+        {
+            HP -= 1;
+            Vector2 attackerPosition = collision.transform.position;
+            topDownMovement.Damage(attackerPosition);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("Damage")) // 트랩과 충돌
         {
             HP -= 1;
