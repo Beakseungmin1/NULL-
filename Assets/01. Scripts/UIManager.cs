@@ -88,9 +88,9 @@ public class UIManager : MonoBehaviour
 
     public void SelectChar()
     {
-        SceneManager.LoadScene("StageScene1");
         //TODO GameManager;
         GameManager.Instance.SetSelectedCharacter(playerType);
+        CutSceneManager._instance.StartCutscene();
     }
 
 }
