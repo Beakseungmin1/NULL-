@@ -103,7 +103,7 @@ public class TopDownMovement : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
             animator.SetBool("isDouble", false);
-            isGround = true; // 바닥에 닿았음을 설정
+            isGround = true;
             jumpCount = 0;
         }
     }
@@ -111,16 +111,8 @@ public class TopDownMovement : MonoBehaviour
     // ------- 피격 -------
     public void Damage(Vector2 targetPos)
     {
-        animator.SetBool("isHit", true);
-        //animator.SetBool("isJumping", false);
-        //animator.SetBool("isDouble", false);
-        //animator.SetBool("isRunning", false);
+        animator.SetTrigger("Hit");
         int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
-    }
-
-    public void StopDamage() // 해제 
-    {
-        animator.SetBool("isHit", false);
     }
 
     // ------ 블록 밟기 ---------
