@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartEndManager : MonoBehaviour
+public class StartCutManager : MonoBehaviour
 {
     public void LoadCutscene()
     {
