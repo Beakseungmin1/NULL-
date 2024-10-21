@@ -82,11 +82,14 @@ public class SoundManager : MonoBehaviour
     }
 
     private void Update()
-    {       
-       bgmVolumeSlider.value = bgmVolume;
-       sfxVolumeSlider.value = sfxVolume;
-       bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
-       sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+    {
+        if (bgmVolumeSlider != null)
+        {
+            bgmVolumeSlider.value = bgmVolume;
+            sfxVolumeSlider.value = sfxVolume;
+            bgmVolumeSlider.onValueChanged.AddListener(SetBGMVolume);
+            sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+        }
         
     }
 
