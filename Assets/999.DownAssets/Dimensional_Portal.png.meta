@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 95234e6a7c938414a8429ab24b1f4afd
+guid: e8ceaf20f7c0c944688ede845041768e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -94,19 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,13 +110,76 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Part 2 (22x22)_0
+      name: Dimensional_Portal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd17a4750c24c8e49a37b74eb421fe75
+      internalID: -431402025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimensional_Portal_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8024b40004d8efa43adf25ec0a8d401d
+      internalID: -338247281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimensional_Portal_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7494cfa507d9e049ae1189989716455
+      internalID: -2013303591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimensional_Portal_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 22
-        height: 22
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90df448fe14e97344bd4cb2e84caa467
-      internalID: 19861207
+      spriteID: ed7381ec80896b14aac06f9c340eeb8d
+      internalID: -1950863889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 2 (22x22)_1
+      name: Dimensional_Portal_4
       rect:
         serializedVersion: 2
-        x: 22
+        x: 32
         y: 0
-        width: 22
-        height: 22
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbe39d7d5f99889428a326684c3a5f2a
-      internalID: -578015326
+      spriteID: a33636f86c3e6324f8f93a963723b0c4
+      internalID: 950384860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 2 (22x22)_2
+      name: Dimensional_Portal_5
       rect:
         serializedVersion: 2
-        x: 44
+        x: 64
         y: 0
-        width: 22
-        height: 22
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 326922bfacab39d4f81aa6c15462648c
-      internalID: -1084722773
+      spriteID: 9eabedd8bd83ba44992abdebfccce679
+      internalID: -2041704276
       vertices: []
       indices: 
       edges: []
@@ -196,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Part 2 (22x22)_0: 19861207
-      Part 2 (22x22)_1: -578015326
-      Part 2 (22x22)_2: -1084722773
+      Dimensional_Portal_0: -431402025
+      Dimensional_Portal_1: -338247281
+      Dimensional_Portal_2: -2013303591
+      Dimensional_Portal_3: -1950863889
+      Dimensional_Portal_4: 950384860
+      Dimensional_Portal_5: -2041704276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
