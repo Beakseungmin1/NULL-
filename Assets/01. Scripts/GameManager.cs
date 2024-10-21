@@ -43,6 +43,14 @@ public class GameManager : MonoBehaviour
         {
             SpawnCharacter();
         }
+
+        if (scene.name.StartsWith("TitleScene"))
+        {
+            if (currentCharacterInstance != null)
+            {
+                Destroy(currentCharacterInstance);
+            }
+        }
     }
 
     private void SpawnCharacter()
