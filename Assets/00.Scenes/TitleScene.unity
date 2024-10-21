@@ -233,7 +233,6 @@ MonoBehaviour:
   timeLimit: 5
   score: 0
   playerHP: 3
-  mainSound: 1
   CharacterPrefab:
   - {fileID: 6050587315144375691, guid: d6bc551e287b59744a2194c24b4e6576, type: 3}
   - {fileID: 6050587315144375691, guid: c3f9e065a1c351143abc104cbd0b2142, type: 3}
@@ -1476,7 +1475,6 @@ MonoBehaviour:
   timeLimit: 5
   score: 0
   playerHP: 5
-  mainSound: 1
   CharacterPrefab: []
 --- !u!4 &1942990011
 Transform:

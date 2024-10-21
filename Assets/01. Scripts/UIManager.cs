@@ -7,10 +7,21 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
     public GameObject SoundPanel;
     public GameObject BackToTitlePanel;
     public GameObject CharCreatePanel;
-   
+
+    private Slider bgmSlider;
+    private Slider sfxSlider;
+
+    public Slider BgmSlider
+    { get { return bgmSlider; }}
+
+    public Slider SfxSlider
+    { get { return sfxSlider; } }
+
+
     //public Slider bgmSlider;
     //public Slider sfxSlider;
 
@@ -24,11 +35,17 @@ public class UIManager : MonoBehaviour
     }*/
     private CharacterClass playerType = CharacterClass.Frog;
 
+    private void Awake()
+    {
+        if(instance == null) { instance = this; }
+        Slider[] objects = Resources.FindObjectsOfTypeAll<Slider>();
+        bgmSlider = (objects.FirstOrDefault(obj => obj.name == "VolumeSliderBGM"));
+        sfxSlider = (objects.FirstOrDefault(obj => obj.name == "VolumeSliderSFX"));
+    }
+
     private void Start()
     {
-        Slider[] objects = Resources.FindObjectsOfTypeAll<Slider>();
-        SoundManager.instance.bgmVolumeSlider = (objects.FirstOrDefault(obj => obj.name == "VolumeSliderBGM"));
-        SoundManager.instance.sfxVolumeSlider = (objects.FirstOrDefault(obj => obj.name == "VolumeSliderSFX"));
+       
     }
 
     public void StroyModButtonTrigger()

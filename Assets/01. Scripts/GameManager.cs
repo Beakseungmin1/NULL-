@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
         //게임오버 사운드
         currentCharacterInstance = null;
         gamePlayState = false;
-        playerHP = currentCharacterInstance.GetComponent<Player>().PlayerMaxHP;
+        //playerHP = currentCharacterInstance.GetComponent<Player>().PlayerMaxHP;
         GameOverUI();
     }
 

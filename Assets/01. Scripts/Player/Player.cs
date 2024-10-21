@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public partial class Player : TopDownController
 {
     private Camera _camera;
-    private int HP = 3;
+    private int HP = 10000;
     private int maxHP = 3;
 
     TopDownMovement topDownMovement;
@@ -97,15 +97,7 @@ public partial class Player : TopDownController
             else if (SceneManager.GetActiveScene().name == "StageScene2")
             {
                 SceneManager.LoadScene("EndCutScene");
-                CutSceneManager._instance.LoadNextCutscene();
             }
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Damage"))
-        {
-            topDownMovement.StopDamage();
         }
     }
 }
