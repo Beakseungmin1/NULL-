@@ -9,14 +9,17 @@ public class Phase1Manager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TimeText;
 
     private GameObject Player;
+    private GameObject PlayerCamera;
 
     private float TTime;
     private float PhaTime = 20f;
     private float CountTime = 0;
 
-    private void Awake()
+    private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        PlayerCamera = GameObject.FindGameObjectWithTag("PlayerCamera");
+        PlayerCamera.SetActive(false);
     }
 
     void Update()
