@@ -10,6 +10,7 @@ public class TopDownMovement : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private float damageY = 0.5f;
+    
 
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private LayerMask groundLayer;
@@ -20,6 +21,7 @@ public class TopDownMovement : MonoBehaviour
     private Vector2 movementDirection = Vector2.zero;
 
     Player player;
+    GameManager gameManager;
 
     // ------ 초기화 -------
     private void Awake()
@@ -29,6 +31,7 @@ public class TopDownMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GetComponent<Player>();
+        gameManager = GetComponent<GameManager>();
     }
 
     // ------ movementController 구독 ------
@@ -111,6 +114,7 @@ public class TopDownMovement : MonoBehaviour
         {
             Camera cam = GetComponentInChildren<Camera>();
             cam.transform.SetParent(null);
+            gameManager.GameOver();
         }
     }
 

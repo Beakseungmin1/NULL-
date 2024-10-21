@@ -162,11 +162,11 @@ public class GameManager : MonoBehaviour
         //GameClearUI();
     //}
 
-   //private void GameClearUI()
+   //private void gameclearui()
     //{
-        //gameObject.SetActive(true)
+        //gameobject.setactive(true)
     //}
-    private void GameOver()
+    public void GameOver()
     {
         Debug.Log("게임오버");
 
