@@ -107,18 +107,20 @@ public class TopDownMovement : MonoBehaviour
     } 
 
     // ------- 피격 -------
-    public void Damage()
+    public void Damage(Vector2 targetPos)
     {
         animator.SetBool("isHit", true);
-        //Vector2 newPosition = transform.position;
-        //newPosition.y -= damageY;
-        //movementRigidbody.velocity = new Vector2(direction.x, newPosition.y);
+        animator.SetBool("isJumping", false);
+        animator.SetBool("isDouble", false);
+        animator.SetBool("isRunning", false);
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
     }
 
     public void StopDamage() // 해제 
     {
         Debug.Log("애니메이션 전환");
         animator.SetBool("isHit", false); 
+
     }
 }
 

@@ -1,12 +1,13 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-
+using static UnityEngine.GraphicsBuffer;
 
 public partial class Player : TopDownController
 {
     private Camera _camera;
-    [SerializeField] private int HP = 3;
+    private int HP = 3;
+    private int maxHP = 3;
 
     TopDownMovement topDownMovement;
 
@@ -58,12 +59,14 @@ public partial class Player : TopDownController
         if (collision.gameObject.CompareTag("Damage")) // 트랩과 충돌
         {
             HP -= 1;
-            topDownMovement.Damage();
+            Vector2 attackerPosition = collision.transform.position;
+            topDownMovement.Damage(attackerPosition);
         }
 
         if (collision.gameObject.CompareTag("Item")) // 아이템과 충돌 
         {
-            HP += 1;
+            if (HP < maxHP)
+            { HP += 1; }
             Destroy(collision.gameObject);
         }
 
@@ -72,13 +75,12 @@ public partial class Player : TopDownController
             Destroy(collision.gameObject, 1f);
         }
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Damage")) 
+        if (collision.gameObject.CompareTag("Damage"))
         {
             Debug.Log("충돌 종료");
-            topDownMovement.StopDamage(); 
+            topDownMovement.StopDamage();
         }
     }
 }
