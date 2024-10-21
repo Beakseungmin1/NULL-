@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2282040997883683606}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: PlayerCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,7 +323,7 @@ Animator:
   m_GameObject: {fileID: 6050587315144375691}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e43f7c9e2a56106448bb007f3a702d5f, type: 2}
+  m_Controller: {fileID: 22100000, guid: 66499a8fe06e90a4e8bbab8a09beb660, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
