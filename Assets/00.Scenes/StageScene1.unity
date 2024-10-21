@@ -2651,6 +2651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftRightBlock (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2274447250867898706, guid: 6d75e076c174cd6469f5c52a02202098, type: 3}
+      propertyPath: direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7537718897073955950, guid: 6d75e076c174cd6469f5c52a02202098, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48.67
@@ -7064,7 +7068,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
@@ -15932,6 +15936,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftRightBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 2274447250867898706, guid: 6d75e076c174cd6469f5c52a02202098, type: 3}
+      propertyPath: direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7537718897073955950, guid: 6d75e076c174cd6469f5c52a02202098, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.75
@@ -16399,6 +16407,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 65479869742342926, guid: e4ed739a04d10e748a2326cd813ba17f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51.962402
+      objectReference: {fileID: 0}
     - target: {fileID: 107105965436507224, guid: e4ed739a04d10e748a2326cd813ba17f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 908.0374
@@ -16439,10 +16451,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2825730211539198039, guid: e4ed739a04d10e748a2326cd813ba17f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51.962402
+      objectReference: {fileID: 0}
     - target: {fileID: 2976192486582056133, guid: e4ed739a04d10e748a2326cd813ba17f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 295543958}
+    - target: {fileID: 2980899445123804667, guid: e4ed739a04d10e748a2326cd813ba17f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -51.962402
+      objectReference: {fileID: 0}
     - target: {fileID: 3755296204311456891, guid: e4ed739a04d10e748a2326cd813ba17f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
