@@ -874,7 +874,11 @@ MonoBehaviour:
   score: 0
   playerHP: 5
   mainSound: 1
-  charaterSelect: {fileID: 0}
+  CharacterPrefab:
+  - {fileID: 6050587315144375691, guid: d6bc551e287b59744a2194c24b4e6576, type: 3}
+  - {fileID: 6050587315144375691, guid: c3f9e065a1c351143abc104cbd0b2142, type: 3}
+  - {fileID: 6050587315144375691, guid: 9c7fce0f5bb527b4c9d81899d714c4a2, type: 3}
+  - {fileID: 6050587315144375691, guid: 79d8cca52833b3c42b8ca634bfc53de2, type: 3}
 --- !u!114 &5768350826839204244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,6 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e7673b292f1bf429892088890dbe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCharacterClass: 0
 --- !u!1 &4593047967385762886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,7 +1730,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8104166133621071922}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: DrowPlayer
+        m_MethodName: testDraw
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
