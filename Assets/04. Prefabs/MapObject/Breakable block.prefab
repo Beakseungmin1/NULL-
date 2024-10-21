@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9015132666642407300}
   - component: {fileID: 1593388873326649292}
   - component: {fileID: 5355517307972999050}
+  - component: {fileID: 6770773361450618280}
   m_Layer: 6
   m_Name: Breakable block
   m_TagString: Destroy
@@ -130,3 +131,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1582413, y: 1.1582403}
   m_EdgeRadius: 0
+--- !u!95 &6770773361450618280
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4707986639070399480}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad5b150561e002446935fc7b236906f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
