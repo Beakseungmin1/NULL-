@@ -42,7 +42,6 @@ public class CoopPlayer : MonoBehaviour
     //------------------------------------------
     public Text playerTagText;
     public GameObject projectile;
-    public GameObject particle;
 
     private void Awake()
     {
@@ -94,9 +93,9 @@ public class CoopPlayer : MonoBehaviour
     {
         InputAxis = Input.GetAxisRaw(playerId == 1 ? "P1Horizontal" : "P2Horizontal");
         if (((Input.GetKeyDown(KeyCode.W) && playerId == 1) || (Input.GetKeyDown(KeyCode.UpArrow) && playerId == 2))
-            && !isJump) { isJumpPressed = true; SoundManager.instance.PlaySFX(Sfx.M_JumpSfx); }
+            && !isJump) isJumpPressed = true;
         if (((Input.GetKeyDown(KeyCode.F) && playerId == 1) || (Input.GetKeyDown(KeyCode.L) && playerId == 2))
-            && !isJump) { isAttackPressed = true; SoundManager.instance.PlaySFX(Sfx.M_AttackSfx); }
+            && !isJump) isAttackPressed = true;
     }
     /// <summary>
     /// 입력을 바탕으로 캐릭터를 이동 시킵니다. [2]
@@ -209,7 +208,6 @@ public class CoopPlayer : MonoBehaviour
             if (tempId != playerId)
             {
                 Destroy(collision.gameObject);
-                SoundManager.instance.PlaySFX(Sfx.HitSfx);
                 IsHit();
             }
         }
@@ -217,7 +215,6 @@ public class CoopPlayer : MonoBehaviour
         if (collision.CompareTag("ProjectileGen"))
         {   
             Destroy(collision.gameObject);
-            SoundManager.instance.PlaySFX(Sfx.HitSfx);
             IsHit();       
         }
     }
@@ -231,7 +228,6 @@ public class CoopPlayer : MonoBehaviour
         if (collision.collider.CompareTag("Consume"))
         {
             Destroy(collision.gameObject);
-            SoundManager.instance.PlaySFX(Sfx.M_EatFruitSfx);
             IsConsume();
         }
     }

@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public enum MAPSTATE
 {
-    INFO,
     CREATE,
     PLAYGAME,
     ENDGAME,
@@ -26,7 +25,6 @@ public class CoopGameCore : MonoBehaviour
     private int spawnid = 0;
     private float loaclTimer = 0f;
     private bool[] readyboolean = new bool[2];
-    private bool isEndSoundPlay = false;
     private int[] inputs = new int[2];
     private int maxInput = 0;
 
@@ -34,7 +32,7 @@ public class CoopGameCore : MonoBehaviour
     private Dictionary<int, CoopPlayer> currentPlayers = new Dictionary<int, CoopPlayer>();
     List<Sprite> currentCharList = new List<Sprite>();
     public static CoopGameCore instance;
-    private MAPSTATE mapState = MAPSTATE.INFO;    
+    private MAPSTATE mapState = MAPSTATE.CREATE;    
     public GameObject playerPrefab;
     //============================================================================
     //UI SECTION
@@ -56,7 +54,6 @@ public class CoopGameCore : MonoBehaviour
     public Image winnerImage;
 
     //Panel
-    public GameObject infoPanel;
     public GameObject createPanel;
     public GameObject inGamePanel;
     public GameObject endPanel;
@@ -74,16 +71,13 @@ public class CoopGameCore : MonoBehaviour
         currentCharList = ResourceHandler.instance.GetSprites();
         redshowImageSelect.sprite = currentCharList[0];
         blueshowImageSelect.sprite= currentCharList[0];
-        maxInput = currentCharList.Count;
-        SoundManager.instance.PlayBGM(Bgm.MultiBgm);
+        maxInput = currentCharList.Count;      
     }
 
     void Update()
     {
         switch(mapState)
         {
-            case MAPSTATE.INFO:
-                break;
             case MAPSTATE.CREATE:
                 UpdateCreateState();
                 UpdateAllMemReadey();
@@ -103,15 +97,9 @@ public class CoopGameCore : MonoBehaviour
                 break;
         }
     }
-    public void InfoButtonClicked()
-    {
-        SoundManager.instance.PlaySFX(Sfx.UI_BtnClick);
-        infoPanel.SetActive(false);
-        ChangeMapState(MAPSTATE.CREATE);
-    }
+
     public void ReturnTitle()
     {
-        SoundManager.instance.PlaySFX(Sfx.UI_BtnClick);
         SceneManager.LoadScene("TitleScene");
     }
     /// <summary>
@@ -161,19 +149,16 @@ public class CoopGameCore : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.A))
             {
-                SoundManager.instance.PlaySFX(Sfx.UI_BtnClick);
                 inputs[0] = Math.Max(0, inputs[0] - 1);
                 redshowImageSelect.sprite = currentCharList[inputs[0]];
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                SoundManager.instance.PlaySFX(Sfx.UI_BtnClick);
                 inputs[0] = Math.Min(currentCharList.Count - 1, inputs[0] + 1);
                 redshowImageSelect.sprite = currentCharList[inputs[0]];
             }
             else if(Input.GetKeyDown(KeyCode.F))
             {
-                SoundManager.instance.PlaySFX(Sfx.UI_BtnClick);
                 readyboolean[0] = true;
                 redReadyButton.Select();
             }
@@ -183,19 +168,16 @@ public class CoopGameCore : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                SoundManager.instance.PlaySFX(Sfx.UI_BtnClick);
                 inputs[1] = Math.Max(0, inputs[1] - 1);
                 blueshowImageSelect.sprite = currentCharList[inputs[1]];
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                SoundManager.instance.PlaySFX(Sfx.UI_BtnClick);
                 inputs[1] = Math.Min(currentCharList.Count - 1, inputs[1] + 1);
                 blueshowImageSelect.sprite = currentCharList[inputs[1]];
             }
             else if (Input.GetKeyDown(KeyCode.L))
             {
-                SoundManager.instance.PlaySFX(Sfx.UI_BtnClick);
                 readyboolean[1] = true;
                 blueReadyButton.Select();
             }
@@ -222,13 +204,6 @@ public class CoopGameCore : MonoBehaviour
     {
         inGamePanel.SetActive(false);
         endPanel.SetActive(true);
-        if(!isEndSoundPlay)
-        {
-            SoundManager.instance.PlaySFX(Sfx.M_Winnersfx);
-            isEndSoundPlay = true;
-        }
-
-
         foreach (GameObject gen in generators)
         {
             gen.GetComponent<Generator>().ChangeState(GENSTATE.WAIT);
