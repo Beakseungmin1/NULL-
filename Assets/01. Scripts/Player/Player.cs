@@ -81,7 +81,7 @@ public partial class Player : TopDownController
             topDownMovement.BreakBlock();
 
         }
-        if (collision.gameObject.CompareTag("Portal")) // 아이템과 충돌 
+        if (collision.gameObject.CompareTag("Portal")) // 포탈과 충돌 
         {
             if (SceneManager.GetActiveScene().name == "StageScene1")
             {
@@ -90,6 +90,7 @@ public partial class Player : TopDownController
             else if (SceneManager.GetActiveScene().name == "StageScene2")
             {
                 SceneManager.LoadScene("EndCutScene");
+                CutSceneManager._instance.LoadNextCutscene();
             }
         }
     }

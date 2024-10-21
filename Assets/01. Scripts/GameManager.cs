@@ -43,14 +43,15 @@ public class GameManager : MonoBehaviour
         {
             SpawnCharacter();
         }
+        else Destroy(currentCharacterInstance);
 
-        if (scene.name.StartsWith("TitleScene") || scene.name.StartsWith("Phase1EndCutScene") || scene.name.StartsWith("EndCutScene"))
-        {
-            if (currentCharacterInstance != null)
-            {
-                Destroy(currentCharacterInstance);
-            }
-        }
+        //if (scene.name.StartsWith("TitleScene") || scene.name.StartsWith("Phase1EndCutScene") || scene.name.StartsWith("EndCutScene"))
+        //{
+        //    if (currentCharacterInstance != null)
+        //    {
+        //        Destroy(currentCharacterInstance);
+        //    }
+        //}
     }
 
     private void SpawnCharacter()
