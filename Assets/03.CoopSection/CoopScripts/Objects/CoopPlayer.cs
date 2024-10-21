@@ -148,10 +148,10 @@ public class CoopPlayer : MonoBehaviour
             isHit = false;
         }
     }
-    private void IsHit()
+    private void IsHit(int damage = 1)
     {
         isHit = true;
-        --playerLife;
+        playerLife -= damage;
         Debug.Log($"피격받음 현재 체력 : {playerId}P:{playerLife}");
 
         if(playerLife <= 0)
@@ -221,6 +221,18 @@ public class CoopPlayer : MonoBehaviour
             IsHit();       
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Mob"))//MOB
+        {
+            int damage = collision.gameObject.GetComponent<MobFunction>().GetDamage();            
+             SoundManager.instance.PlaySFX(Sfx.HitSfx);
+             IsHit(damage);
+            
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.collider.CompareTag("Ground"))
