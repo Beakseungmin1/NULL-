@@ -101,13 +101,6 @@ public partial class Player : TopDownController
             }
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Damage"))
-        {
-            topDownMovement.StopDamage();
-        }
-    }
 }
 
 
