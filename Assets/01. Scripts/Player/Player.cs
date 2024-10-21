@@ -97,15 +97,7 @@ public partial class Player : TopDownController
             else if (SceneManager.GetActiveScene().name == "StageScene2")
             {
                 SceneManager.LoadScene("EndCutScene");
-                CutSceneManager._instance.LoadNextCutscene();
             }
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Damage"))
-        {
-            topDownMovement.StopDamage();
         }
     }
 }

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private bool gamePlayState;
 
     public int playerHP = 0;
+    public int playerMaxHP;
 
     //[Range(0f, 1f)]
     //public float mainSound = 1.0f;
@@ -43,16 +44,17 @@ public class GameManager : MonoBehaviour
         {
             SpawnCharacter();
             timerText = GameObject.Find("TimerText")?.GetComponent<Text>();
+            playerMaxHP = currentCharacterInstance.GetComponent<Player>().PlayerMaxHP;
         }
-        else Destroy(currentCharacterInstance);
 
-        //if (scene.name.StartsWith("TitleScene") || scene.name.StartsWith("Phase1EndCutScene") || scene.name.StartsWith("EndCutScene"))
-        //{
-        //    if (currentCharacterInstance != null)
-        //    {
-        //        Destroy(currentCharacterInstance);
-        //    }
-        //}
+        if (scene.name.StartsWith("TitleScene") || scene.name.StartsWith("Phase1EndCutScene") || scene.name.StartsWith("EndCutScene"))
+        {
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (playerObject != null)
+            {
+                Destroy(playerObject);
+            }
+        }
     }
 
     private void SpawnCharacter()
@@ -171,7 +173,7 @@ public class GameManager : MonoBehaviour
         //게임오버 사운드
         currentCharacterInstance = null;
         gamePlayState = false;
-        playerHP = currentCharacterInstance.GetComponent<Player>().PlayerMaxHP;
+        playerHP = playerMaxHP;
         GameOverUI();
     }
 
