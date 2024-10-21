@@ -103,7 +103,7 @@ public class TopDownMovement : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
             animator.SetBool("isDouble", false);
-            isGround = true; // 바닥에 닿았음을 설정
+            isGround = true;
             jumpCount = 0;
         }
     }

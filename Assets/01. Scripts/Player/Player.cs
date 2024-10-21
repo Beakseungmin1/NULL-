@@ -11,7 +11,6 @@ public partial class Player : TopDownController
 
     TopDownMovement topDownMovement;
 
-    // 인스턴스 (게임매니저 필요) 
     public int PlayerHP
     {
         get { return HP; }
@@ -36,8 +35,6 @@ public partial class Player : TopDownController
 
     private void Die()
     {
-        // 개임매니저와 연결
-        //Destroy(this.gameObject);
     }
 
     // ----- 이동 ----- 
@@ -77,13 +74,6 @@ public partial class Player : TopDownController
 
         }
     }
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Damage"))
-    //    {
-    //        topDownMovement.StopDamage();
-    //    }
-    //}
 }
 
 
