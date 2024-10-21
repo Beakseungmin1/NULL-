@@ -7,9 +7,11 @@ public class UpDownMove : MonoBehaviour
     public int bottomLength = 2;
     public bool turn = true;
     Vector3 startPos;
+    public int direction = 0; // 0이면 아래, 1이면 위 먼저  
     private void Start()
     {
         startPos = transform.position;
+        turn = direction == 1;
     }
     private void Update()
     {
