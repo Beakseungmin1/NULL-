@@ -15,6 +15,7 @@ public partial class Player : TopDownController
     public int PlayerHP
     {
         get { return HP; }
+        set { HP = value; }
     }
     public int PlayerMaxHP
     {
@@ -102,6 +103,7 @@ public partial class Player : TopDownController
         }
     }
 }
+
 
 
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class TopDownMovement : MonoBehaviour
@@ -12,10 +13,13 @@ public class TopDownMovement : MonoBehaviour
 
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask endLayer;
 
     private int jumpCount;
     private bool isGround;
     private Vector2 movementDirection = Vector2.zero;
+
+    Player player;
 
     // ------ 초기화 -------
     private void Awake()
@@ -24,6 +28,7 @@ public class TopDownMovement : MonoBehaviour
         movementRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GetComponent<Player>();
     }
 
     // ------ movementController 구독 ------
@@ -56,16 +61,8 @@ public class TopDownMovement : MonoBehaviour
             if (isGround)
                 animator.SetBool("isRunning", true);
         }
-
-        if (direction.x > 0)
-        {
-            spriteRenderer.flipX = false; // 오른쪽
-        }
-        else if (direction.x < 0)
-        {
-            spriteRenderer.flipX = true; // 왼쪽
-        }
-
+        
+        spriteRenderer.flipX = direction.x < 0 ? true : false;
         direction = direction * 5;
         movementRigidbody.velocity = new Vector2(direction.x, movementRigidbody.velocity.y);
     }
@@ -105,6 +102,20 @@ public class TopDownMovement : MonoBehaviour
             animator.SetBool("isDouble", false);
             isGround = true;
             jumpCount = 0;
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("End"))
+        {
+
+            Debug.Log("충돌");
+            //Camera.main.transform.SetParent(null);
+            //Transform cameraTransform = Camera.main.transform;
+            //cameraTransform.SetParent(null);
+
+            Camera cam = GetComponentInChildren<Camera>();
+            cam.transform.SetParent(null);
+            player.PlayerHP = 0;
+
         }
     }
 
