@@ -9,6 +9,7 @@ public class GameSceneUIManager : MonoBehaviour
     private float localtimer = 0f;
 
     public GameObject BackToTitlePanel;
+    private GameObject GameOverPanel;
     void Start()
     {
         GameManager.Instance.GetCurrentHealth();

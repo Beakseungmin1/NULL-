@@ -26,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/CoopScene.unity
     guid: dab5079fa81195048b87683d940af4f3
+  - enabled: 1
+    path: Assets/00.Scenes/StartCutScene.unity
+    guid: 3a8edf7cd7f8ab246a21291a3f89267e
+  - enabled: 1
+    path: Assets/00.Scenes/Phase1EndCutScene.unity
+    guid: ddcb7d440db5e1c4289aff0fc982d7cc
+  - enabled: 1
+    path: Assets/00.Scenes/EndCutScene.unity
+    guid: 9dd082a9bcf133c47b35f4010a81ad6a
   m_configObjects: {}
