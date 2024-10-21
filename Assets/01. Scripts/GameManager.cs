@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         if (scene.name.StartsWith("StageScene") || scene.name.StartsWith("[sing]Enemy"))
         {
             SpawnCharacter();
+            timerText = GameObject.Find("TimerText")?.GetComponent<Text>();
         }
 
         if (scene.name.StartsWith("TitleScene"))
